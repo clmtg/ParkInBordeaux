@@ -14,6 +14,7 @@
 		EB5592B528AD75DA00FEF6B9 /* ParkInBordeaux.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB5592B328AD75DA00FEF6B9 /* ParkInBordeaux.xcdatamodeld */; };
 		EB5592B728AD75DA00FEF6B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB5592B628AD75DA00FEF6B9 /* Assets.xcassets */; };
 		EB5592BA28AD75DA00FEF6B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB5592B828AD75DA00FEF6B9 /* LaunchScreen.storyboard */; };
+		EB5592C728AD76B500FEF6B9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EB5592C628AD76B500FEF6B9 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		EB5592B628AD75DA00FEF6B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB5592B928AD75DA00FEF6B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB5592BB28AD75DA00FEF6B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB5592C628AD76B500FEF6B9 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +44,7 @@
 		EB55929E28AD75DA00FEF6B9 = {
 			isa = PBXGroup;
 			children = (
+				EB5592C628AD76B500FEF6B9 /* .gitignore */,
 				EB5592A928AD75DA00FEF6B9 /* ParkInBordeaux */,
 				EB5592A828AD75DA00FEF6B9 /* Products */,
 			);
@@ -58,16 +61,56 @@
 		EB5592A928AD75DA00FEF6B9 /* ParkInBordeaux */ = {
 			isa = PBXGroup;
 			children = (
-				EB5592AA28AD75DA00FEF6B9 /* AppDelegate.swift */,
-				EB5592AC28AD75DA00FEF6B9 /* SceneDelegate.swift */,
-				EB5592AE28AD75DA00FEF6B9 /* ViewController.swift */,
-				EB5592B028AD75DA00FEF6B9 /* Main.storyboard */,
-				EB5592B628AD75DA00FEF6B9 /* Assets.xcassets */,
-				EB5592B828AD75DA00FEF6B9 /* LaunchScreen.storyboard */,
-				EB5592BB28AD75DA00FEF6B9 /* Info.plist */,
-				EB5592B328AD75DA00FEF6B9 /* ParkInBordeaux.xcdatamodeld */,
+				EB5592C428AD75FF00FEF6B9 /* SupportingFiles */,
+				EB5592C328AD75F700FEF6B9 /* Controller */,
+				EB5592C228AD75F200FEF6B9 /* View */,
+				EB5592C128AD75EC00FEF6B9 /* Model */,
 			);
 			path = ParkInBordeaux;
+			sourceTree = "<group>";
+		};
+		EB5592C128AD75EC00FEF6B9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EB5592C528AD761A00FEF6B9 /* DataRepresentation */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EB5592C228AD75F200FEF6B9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EB5592B028AD75DA00FEF6B9 /* Main.storyboard */,
+				EB5592B828AD75DA00FEF6B9 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EB5592C328AD75F700FEF6B9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EB5592AE28AD75DA00FEF6B9 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EB5592C428AD75FF00FEF6B9 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				EB5592AA28AD75DA00FEF6B9 /* AppDelegate.swift */,
+				EB5592AC28AD75DA00FEF6B9 /* SceneDelegate.swift */,
+				EB5592B628AD75DA00FEF6B9 /* Assets.xcassets */,
+				EB5592BB28AD75DA00FEF6B9 /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		EB5592C528AD761A00FEF6B9 /* DataRepresentation */ = {
+			isa = PBXGroup;
+			children = (
+				EB5592B328AD75DA00FEF6B9 /* ParkInBordeaux.xcdatamodeld */,
+			);
+			path = DataRepresentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +171,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB5592C728AD76B500FEF6B9 /* .gitignore in Resources */,
 				EB5592BA28AD75DA00FEF6B9 /* LaunchScreen.storyboard in Resources */,
 				EB5592B728AD75DA00FEF6B9 /* Assets.xcassets in Resources */,
 				EB5592B228AD75DA00FEF6B9 /* Main.storyboard in Resources */,
@@ -293,7 +337,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CES656DH72;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ParkInBordeaux/Info.plist;
+				INFOPLIST_FILE = ParkInBordeaux/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -321,7 +365,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CES656DH72;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ParkInBordeaux/Info.plist;
+				INFOPLIST_FILE = ParkInBordeaux/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
