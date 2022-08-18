@@ -9,29 +9,61 @@
 /* Begin PBXBuildFile section */
 		EB5592AB28AD75DA00FEF6B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5592AA28AD75DA00FEF6B9 /* AppDelegate.swift */; };
 		EB5592AD28AD75DA00FEF6B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5592AC28AD75DA00FEF6B9 /* SceneDelegate.swift */; };
-		EB5592AF28AD75DA00FEF6B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5592AE28AD75DA00FEF6B9 /* ViewController.swift */; };
 		EB5592B228AD75DA00FEF6B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB5592B028AD75DA00FEF6B9 /* Main.storyboard */; };
 		EB5592B528AD75DA00FEF6B9 /* ParkInBordeaux.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB5592B328AD75DA00FEF6B9 /* ParkInBordeaux.xcdatamodeld */; };
 		EB5592B728AD75DA00FEF6B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB5592B628AD75DA00FEF6B9 /* Assets.xcassets */; };
 		EB5592BA28AD75DA00FEF6B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB5592B828AD75DA00FEF6B9 /* LaunchScreen.storyboard */; };
 		EB5592C728AD76B500FEF6B9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EB5592C628AD76B500FEF6B9 /* .gitignore */; };
+		EB5592C928AD770900FEF6B9 /* CarParksCoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5592C828AD770900FEF6B9 /* CarParksCoreService.swift */; };
+		EB5592DA28AD781400FEF6B9 /* CarParksCoreServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5592D928AD781400FEF6B9 /* CarParksCoreServiceTest.swift */; };
+		EB5592DC28AD791700FEF6B9 /* ApiEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5592DB28AD791700FEF6B9 /* ApiEndpoint.swift */; };
+		EB5592E028AD79CF00FEF6B9 /* ApiInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5592DF28AD79CF00FEF6B9 /* ApiInfo.swift */; };
+		EB617A7428AE3DF400B9102D /* CarParksServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB617A7328AE3DF400B9102D /* CarParksServiceError.swift */; };
+		EB617A7728AE572400B9102D /* GeojsonProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB617A7628AE572400B9102D /* GeojsonProperties.swift */; };
+		EB617A7928AE584700B9102D /* CarParkMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB617A7828AE584700B9102D /* CarParkMapAnnotation.swift */; };
+		EB617A7B28AE6E9F00B9102D /* CarParksMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB617A7A28AE6E9F00B9102D /* CarParksMapViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EB5592D228AD77F000FEF6B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EB55929F28AD75DA00FEF6B9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EB5592A628AD75DA00FEF6B9;
+			remoteInfo = ParkInBordeaux;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		EB5592A728AD75DA00FEF6B9 /* ParkInBordeaux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkInBordeaux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5592AA28AD75DA00FEF6B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB5592AC28AD75DA00FEF6B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EB5592AE28AD75DA00FEF6B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EB5592B128AD75DA00FEF6B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EB5592B428AD75DA00FEF6B9 /* ParkInBordeaux.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ParkInBordeaux.xcdatamodel; sourceTree = "<group>"; };
 		EB5592B628AD75DA00FEF6B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB5592B928AD75DA00FEF6B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB5592BB28AD75DA00FEF6B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB5592C628AD76B500FEF6B9 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		EB5592C828AD770900FEF6B9 /* CarParksCoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarParksCoreService.swift; sourceTree = "<group>"; };
+		EB5592CE28AD77F000FEF6B9 /* ParkInBordeauxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParkInBordeauxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB5592D928AD781400FEF6B9 /* CarParksCoreServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarParksCoreServiceTest.swift; sourceTree = "<group>"; };
+		EB5592DB28AD791700FEF6B9 /* ApiEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoint.swift; sourceTree = "<group>"; };
+		EB5592DF28AD79CF00FEF6B9 /* ApiInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInfo.swift; sourceTree = "<group>"; };
+		EB617A7328AE3DF400B9102D /* CarParksServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarParksServiceError.swift; sourceTree = "<group>"; };
+		EB617A7628AE572400B9102D /* GeojsonProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeojsonProperties.swift; sourceTree = "<group>"; };
+		EB617A7828AE584700B9102D /* CarParkMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarParkMapAnnotation.swift; sourceTree = "<group>"; };
+		EB617A7A28AE6E9F00B9102D /* CarParksMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarParksMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		EB5592A428AD75DA00FEF6B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB5592CB28AD77F000FEF6B9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -46,6 +78,7 @@
 			children = (
 				EB5592C628AD76B500FEF6B9 /* .gitignore */,
 				EB5592A928AD75DA00FEF6B9 /* ParkInBordeaux */,
+				EB5592CF28AD77F000FEF6B9 /* ParkInBordeauxTests */,
 				EB5592A828AD75DA00FEF6B9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				EB5592A728AD75DA00FEF6B9 /* ParkInBordeaux.app */,
+				EB5592CE28AD77F000FEF6B9 /* ParkInBordeauxTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				EB5592C528AD761A00FEF6B9 /* DataRepresentation */,
+				EB5592DF28AD79CF00FEF6B9 /* ApiInfo.swift */,
+				EB5592DB28AD791700FEF6B9 /* ApiEndpoint.swift */,
+				EB617A7328AE3DF400B9102D /* CarParksServiceError.swift */,
+				EB5592C828AD770900FEF6B9 /* CarParksCoreService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -89,7 +127,7 @@
 		EB5592C328AD75F700FEF6B9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				EB5592AE28AD75DA00FEF6B9 /* ViewController.swift */,
+				EB617A7A28AE6E9F00B9102D /* CarParksMapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -109,8 +147,26 @@
 			isa = PBXGroup;
 			children = (
 				EB5592B328AD75DA00FEF6B9 /* ParkInBordeaux.xcdatamodeld */,
+				EB617A7628AE572400B9102D /* GeojsonProperties.swift */,
+				EB617A7828AE584700B9102D /* CarParkMapAnnotation.swift */,
 			);
 			path = DataRepresentation;
+			sourceTree = "<group>";
+		};
+		EB5592CF28AD77F000FEF6B9 /* ParkInBordeauxTests */ = {
+			isa = PBXGroup;
+			children = (
+				EB5592D728AD77FE00FEF6B9 /* CarParksCoreServiceTest */,
+			);
+			path = ParkInBordeauxTests;
+			sourceTree = "<group>";
+		};
+		EB5592D728AD77FE00FEF6B9 /* CarParksCoreServiceTest */ = {
+			isa = PBXGroup;
+			children = (
+				EB5592D928AD781400FEF6B9 /* CarParksCoreServiceTest.swift */,
+			);
+			path = CarParksCoreServiceTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +189,24 @@
 			productReference = EB5592A728AD75DA00FEF6B9 /* ParkInBordeaux.app */;
 			productType = "com.apple.product-type.application";
 		};
+		EB5592CD28AD77F000FEF6B9 /* ParkInBordeauxTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB5592D428AD77F000FEF6B9 /* Build configuration list for PBXNativeTarget "ParkInBordeauxTests" */;
+			buildPhases = (
+				EB5592CA28AD77F000FEF6B9 /* Sources */,
+				EB5592CB28AD77F000FEF6B9 /* Frameworks */,
+				EB5592CC28AD77F000FEF6B9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EB5592D328AD77F000FEF6B9 /* PBXTargetDependency */,
+			);
+			name = ParkInBordeauxTests;
+			productName = ParkInBordeauxTests;
+			productReference = EB5592CE28AD77F000FEF6B9 /* ParkInBordeauxTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -145,6 +219,10 @@
 				TargetAttributes = {
 					EB5592A628AD75DA00FEF6B9 = {
 						CreatedOnToolsVersion = 13.4.1;
+					};
+					EB5592CD28AD77F000FEF6B9 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = EB5592A628AD75DA00FEF6B9;
 					};
 				};
 			};
@@ -162,6 +240,7 @@
 			projectRoot = "";
 			targets = (
 				EB5592A628AD75DA00FEF6B9 /* ParkInBordeaux */,
+				EB5592CD28AD77F000FEF6B9 /* ParkInBordeauxTests */,
 			);
 		};
 /* End PBXProject section */
@@ -178,6 +257,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EB5592CC28AD77F000FEF6B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -185,14 +271,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB5592AF28AD75DA00FEF6B9 /* ViewController.swift in Sources */,
+				EB617A7928AE584700B9102D /* CarParkMapAnnotation.swift in Sources */,
 				EB5592AB28AD75DA00FEF6B9 /* AppDelegate.swift in Sources */,
 				EB5592B528AD75DA00FEF6B9 /* ParkInBordeaux.xcdatamodeld in Sources */,
 				EB5592AD28AD75DA00FEF6B9 /* SceneDelegate.swift in Sources */,
+				EB5592C928AD770900FEF6B9 /* CarParksCoreService.swift in Sources */,
+				EB617A7B28AE6E9F00B9102D /* CarParksMapViewController.swift in Sources */,
+				EB5592E028AD79CF00FEF6B9 /* ApiInfo.swift in Sources */,
+				EB5592DC28AD791700FEF6B9 /* ApiEndpoint.swift in Sources */,
+				EB617A7728AE572400B9102D /* GeojsonProperties.swift in Sources */,
+				EB617A7428AE3DF400B9102D /* CarParksServiceError.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB5592CA28AD77F000FEF6B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB5592DA28AD781400FEF6B9 /* CarParksCoreServiceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EB5592D328AD77F000FEF6B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EB5592A628AD75DA00FEF6B9 /* ParkInBordeaux */;
+			targetProxy = EB5592D228AD77F000FEF6B9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EB5592B028AD75DA00FEF6B9 /* Main.storyboard */ = {
@@ -384,6 +492,44 @@
 			};
 			name = Release;
 		};
+		EB5592D528AD77F000FEF6B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CES656DH72;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = clementgarcia8.ParkInBordeauxTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ParkInBordeaux.app/ParkInBordeaux";
+			};
+			name = Debug;
+		};
+		EB5592D628AD77F000FEF6B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CES656DH72;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = clementgarcia8.ParkInBordeauxTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ParkInBordeaux.app/ParkInBordeaux";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -401,6 +547,15 @@
 			buildConfigurations = (
 				EB5592BF28AD75DA00FEF6B9 /* Debug */,
 				EB5592C028AD75DA00FEF6B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB5592D428AD77F000FEF6B9 /* Build configuration list for PBXNativeTarget "ParkInBordeauxTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB5592D528AD77F000FEF6B9 /* Debug */,
+				EB5592D628AD77F000FEF6B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
