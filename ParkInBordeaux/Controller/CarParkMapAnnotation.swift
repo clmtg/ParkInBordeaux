@@ -10,19 +10,19 @@ import MapKit
 
 final class CarParkMapAnnotation: NSObject, MKAnnotation {
     
-    // MARK: - Vars
+    // MARK: - Vars - Mandatory
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?
     
-    var ident: String?
+    // MARK: - Vars - Additional data
     var state: String?
     
     // MARK: - initializer
-    init(coordinate: CLLocationCoordinate2D, title: String?, subtitle: String?, ident: String?) {
+    init(coordinate: CLLocationCoordinate2D, title: String?, subtitle: String?, state: String?) {
         self.coordinate = coordinate
         self.title = title
-        self.subtitle = subtitle
-        self.ident = ident
+        self.subtitle = state?.capitalizingFirstLetter()
+        self.state = state
     }
 }

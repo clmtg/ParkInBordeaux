@@ -11,4 +11,18 @@ import Foundation
 enum CarParksServiceError: Error {
     case corruptData
     case unexpectedResponse
+    case undecodableJson
+    case noCarParkWithinArea
 }
+
+extension CarParksServiceError: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .corruptData: return "CorruptData - Les données fournies sont illisible."
+        case .unexpectedResponse: return "ParkInBordeaux semble founir une reponse incoherente."
+        case .undecodableJson: return "GeoJSON - Les données fournies ne respected pas le standart geoJson"
+        case .noCarParkWithinArea: return "Aucun parking n'est disponible dans cette zone géographique"
+        }
+    }
+}
+

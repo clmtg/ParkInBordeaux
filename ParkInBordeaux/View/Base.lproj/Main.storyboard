@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D9b-OO-dz8">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -30,23 +30,38 @@
             <objects>
                 <viewController id="Ifp-Nz-eNL" customClass="CarParksMapViewController" customModule="ParkInBordeaux" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NQS-wk-RUM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7ZW-VS-h5a">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="390" height="717"/>
                                 <connections>
                                     <outlet property="delegate" destination="Ifp-Nz-eNL" id="V9W-eK-yPb"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWc-0d-cus">
+                                <rect key="frame" x="290" y="55" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cw-Nd-kOe">
+                                <rect key="frame" x="290" y="55" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <segue destination="Sgl-fr-cVM" kind="presentation" id="81N-aF-CKq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6KB-Bm-Ejf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7ZW-VS-h5a" firstAttribute="leading" secondItem="6KB-Bm-Ejf" secondAttribute="leading" id="9ZD-SC-HaJ"/>
-                            <constraint firstItem="7ZW-VS-h5a" firstAttribute="top" secondItem="6KB-Bm-Ejf" secondAttribute="top" id="Ucg-K0-qQR"/>
-                            <constraint firstItem="6KB-Bm-Ejf" firstAttribute="trailing" secondItem="7ZW-VS-h5a" secondAttribute="trailing" id="rYb-Eq-GB0"/>
-                            <constraint firstItem="6KB-Bm-Ejf" firstAttribute="bottom" secondItem="7ZW-VS-h5a" secondAttribute="bottom" id="wDI-u1-Lcp"/>
+                            <constraint firstItem="7ZW-VS-h5a" firstAttribute="trailing" secondItem="6KB-Bm-Ejf" secondAttribute="trailing" id="2AJ-NY-sGe"/>
+                            <constraint firstItem="7ZW-VS-h5a" firstAttribute="leading" secondItem="6KB-Bm-Ejf" secondAttribute="leading" id="67v-gn-xud"/>
+                            <constraint firstItem="7ZW-VS-h5a" firstAttribute="top" secondItem="6KB-Bm-Ejf" secondAttribute="top" id="80P-X8-CVx"/>
+                            <constraint firstItem="6KB-Bm-Ejf" firstAttribute="bottom" secondItem="7ZW-VS-h5a" secondAttribute="bottom" id="oba-ve-N4M"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Carte" image="map" catalog="system" id="4X2-U2-CI2" userLabel="Map"/>
@@ -56,7 +71,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2BP-ip-nb5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="685.50724637681162" y="-350.22321428571428"/>
+            <point key="canvasLocation" x="684.61538461538464" y="-350.47393364928911"/>
+        </scene>
+        <!--Car Park Details View Controller-->
+        <scene sceneID="Nnc-yv-G4W">
+            <objects>
+                <viewController id="Sgl-fr-cVM" customClass="CarParkDetailsViewController" customModule="ParkInBordeaux" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E8P-9G-niX">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="10D-Ge-MLR">
+                                <rect key="frame" x="20" y="64" width="350" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="NiG-YL-Ta7"/>
+                                </constraints>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tII-7P-hqI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="10D-Ge-MLR" firstAttribute="top" secondItem="tII-7P-hqI" secondAttribute="top" constant="20" id="hsv-u1-RxR"/>
+                            <constraint firstItem="10D-Ge-MLR" firstAttribute="leading" secondItem="tII-7P-hqI" secondAttribute="leading" constant="20" id="umP-pB-xG3"/>
+                            <constraint firstItem="tII-7P-hqI" firstAttribute="trailing" secondItem="10D-Ge-MLR" secondAttribute="trailing" constant="20" id="wbM-9x-INz"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w0U-No-HJG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1577" y="-350"/>
         </scene>
     </scenes>
     <resources>
