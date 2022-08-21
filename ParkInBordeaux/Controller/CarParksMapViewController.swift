@@ -39,72 +39,30 @@ final class CarParksMapViewController: UIViewController {
         carParksMapViewController.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(CarParkMapAnnotation.self))
     }
     
-    /// Load the data related to the car parks availability into the MKMapView
-    private func loadCarParksDataSet() {
-        carParkCore.getCarParksAvailabilityAnnotation { resultAnnotations in
-            DispatchQueue.main.async {
-                guard case .success(let annotationsData) = resultAnnotations else {
-                    self.displayAnAlert(title: "Opps", message: "There an issue", actions: nil)
-                    return
+    func loadCarParksDataSet() {
+        DispatchQueue.main.async {
+        self.carParkCore.getLatestUpdate { resultCarParkData in
+            guard case .success(let carParksData) = resultCarParkData else {
+                if case .failure(let errorInfo) = resultCarParkData {
+                    self.displayAnAlert(title: "Oups", message: errorInfo.description, actions: nil)
                 }
-                self.carParksMapViewController.addAnnotations(annotationsData)
+                return
+            }
+            carParksData.forEach { oneCarPark in
+                if let location = oneCarPark.location, let properties = oneCarPark.properties {
+                    
+                        self.carParksMapViewController.addAnnotation(CarParkMapAnnotation(for: location ,
+                                                                                          title: properties.nom ?? "No name",
+                                                                                          subtitle: properties.etat ?? "Inconnu",
+                                                                                          carParkInfo: oneCarPark))
+                    }
+                }
             }
         }
-    }
-    
-    private func getBallonShapeColor(state: String) -> UIColor {
-        var colorToUse = UIColor.systemMint
-        switch state {
-        case "LIBRE":
-            colorToUse = UIColor.systemGreen
-        case "OUVERT":
-            colorToUse = UIColor.systemOrange
-        case "FERME":
-            colorToUse = UIColor.systemRed
-        case "COMPLET":
-            colorToUse = UIColor.systemRed
-        default:
-            colorToUse = UIColor.systemGreen
-        }
-        return colorToUse
     }
 }
 
 // MARK: - Extensions
 extension CarParksMapViewController: MKMapViewDelegate {
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard !annotation.isKind(of: MKUserLocation.self) else {
-            return nil
-        }
-        let identifier = NSStringFromClass(CarParkMapAnnotation.self)
-        let view = carParksMapViewController.dequeueReusableAnnotationView(withIdentifier: identifier, for: annotation)
-        if let markerAnnotationView = view as? MKMarkerAnnotationView,
-           let currentAnnotation = annotation as? CarParkMapAnnotation {
-            markerAnnotationView.animatesWhenAdded = true
-            markerAnnotationView.canShowCallout = true
-            markerAnnotationView.markerTintColor = getBallonShapeColor(state: currentAnnotation.state!)
-            let rightButton = UIButton(type: .detailDisclosure)
-            markerAnnotationView.rightCalloutAccessoryView = rightButton
-            return markerAnnotationView
-        }
-        return view
-    }
-    
-    /*
-    
-    /// Called whent he user taps the disclosure button in the bridge callout.
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if let detailNavController = storyboard?.instantiateViewController(withIdentifier: "CarParkDetailsViewController") {
-            detailNavController.modalPresentationStyle = .popover
-            let presentationController = detailNavController.popoverPresentationController
-            presentationController?.permittedArrowDirections = .any
-            presentationController?.sourceRect = control.frame
-            presentationController?.sourceView = control
-            present(detailNavController, animated: true, completion: nil)
-        }
-    }
-     */
 }
-
-// SEBASTIEN CHECK REQUIRED : Should annotation generation be part of the model or the view controller ?

@@ -10,9 +10,7 @@ import Foundation
 // MARK: - GeojsonProperties
 struct GeojsonProperties: Decodable{
     
-    /// Car park name
-    let nom: String?
-    
-    /// Car park state (e.g.: Open, Close, Subscribers only, etc...)
-    let etat: String?
+    var nom: String?
+    var etat: String?
+    var ident: String?
 }

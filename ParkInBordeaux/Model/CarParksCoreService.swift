@@ -19,7 +19,7 @@ final class CarParksCoreService {
     
     var carParksAnnotationAmount: Int {
         return carParksAnnotationData.count
-        }
+    }
     
     // MARK: - initializer
     init(session: URLSession = .shared) {
@@ -29,49 +29,55 @@ final class CarParksCoreService {
     // MARK: - Functions
     /// Perform the rest call needed in order to retreive the update data set for all the car parks
     /// - Parameter completionHandler: Steps to perform if this is a success or a failure
-    func getCarParksAvailabilityFeatures(completionHandler: @escaping (Result<[MKGeoJSONFeature],CarParksServiceError>) -> Void) {
+    func getCarParksAvailabilityFromGeojson(completionHandler: @escaping (Result<[MKGeoJSONFeature],CarParksServiceError>) -> Void) {
         session.dataTask(with: ApiEndpoint.getGlobalEndpoint()) { dataReceived, responseReceived, errorReceived in
             guard let data = dataReceived, errorReceived == nil else {
                 completionHandler(.failure(.corruptData))
                 return
             }
-            
             guard let response = responseReceived as? HTTPURLResponse, response.statusCode == 200 else {
                 completionHandler(.failure(.unexpectedResponse))
                 return
             }
             guard let geojsonfeatures = try? MKGeoJSONDecoder().decode(data) as? [MKGeoJSONFeature] else {
-                completionHandler(.failure(.undecodableJson))
+                completionHandler(.failure(.undecodableGeojson))
                 return
             }
             completionHandler(.success(geojsonfeatures))
         }.resume()
     }
     
-    /// Gather latest data related to car park availability then create CarParkMapAnnotation to be provided to the controller.
-    /// - Parameter completionHandler: Should provide an array of CarParkMapAnnotation. However in a failure case a CarParksServiceError object would be used within the completionHandler
-    func getCarParksAvailabilityAnnotation(completionHandler: @escaping (Result<[CarParkMapAnnotation],CarParksServiceError>) -> Void) {
-        self.getCarParksAvailabilityFeatures { resultFeatures in
-            guard case .success(let geojsonFeature) = resultFeatures else {
-                completionHandler(.failure(.corruptData))
+    //=========================================================================================================
+   
+    
+    func getLatestUpdate(completionHandler: @escaping (Result<[OneCarParkStruct],CarParksServiceError>) -> Void) {
+        
+        var carParksData = [OneCarParkStruct]()
+        
+        getCarParksAvailabilityFromGeojson { resultGeojsonFeatures in
+            guard case .success(let geojsonFeaturesData) = resultGeojsonFeatures else {
+                completionHandler(.failure(.networkCallFailed))
                 return
             }
-            geojsonFeature.forEach { oneFeature in
-                if let geometry = oneFeature.geometry.first, let propertiesFeature = oneFeature.properties {
-                    if let geojsonProperties = try? JSONDecoder().decode(GeojsonProperties.self, from: propertiesFeature) {
-                        self.carParksAnnotationData.append(CarParkMapAnnotation(coordinate: geometry.coordinate,
-                                                                                title: geojsonProperties.nom,
-                                                                                subtitle: "soutitre",
-                                                                                state: geojsonProperties.etat))
+            geojsonFeaturesData.forEach { oneFeature in
+                if let geometrey = oneFeature.geometry.first, let jsonProperties = oneFeature.properties {
+                    if let properties = try? JSONDecoder().decode(GeojsonProperties.self, from: jsonProperties) {
+                        
+                        if let id = properties.ident {
+                            carParksData.append(OneCarParkStruct(for: id,
+                                                                 location:  geometrey.coordinate,
+                                                                 properties: properties))
                         }
+                    }
                 }
             }
-            if self.carParksAnnotationAmount == 0 {
+            
+            if(carParksData.count == 0) {
                 completionHandler(.failure(.noCarParkWithinArea))
             }
-            else {
-                completionHandler(.success(self.carParksAnnotationData))
-            }
+            completionHandler(.success(carParksData))
         }
+        
     }
+    
 }

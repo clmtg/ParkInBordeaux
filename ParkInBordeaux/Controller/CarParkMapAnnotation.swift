@@ -9,20 +9,16 @@ import Foundation
 import MapKit
 
 final class CarParkMapAnnotation: NSObject, MKAnnotation {
-    
-    // MARK: - Vars - Mandatory
+
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?
+    var carParkInfo: OneCarParkStruct?
     
-    // MARK: - Vars - Additional data
-    var state: String?
-    
-    // MARK: - initializer
-    init(coordinate: CLLocationCoordinate2D, title: String?, subtitle: String?, state: String?) {
+    init(for coordinate: CLLocationCoordinate2D, title: String?, subtitle: String?, carParkInfo: OneCarParkStruct?) {
         self.coordinate = coordinate
         self.title = title
-        self.subtitle = state?.capitalizingFirstLetter()
-        self.state = state
+        self.subtitle = subtitle
+        self.carParkInfo = carParkInfo
     }
 }
