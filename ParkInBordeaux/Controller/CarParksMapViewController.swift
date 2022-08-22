@@ -54,12 +54,12 @@ final class CarParksMapViewController: UIViewController {
     
     /// Register the classes generating customer MKAnnotationView. This is uses to reload MkAnnotation rather than generated new one
     func registerAnnotationViewClasses() {
-        carParksMapViewController.register(CarParkMapAnnotationMaker.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        carParksMapViewController.register(CarParkMapAnnotationMaker.self, forAnnotationViewWithReuseIdentifier: CarParkMapAnnotationMaker.reuseID)
         carParksMapViewController.register(CarParksClusterAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
         //carParksMapViewController.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(CarParkMapAnnotation.self))
     }
     
-    /// Retrreive the information related to the car parks provided by the model and load them up into the MapViewControllerz
+    /// Retreive the information related to the car parks provided by the model and load them up into the MapViewControllerz
     func loadCarParksDataSet() {
         self.carParkCore.getLatestUpdate { resultCarParkData in
             DispatchQueue.main.async {
@@ -87,31 +87,19 @@ final class CarParksMapViewController: UIViewController {
 extension CarParksMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard !annotation.isKind(of: MKUserLocation.self), let annotation = annotation as? CarParkMapAnnotation else {
+        guard !annotation.isKind(of: MKUserLocation.self),
+              let mapAnnotation = annotation as? CarParkMapAnnotation else {
             return nil
         }
         
-        return CarParkMapAnnotationMaker(annotation: annotation, reuseIdentifier: CarParkMapAnnotationMaker.ReuseID)
+        //SEBASTIEN CHECK REQUIRED : Why does the 1st  not procceed ?! " for: annotation) "
         
-        
-        
-        
-        
-        
-        
-        
-        
-        let identifier = NSStringFromClass(CarParkMapAnnotation.self)
-        let view = carParksMapViewController.dequeueReusableAnnotationView(withIdentifier: CarParkMapAnnotationMaker.ReuseID, for: annotation)
-        if let markerAnnotationView = view as? MKMarkerAnnotationView,
-           let _ = annotation as? CarParkMapAnnotation {
-            markerAnnotationView.animatesWhenAdded = true
-            markerAnnotationView.canShowCallout = true
-            markerAnnotationView.markerTintColor = UIColor.systemMint
-            let rightButton = UIButton(type: .detailDisclosure)
-            markerAnnotationView.rightCalloutAccessoryView = rightButton
-            return markerAnnotationView
+        //return carParksMapViewController.dequeueReusableAnnotationView(withIdentifier: CarParkMapAnnotation.reuseID, for: annotation)
+        guard let secondHandView = try? carParksMapViewController.dequeueReusableAnnotationView(withIdentifier: CarParkMapAnnotationMaker.reuseID, for: mapAnnotation) else {
+            return CarParkMapAnnotationMaker(annotation: mapAnnotation, reuseIdentifier: CarParkMapAnnotationMaker.reuseID)
         }
-        return view
+        return secondHandView
+        
+        
     }
 }

@@ -16,7 +16,6 @@ final class CarParkMapAnnotation: NSObject, MKAnnotation {
     }
     
     var type: CarParkType = .connected
-
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?

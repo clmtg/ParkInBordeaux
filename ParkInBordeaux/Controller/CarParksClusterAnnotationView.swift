@@ -36,12 +36,9 @@ class CarParksClusterAnnotationView: MKAnnotationView {
         }
     }
     
-    
     private func drawUnicycleCount(count: Int) -> UIImage {
         return drawRatio(0, to: count, fractionColor: nil, wholeColor: UIColor.systemRed)
     }
-    
-    
     
     private func drawRatio(_ fraction: Int, to whole: Int, fractionColor: UIColor?, wholeColor: UIColor?) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: 40, height: 40))
@@ -73,8 +70,6 @@ class CarParksClusterAnnotationView: MKAnnotationView {
             text.draw(in: rect, withAttributes: attributes)
         }
     }
-    
-    
     
     private func count(carParkType type: CarParkMapAnnotation.CarParkType) -> Int {
         guard let cluster = annotation as? MKClusterAnnotation else {
