@@ -47,7 +47,7 @@ class CarParksCoreServiceTest: XCTestCase {
         let sut = CarParksCoreService(session: fakeSession)
         let expectation = XCTestExpectation(description: "Waiting...")
         
-        sut.getCarParksAvailabilityFeatures { resultFeature in
+        sut.getCarParksAvailabilityFromGeojson { resultFeature in
             guard case .success(let geoJsonData) = resultFeature else {
                 XCTFail(#function)
                 return
@@ -71,7 +71,7 @@ class CarParksCoreServiceTest: XCTestCase {
         let sut = CarParksCoreService(session: fakeSession)
         let expectation = XCTestExpectation(description: "Waiting...")
         
-        sut.getCarParksAvailabilityFeatures { resultFeature in
+        sut.getCarParksAvailabilityFromGeojson { resultFeature in
             guard case .failure(let errorData) = resultFeature else {
                 XCTFail(#function)
                 return
@@ -94,7 +94,7 @@ class CarParksCoreServiceTest: XCTestCase {
         let sut = CarParksCoreService(session: fakeSession)
         let expectation = XCTestExpectation(description: "Waiting...")
         
-        sut.getCarParksAvailabilityFeatures { resultFeature in
+        sut.getCarParksAvailabilityFromGeojson { resultFeature in
             guard case .failure(let errorData) = resultFeature else {
                 XCTFail(#function)
                 return
@@ -116,7 +116,7 @@ class CarParksCoreServiceTest: XCTestCase {
         let sut = CarParksCoreService(session: fakeSession)
         let expectation = XCTestExpectation(description: "Waiting...")
         
-        sut.getCarParksAvailabilityFeatures { resultFeature in
+        sut.getCarParksAvailabilityFromGeojson { resultFeature in
             guard case .failure(let errorData) = resultFeature else {
                 XCTFail(#function)
                 return
@@ -138,79 +138,16 @@ class CarParksCoreServiceTest: XCTestCase {
         let sut = CarParksCoreService(session: fakeSession)
         let expectation = XCTestExpectation(description: "Waiting...")
         
-        sut.getCarParksAvailabilityFeatures { resultFeature in
+        sut.getCarParksAvailabilityFromGeojson { resultFeature in
             guard case .failure(let errorData) = resultFeature else {
                 XCTFail(#function)
                 return
             }
-            XCTAssertEqual(errorData, .undecodableJson)
+            XCTAssertEqual(errorData, .undecodableGeojson)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
     }
-    
-    //------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------
-    
-    func testGivenMKGeoJSONFeatureHasIssue_WhenAttemptToGetAnnotation_ThenErrorIsThrown(){
-        URLProtocolFake.fakeURLs = [FakeResponseData.openDataBordeauxEndpoint: (FakeResponseData.incorrectGeocsonData, FakeResponseData.validResponseCode, nil)]
-        let fakeSession = URLSession(configuration: sessionConfiguration)
-        let sut = CarParksCoreService(session: fakeSession)
-        let expectation = XCTestExpectation(description: "Waiting...")
-        
-        sut.getCarParksAvailabilityAnnotation { resultAnnotations in
-            guard case .failure(let errorData) = resultAnnotations else {
-                XCTFail(#function)
-                return
-            }
-            XCTAssertEqual(errorData, .corruptData)
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 0.01)
-    }
-    
-    //------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------
-    
-    func testGivenMKGeoJSONFeatureHasNoFeature_WhenAttemptToGetAnnotation_ThenErrorIsThrown(){
-        URLProtocolFake.fakeURLs = [FakeResponseData.openDataBordeauxEndpoint: (FakeResponseData.geocsonCorrectDataNoCarPark, FakeResponseData.validResponseCode, nil)]
-        let fakeSession = URLSession(configuration: sessionConfiguration)
-        let sut = CarParksCoreService(session: fakeSession)
-        let expectation = XCTestExpectation(description: "Waiting...")
-        
-        sut.getCarParksAvailabilityAnnotation { resultAnnotations in
-            guard case .failure(let errorData) = resultAnnotations else {
-                XCTFail(#function)
-                return
-            }
-            XCTAssertEqual(errorData, .noCarParkWithinArea)
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 0.01)
-    }
-    
-    //------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------
-    
-    func testGivenMKGeoJSONFeatureIsValid_WhenAttemptToGetAnnotation_CorrectAnnotationAreProvided(){
-        URLProtocolFake.fakeURLs = [FakeResponseData.openDataBordeauxEndpoint: (FakeResponseData.geocsonCorrectData, FakeResponseData.validResponseCode, nil)]
-        let fakeSession = URLSession(configuration: sessionConfiguration)
-        let sut = CarParksCoreService(session: fakeSession)
-        let expectation = XCTestExpectation(description: "Waiting...")
-        
-        sut.getCarParksAvailabilityAnnotation { resultAnnotations in
-            guard case .success(let annotationsData) = resultAnnotations else {
-                XCTFail(#function)
-                return
-            }
-            XCTAssertEqual(annotationsData.count, 92)
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 0.01)
-    }
-    
-    
-    
     
     
 }

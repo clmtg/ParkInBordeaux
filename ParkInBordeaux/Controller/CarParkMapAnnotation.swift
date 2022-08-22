@@ -9,6 +9,13 @@ import Foundation
 import MapKit
 
 final class CarParkMapAnnotation: NSObject, MKAnnotation {
+    
+    enum CarParkType: Int, Decodable {
+        case connected
+        case localOnly
+    }
+    
+    var type: CarParkType = .connected
 
     var coordinate: CLLocationCoordinate2D
     var title: String?
@@ -17,7 +24,7 @@ final class CarParkMapAnnotation: NSObject, MKAnnotation {
     
     init(for coordinate: CLLocationCoordinate2D, title: String?, subtitle: String?, carParkInfo: OneCarParkStruct?) {
         self.coordinate = coordinate
-        self.title = title
+        self.title = title?.capitalizingFirstLetter()
         self.subtitle = subtitle
         self.carParkInfo = carParkInfo
     }

@@ -13,4 +13,5 @@ struct GeojsonProperties: Decodable{
     var nom: String?
     var etat: String?
     var ident: String?
+    
 }

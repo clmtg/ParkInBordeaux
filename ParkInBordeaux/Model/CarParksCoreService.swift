@@ -15,19 +15,15 @@ final class CarParksCoreService {
     /// URLSession handling the call to the REST apis
     private let session: URLSession
     
-    var carParksAnnotationData = [CarParkMapAnnotation]()
-    
-    var carParksAnnotationAmount: Int {
-        return carParksAnnotationData.count
-    }
-    
+    var carParksData = CarParks()
+
     // MARK: - initializer
     init(session: URLSession = .shared) {
         self.session = session
     }
     
     // MARK: - Functions
-    /// Perform the rest call needed in order to retreive the update data set for all the car parks
+    /// Perform the  network calls needed in order to retreive the update data set for all the car parks
     /// - Parameter completionHandler: Steps to perform if this is a success or a failure
     func getCarParksAvailabilityFromGeojson(completionHandler: @escaping (Result<[MKGeoJSONFeature],CarParksServiceError>) -> Void) {
         session.dataTask(with: ApiEndpoint.getGlobalEndpoint()) { dataReceived, responseReceived, errorReceived in
@@ -52,8 +48,6 @@ final class CarParksCoreService {
     
     func getLatestUpdate(completionHandler: @escaping (Result<[OneCarParkStruct],CarParksServiceError>) -> Void) {
         
-        var carParksData = [OneCarParkStruct]()
-        
         getCarParksAvailabilityFromGeojson { resultGeojsonFeatures in
             guard case .success(let geojsonFeaturesData) = resultGeojsonFeatures else {
                 completionHandler(.failure(.networkCallFailed))
@@ -64,7 +58,7 @@ final class CarParksCoreService {
                     if let properties = try? JSONDecoder().decode(GeojsonProperties.self, from: jsonProperties) {
                         
                         if let id = properties.ident {
-                            carParksData.append(OneCarParkStruct(for: id,
+                            self.carParksData.append(OneCarParkStruct(for: id,
                                                                  location:  geometrey.coordinate,
                                                                  properties: properties))
                         }
@@ -72,10 +66,10 @@ final class CarParksCoreService {
                 }
             }
             
-            if(carParksData.count == 0) {
+            if(self.carParksData.count == 0) {
                 completionHandler(.failure(.noCarParkWithinArea))
             }
-            completionHandler(.success(carParksData))
+            completionHandler(.success(self.carParksData))
         }
         
     }

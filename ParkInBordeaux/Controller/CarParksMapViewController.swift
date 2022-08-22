@@ -19,9 +19,11 @@ final class CarParksMapViewController: UIViewController {
     }
     
     // MARK: - Vars
+    /// Model instance
     let carParkCore = CarParksCoreService()
     
     // MARK: - IBOutlet
+    /// MKMapView controller used to display car maps on Maps
     @IBOutlet weak var carParksMapViewController: MKMapView!
     
     // MARK: - IBAction
@@ -36,21 +38,40 @@ final class CarParksMapViewController: UIViewController {
         carParksMapViewController.setCameraBoundary(MKMapView.CameraBoundary(coordinateRegion: region), animated: true)
         let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 40000)
         carParksMapViewController.setCameraZoomRange(zoomRange, animated: true)
-        carParksMapViewController.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(CarParkMapAnnotation.self))
+        setupCompassButton()
+        registerAnnotationViewClasses()
     }
     
+    /// Set the compass button within the MKMapView (carParksMapViewController). Compass is displayed only when Map isn't pointing North
+    private func setupCompassButton() {
+        let compass = MKCompassButton(mapView: carParksMapViewController)
+        compass.compassVisibility = .visible
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: compass)
+        carParksMapViewController.showsCompass = true
+    }
+    
+    // SEBASTIEN CHECK REQUIRED : explanation regarding ReuseIdentifier. Why MKMarkerAnnotationView ? Isn't registering all the MKAnnotion and therefore to avoid at all cost ?!
+    
+    /// Register the classes generating customer MKAnnotationView. This is uses to reload MkAnnotation rather than generated new one
+    func registerAnnotationViewClasses() {
+        carParksMapViewController.register(CarParkMapAnnotationMaker.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        carParksMapViewController.register(CarParksClusterAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
+        //carParksMapViewController.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(CarParkMapAnnotation.self))
+    }
+    
+    /// Retrreive the information related to the car parks provided by the model and load them up into the MapViewControllerz
     func loadCarParksDataSet() {
-        DispatchQueue.main.async {
         self.carParkCore.getLatestUpdate { resultCarParkData in
-            guard case .success(let carParksData) = resultCarParkData else {
-                if case .failure(let errorInfo) = resultCarParkData {
-                    self.displayAnAlert(title: "Oups", message: errorInfo.description, actions: nil)
+            DispatchQueue.main.async {
+                guard case .success(let carParksData) = resultCarParkData else {
+                    if case .failure(let errorInfo) = resultCarParkData {
+                        self.displayAnAlert(title: "Oups", message: errorInfo.description, actions: nil)
+                    }
+                    return
                 }
-                return
-            }
-            carParksData.forEach { oneCarPark in
-                if let location = oneCarPark.location, let properties = oneCarPark.properties {
-                    
+                carParksData.forEach { oneCarPark in
+                    if let location = oneCarPark.location, let properties = oneCarPark.properties {
+                        
                         self.carParksMapViewController.addAnnotation(CarParkMapAnnotation(for: location ,
                                                                                           title: properties.nom ?? "No name",
                                                                                           subtitle: properties.etat ?? "Inconnu",
@@ -65,4 +86,32 @@ final class CarParksMapViewController: UIViewController {
 // MARK: - Extensions
 extension CarParksMapViewController: MKMapViewDelegate {
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !annotation.isKind(of: MKUserLocation.self), let annotation = annotation as? CarParkMapAnnotation else {
+            return nil
+        }
+        
+        return CarParkMapAnnotationMaker(annotation: annotation, reuseIdentifier: CarParkMapAnnotationMaker.ReuseID)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        let identifier = NSStringFromClass(CarParkMapAnnotation.self)
+        let view = carParksMapViewController.dequeueReusableAnnotationView(withIdentifier: CarParkMapAnnotationMaker.ReuseID, for: annotation)
+        if let markerAnnotationView = view as? MKMarkerAnnotationView,
+           let _ = annotation as? CarParkMapAnnotation {
+            markerAnnotationView.animatesWhenAdded = true
+            markerAnnotationView.canShowCallout = true
+            markerAnnotationView.markerTintColor = UIColor.systemMint
+            let rightButton = UIButton(type: .detailDisclosure)
+            markerAnnotationView.rightCalloutAccessoryView = rightButton
+            return markerAnnotationView
+        }
+        return view
+    }
 }

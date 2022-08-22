@@ -8,8 +8,9 @@
 import Foundation
 import MapKit
 
+typealias CarParks = [OneCarParkStruct]
+
 struct OneCarParkStruct {
-    
     // MARK: - Vars
     /// Car park id
     var id: String?
