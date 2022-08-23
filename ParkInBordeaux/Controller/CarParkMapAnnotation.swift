@@ -29,7 +29,6 @@ final class CarParkMapAnnotation: NSObject, MKAnnotation {
         case otherPrice
     }
     
-    
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?

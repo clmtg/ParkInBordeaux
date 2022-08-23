@@ -1,12 +1,14 @@
 //
-//  CarParkMapAnnotationMaker.swift
+//  CarParksClusterAnnotationViewMaker.swift
 //  ParkInBordeaux
 //
-//  Created by Clément Garcia on 22/08/2022.
+//  Created by Clément Garcia on 23/08/2022.
 //
 
 import UIKit
 import MapKit
+
+// 👇🏻 SEBASTIEN CHECK REQUIRED
 
 /**
  Comments :
@@ -16,28 +18,29 @@ import MapKit
  - A cluster is an annotaion
  */
 
-class CarParkMapAnnotationMaker: MKMarkerAnnotationView {
+/// Used to display a cluster of CarParkMapAnnotation
+class CarParksClusterAnnotationViewMaker: MKMarkerAnnotationView {
     
-    static let reuseID = "carParkAnnotation"
-
-    /// - Tag: ClusterIdentifier
+    static let reuseID = "clusterAnnotation"
+    
+    // MARK: - Initializer
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-        clusteringIdentifier = CarParksClusterAnnotationView.reuseID
     }
     
+    // SEBASTIEN CHECK REQUIRED : explanation regarding required and optional init ?!
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Functions
     override func prepareForDisplay() {
         super.prepareForDisplay()
+        //markerTintColor = UIColor.systemFill
         displayPriority = .defaultLow
-        markerTintColor = UIColor.systemTeal
         animatesWhenAdded = true
-        canShowCallout = true
-        let rightButton = UIButton(type: .detailDisclosure)
-        rightCalloutAccessoryView = rightButton
-        glyphImage = #imageLiteral(resourceName: "logoParking")
+        canShowCallout = false
+        
     }
+
 }

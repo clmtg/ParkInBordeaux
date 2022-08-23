@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EB442B9428B37B83001B34C8 /* CarParksClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB442B9328B37B83001B34C8 /* CarParksClusterAnnotationView.swift */; };
-		EB442B9628B3815F001B34C8 /* CarParkMapAnnotationMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB442B9528B3815F001B34C8 /* CarParkMapAnnotationMaker.swift */; };
+		EB0D02BB28B51A7B007B233C /* CarParksClusterAnnotationViewMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0D02BA28B51A7B007B233C /* CarParksClusterAnnotationViewMaker.swift */; };
+		EB0D02BD28B51B5F007B233C /* CarParkMapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0D02BC28B51B5F007B233C /* CarParkMapAnnotationView.swift */; };
 		EB5592AB28AD75DA00FEF6B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5592AA28AD75DA00FEF6B9 /* AppDelegate.swift */; };
 		EB5592AD28AD75DA00FEF6B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5592AC28AD75DA00FEF6B9 /* SceneDelegate.swift */; };
 		EB5592B228AD75DA00FEF6B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB5592B028AD75DA00FEF6B9 /* Main.storyboard */; };
@@ -45,8 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EB442B9328B37B83001B34C8 /* CarParksClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarParksClusterAnnotationView.swift; sourceTree = "<group>"; };
-		EB442B9528B3815F001B34C8 /* CarParkMapAnnotationMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarParkMapAnnotationMaker.swift; sourceTree = "<group>"; };
+		EB0D02BA28B51A7B007B233C /* CarParksClusterAnnotationViewMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarParksClusterAnnotationViewMaker.swift; sourceTree = "<group>"; };
+		EB0D02BC28B51B5F007B233C /* CarParkMapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarParkMapAnnotationView.swift; sourceTree = "<group>"; };
 		EB5592A728AD75DA00FEF6B9 /* ParkInBordeaux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkInBordeaux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5592AA28AD75DA00FEF6B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB5592AC28AD75DA00FEF6B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,8 +150,8 @@
 			children = (
 				EB617A7A28AE6E9F00B9102D /* CarParksMapViewController.swift */,
 				EB617A7828AE584700B9102D /* CarParkMapAnnotation.swift */,
-				EB442B9528B3815F001B34C8 /* CarParkMapAnnotationMaker.swift */,
-				EB442B9328B37B83001B34C8 /* CarParksClusterAnnotationView.swift */,
+				EB0D02BC28B51B5F007B233C /* CarParkMapAnnotationView.swift */,
+				EB0D02BA28B51A7B007B233C /* CarParksClusterAnnotationViewMaker.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -322,6 +322,7 @@
 			files = (
 				EB8421A528AFD8C800BDEC1F /* OneCarParkStruct.swift in Sources */,
 				EB617A7928AE584700B9102D /* CarParkMapAnnotation.swift in Sources */,
+				EB0D02BB28B51A7B007B233C /* CarParksClusterAnnotationViewMaker.swift in Sources */,
 				EB5592AB28AD75DA00FEF6B9 /* AppDelegate.swift in Sources */,
 				EB5592B528AD75DA00FEF6B9 /* ParkInBordeaux.xcdatamodeld in Sources */,
 				EB5592AD28AD75DA00FEF6B9 /* SceneDelegate.swift in Sources */,
@@ -330,11 +331,10 @@
 				EB617A7B28AE6E9F00B9102D /* CarParksMapViewController.swift in Sources */,
 				EB5592E028AD79CF00FEF6B9 /* ApiInfo.swift in Sources */,
 				EB5592DC28AD791700FEF6B9 /* ApiEndpoint.swift in Sources */,
-				EB442B9428B37B83001B34C8 /* CarParksClusterAnnotationView.swift in Sources */,
 				EB617A7728AE572400B9102D /* GeojsonProperties.swift in Sources */,
 				EB84219D28AFB10F00BDEC1F /* ExtString.swift in Sources */,
+				EB0D02BD28B51B5F007B233C /* CarParkMapAnnotationView.swift in Sources */,
 				EB617A7428AE3DF400B9102D /* CarParksServiceError.swift in Sources */,
-				EB442B9628B3815F001B34C8 /* CarParkMapAnnotationMaker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
