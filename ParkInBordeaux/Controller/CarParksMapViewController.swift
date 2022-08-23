@@ -91,15 +91,6 @@ extension CarParksMapViewController: MKMapViewDelegate {
               let mapAnnotation = annotation as? CarParkMapAnnotation else {
             return nil
         }
-        
-        //SEBASTIEN CHECK REQUIRED : Why does the 1st  not procceed ?! " for: annotation) "
-        
-        //return carParksMapViewController.dequeueReusableAnnotationView(withIdentifier: CarParkMapAnnotation.reuseID, for: annotation)
-        guard let secondHandView = try? carParksMapViewController.dequeueReusableAnnotationView(withIdentifier: CarParkMapAnnotationMaker.reuseID, for: mapAnnotation) else {
-            return CarParkMapAnnotationMaker(annotation: mapAnnotation, reuseIdentifier: CarParkMapAnnotationMaker.reuseID)
-        }
-        return secondHandView
-        
-        
+        return carParksMapViewController.dequeueReusableAnnotationView(withIdentifier: CarParkMapAnnotationMaker.reuseID, for: mapAnnotation)
     }
 }

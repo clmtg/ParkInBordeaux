@@ -10,12 +10,18 @@ import MapKit
 
 final class CarParkMapAnnotation: NSObject, MKAnnotation {
     
+    static let reuseID = "carParkAnnotation"
+    
     enum CarParkType: Int, Decodable {
-        case connected
-        case localOnly
+        case free
+        case membershipNeeded
+        case pricePerHour
+        case parkAndRide
+        case priceOnStreet
+        case otherPrice
     }
     
-    var type: CarParkType = .connected
+    var type: CarParkType = .pricePerHour
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?

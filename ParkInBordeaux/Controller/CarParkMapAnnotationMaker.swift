@@ -25,6 +25,10 @@ class CarParkMapAnnotationMaker: MKMarkerAnnotationView {
     override func prepareForDisplay() {
         super.prepareForDisplay()
         displayPriority = .defaultLow
-        markerTintColor = UIColor.systemOrange
+        markerTintColor = UIColor.systemTeal
+        animatesWhenAdded = true
+        canShowCallout = true
+        let rightButton = UIButton(type: .detailDisclosure)
+        rightCalloutAccessoryView = rightButton
     }
 }

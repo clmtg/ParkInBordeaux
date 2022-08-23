@@ -58,9 +58,7 @@ final class CarParksCoreService {
                     if let properties = try? JSONDecoder().decode(GeojsonProperties.self, from: jsonProperties) {
                         
                         if let id = properties.ident {
-                            self.carParksData.append(OneCarParkStruct(for: id,
-                                                                 location:  geometrey.coordinate,
-                                                                 properties: properties))
+                            self.carParksData.append(OneCarParkStruct(for: id, location:  geometrey.coordinate, properties: properties))
                         }
                     }
                 }
