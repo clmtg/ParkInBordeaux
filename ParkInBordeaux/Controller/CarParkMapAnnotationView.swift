@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-// 👇🏻 SEBASTIEN CHECK REQUIRED
+// TODO: Sebastien check needed
 
 /**
  Comments :
@@ -29,6 +29,9 @@ class CarParkMapAnnotationView: MKAnnotationView {
         collisionMode = .circle
         centerOffset = CGPoint(x: 0, y: -10) // Offset center point to animate better with marker annotations
         clusteringIdentifier = CarParksClusterAnnotationViewMaker.reuseID
+        canShowCallout = true
+        let rightButton = UIButton(type: .detailDisclosure)
+        rightCalloutAccessoryView = rightButton
     }
     
     required init?(coder aDecoder: NSCoder) {

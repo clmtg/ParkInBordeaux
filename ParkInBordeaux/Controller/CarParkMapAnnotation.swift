@@ -8,6 +8,7 @@
 import Foundation
 import MapKit
 
+// TODO: Sebastien check needed
 /**
  Comments :
  - MKAnnotationView is a view and is needed to display an annotaion (type : MKAnnotation).
@@ -38,7 +39,7 @@ final class CarParkMapAnnotation: NSObject, MKAnnotation {
     init(for coordinate: CLLocationCoordinate2D, title: String?, subtitle: String?, carParkInfo: OneCarParkStruct?) {
         self.coordinate = coordinate
         self.title = title?.capitalizingFirstLetter()
-        self.subtitle = subtitle
+        self.subtitle = "\(carParkInfo!.carSpotsFree) / \(carParkInfo!.carSpotsAmount)"
         self.carParkInfo = carParkInfo
     }
 }

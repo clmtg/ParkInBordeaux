@@ -84,7 +84,7 @@ final class CarParksMapViewController: UIViewController {
     }
 }
 
-// MARK: - Extensions
+// MARK: - Extensions - Maps
 extension CarParksMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -92,5 +92,28 @@ extension CarParksMapViewController: MKMapViewDelegate {
             return nil
         }
         return carParksMapViewController.dequeueReusableAnnotationView(withIdentifier: CarParkMapAnnotationView.reuseID, for: mapAnnotation)
+    }
+    
+    
+     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+         guard let annotationView = view as? CarParkMapAnnotationView,
+               let carParkAnnotation = annotationView.annotation as? CarParkMapAnnotation else {
+             return
+         }
+         performSegue(withIdentifier: "segueFromMapToDetails", sender: carParkAnnotation)
+         
+    }
+}
+
+// MARK: - Extensions - Segue
+extension CarParksMapViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueFromMapToDetails" {
+            guard let carParkDetailsVC = segue.destination as? CarParkDetailsViewController,
+                  let annotation = sender as? CarParkMapAnnotation else {
+                return
+            }
+            carParkDetailsVC.affectedCarpark = annotation
+        }
     }
 }

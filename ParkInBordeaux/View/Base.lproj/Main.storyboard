@@ -52,11 +52,79 @@
                     <tabBarItem key="tabBarItem" title="Carte" image="map" catalog="system" id="4X2-U2-CI2" userLabel="Map"/>
                     <connections>
                         <outlet property="carParksMapViewController" destination="7ZW-VS-h5a" id="r4g-FD-2WL"/>
+                        <segue destination="OJw-ip-zy9" kind="presentation" identifier="segueFromMapToDetails" id="B4P-4e-9Xo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2BP-ip-nb5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="684.61538461538464" y="-350.47393364928911"/>
+        </scene>
+        <!--Car Park Details View Controller-->
+        <scene sceneID="aQn-Fh-J12">
+            <objects>
+                <viewController id="OJw-ip-zy9" customClass="CarParkDetailsViewController" customModule="ParkInBordeaux" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xba-zx-7JD">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="W5J-dA-xqC">
+                                <rect key="frame" x="20" y="64" width="350" height="343.66666666666669"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nG7-pX-Gbf">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="262.66666666666669"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="nG7-pX-Gbf" secondAttribute="height" multiplier="4:3" id="l0k-Xk-HWa"/>
+                                        </constraints>
+                                    </mapView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tj5-CG-ovs">
+                                        <rect key="frame" x="0.0" y="262.66666666666669" width="350" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Oz8-Xf-P43"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="w7h-Yd-Np7">
+                                        <rect key="frame" x="0.0" y="312.66666666666669" width="350" height="31"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djO-go-wJq">
+                                                <rect key="frame" x="0.0" y="0.0" width="170" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Annuler"/>
+                                                <connections>
+                                                    <action selector="cancelButton:" destination="OJw-ip-zy9" eventType="touchUpInside" id="XcV-kD-GfO"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHJ-AC-H3g">
+                                                <rect key="frame" x="180" y="0.0" width="170" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Go"/>
+                                                <connections>
+                                                    <action selector="openMapButton:" destination="OJw-ip-zy9" eventType="touchUpInside" id="WPh-W1-nnb"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JT3-yX-70G"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JT3-yX-70G" firstAttribute="trailing" secondItem="W5J-dA-xqC" secondAttribute="trailing" constant="20" id="7Py-cV-2gp"/>
+                            <constraint firstItem="W5J-dA-xqC" firstAttribute="top" secondItem="JT3-yX-70G" secondAttribute="top" constant="20" id="8SA-Sc-EvI"/>
+                            <constraint firstItem="W5J-dA-xqC" firstAttribute="leading" secondItem="JT3-yX-70G" secondAttribute="leading" constant="20" id="8uR-lr-v6w"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="carPakNameLabel" destination="tj5-CG-ovs" id="l9t-zp-XgK"/>
+                        <outlet property="mapView" destination="nG7-pX-Gbf" id="WfC-4Z-dhw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ik4-79-8uy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1530.7692307692307" y="-350.47393364928911"/>
         </scene>
     </scenes>
     <resources>

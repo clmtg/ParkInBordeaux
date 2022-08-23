@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-// 👇🏻 SEBASTIEN CHECK REQUIRED
+// TODO: Sebastien check needed
 
 /**
  Comments :
@@ -39,8 +39,6 @@ class CarParksClusterAnnotationViewMaker: MKMarkerAnnotationView {
         //markerTintColor = UIColor.systemFill
         displayPriority = .defaultLow
         animatesWhenAdded = true
-        canShowCallout = false
-        
     }
 
 }
