@@ -42,7 +42,6 @@ class CarParksCoreServiceTest: XCTestCase {
     
     func testGivenServiceIsAvailable_WhenMKGeoJSONFeatureRequested_ThenCorrectGeoJsonProvided () {
         URLProtocolFake.fakeURLs = [FakeResponseData.openDataBordeauxEndpoint: (FakeResponseData.geocsonCorrectData, FakeResponseData.validResponseCode, nil)]
-        
         let fakeSession = URLSession(configuration: sessionConfiguration)
         let sut = CarParksCoreService(session: fakeSession)
         let expectation = XCTestExpectation(description: "Waiting...")
@@ -149,5 +148,61 @@ class CarParksCoreServiceTest: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
+    //------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------
     
+    func testGivenServiceIsOk_WhenRequestData_ThenNoErrorIsTrhown () {
+        URLProtocolFake.fakeURLs = [FakeResponseData.openDataBordeauxEndpoint: (FakeResponseData.geocsonCorrectData, FakeResponseData.validResponseCode, nil)]
+        let fakeSession = URLSession(configuration: sessionConfiguration)
+        let sut = CarParksCoreService(session: fakeSession)
+        let expectation = XCTestExpectation(description: "Waiting...")
+        
+        sut.getLatestUpdate { resultData in
+            guard case .success(let carParksData) = resultData else {
+                XCTFail(#function)
+                return
+            }
+            XCTAssertNotNil(carParksData as? CarParks)
+            XCTAssertEqual(carParksData.count, 92)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    func testGivenServiceIsOkButNoCarPark_WhenRequestData_ErrorIsTrhown () {
+        URLProtocolFake.fakeURLs = [FakeResponseData.openDataBordeauxEndpoint: (FakeResponseData.geocsonCorrectDataNoCarPark, FakeResponseData.validResponseCode, nil)]
+        let fakeSession = URLSession(configuration: sessionConfiguration)
+        let sut = CarParksCoreService(session: fakeSession)
+        let expectation = XCTestExpectation(description: "Waiting...")
+        sut.getLatestUpdate { resultData in
+            switch resultData {
+            case .failure(let errorData):
+                XCTAssertEqual(errorData, .noCarParkWithinArea)
+                
+            case .success(let _):
+                XCTFail(#function)
+            }
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    
+    func testGivenServiceIsDown_WhenRequestData_ErrorIsTrhown () {
+        URLProtocolFake.fakeURLs = [FakeResponseData.openDataBordeauxEndpoint: (FakeResponseData.incorrectGeocsonData, FakeResponseData.invalidResponseCode, nil)]
+        let fakeSession = URLSession(configuration: sessionConfiguration)
+        let sut = CarParksCoreService(session: fakeSession)
+        let expectation = XCTestExpectation(description: "Waiting...")
+        sut.getLatestUpdate { resultData in
+            switch resultData {
+            case .failure(let errorData):
+                XCTAssertEqual(errorData, .networkCallFailed)
+                
+            case .success(let _):
+                XCTFail(#function)
+            }
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
 }

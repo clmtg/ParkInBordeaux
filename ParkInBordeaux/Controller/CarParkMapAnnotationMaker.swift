@@ -8,6 +8,14 @@
 import UIKit
 import MapKit
 
+/**
+ Comments :
+ - MKAnnotationView is a view and is needed to display an annotaion (type : MKAnnotation).
+ - MKMarkerAnnotationView provides an MKAnnotationView using the balloon shaped to display an annotaion (type : MKAnnotation).
+ - An annotaion (type : MKAnnotation) is always needed.
+ - A cluster is an annotaion
+ */
+
 class CarParkMapAnnotationMaker: MKMarkerAnnotationView {
     
     static let reuseID = "carParkAnnotation"
@@ -15,7 +23,7 @@ class CarParkMapAnnotationMaker: MKMarkerAnnotationView {
     /// - Tag: ClusterIdentifier
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-        clusteringIdentifier = "carpark"
+        clusteringIdentifier = CarParksClusterAnnotationView.reuseID
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,5 +38,6 @@ class CarParkMapAnnotationMaker: MKMarkerAnnotationView {
         canShowCallout = true
         let rightButton = UIButton(type: .detailDisclosure)
         rightCalloutAccessoryView = rightButton
+        glyphImage = #imageLiteral(resourceName: "logoParking")
     }
 }

@@ -64,10 +64,12 @@ final class CarParksCoreService {
                 }
             }
             
-            if(self.carParksData.count == 0) {
+            if(self.carParksData.isEmpty) {
                 completionHandler(.failure(.noCarParkWithinArea))
+            } else {
+                completionHandler(.success(self.carParksData))
             }
-            completionHandler(.success(self.carParksData))
+            
         }
         
     }

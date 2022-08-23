@@ -8,6 +8,8 @@
 import Foundation
 
 extension String {
+    /// Set the affected string with the first letter in uppercase and then remaining ones in lowercase
+    /// - Returns: Formarted affected string
     func capitalizingFirstLetter() -> String {
       return prefix(1).uppercased() + self.lowercased().dropFirst()
     }

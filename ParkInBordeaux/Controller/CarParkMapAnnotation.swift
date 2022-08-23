@@ -8,6 +8,14 @@
 import Foundation
 import MapKit
 
+/**
+ Comments :
+ - MKAnnotationView is a view and is needed to display an annotaion (type : MKAnnotation).
+ - MKMarkerAnnotationView provides an MKAnnotationView using the balloon shaped to display an annotaion (type : MKAnnotation).
+ - An annotaion (type : MKAnnotation) is always needed.
+ - A cluster is an annotaion
+ */
+
 final class CarParkMapAnnotation: NSObject, MKAnnotation {
     
     static let reuseID = "carParkAnnotation"
@@ -21,11 +29,12 @@ final class CarParkMapAnnotation: NSObject, MKAnnotation {
         case otherPrice
     }
     
-    var type: CarParkType = .pricePerHour
+    
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?
     var carParkInfo: OneCarParkStruct?
+    var type: CarParkType = .pricePerHour
     
     init(for coordinate: CLLocationCoordinate2D, title: String?, subtitle: String?, carParkInfo: OneCarParkStruct?) {
         self.coordinate = coordinate

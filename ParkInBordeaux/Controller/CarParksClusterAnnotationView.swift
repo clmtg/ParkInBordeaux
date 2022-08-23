@@ -8,15 +8,25 @@
 import UIKit
 import MapKit
 
+// 👇🏻 SEBASTIEN CHECK REQUIRED
+
+/**
+ Comments :
+ - MKAnnotationView is a view and is needed to display an annotaion (type : MKAnnotation).
+ - MKMarkerAnnotationView provides an MKAnnotationView using the balloon shaped to display an annotaion (type : MKAnnotation).
+ - An annotaion (type : MKAnnotation) is always needed.
+ - A cluster is an annotaion
+ */
+
+/// Used to display a cluster of CarParkMapAnnotation
 class CarParksClusterAnnotationView: MKAnnotationView {
     
     static let reuseID = "clusterAnnotation"
     
     // MARK: - Initializer
-    
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-        collisionMode = .rectangle
+        collisionMode = .circle
         centerOffset = CGPoint(x: 0, y: -10) // Offset center point to animate better with marker annotations
     }
     
@@ -36,12 +46,20 @@ class CarParksClusterAnnotationView: MKAnnotationView {
             image = drawRatio(amountofCarParks: totalCarParks,
                               carSpotsFree: getCarSpotsFree(),
                               carSpotsGlobal: getCarSpotsAvailable(),
-                              fractionColor: UIColor.systemGreen,
-                              wholeColor: UIColor.systemRed)
+                              fractionColor: UIColor.systemOrange,
+                              wholeColor: UIColor.systemMint)
+            
         }
     }
     
-    
+    /// Generate the camembert graph to be used arround the annotation. It should be used to display car par occupency
+    /// - Parameters:
+    ///   - amountofCarParks: Amout of car park within the affected cluster
+    ///   - carSpotsFree: Amount of car spot available within the affected cluster
+    ///   - carSpotsGlobal: Global amount of car spot (used + free) within the affected cluster
+    ///   - fractionColor: Color to be used for the value. (e.g. 3 out of 5 (Color for the value "3"))
+    ///   - wholeColor: Based color for the camembert graph
+    /// - Returns: Image of the generated camembert graph
     private func drawRatio(amountofCarParks: Int, carSpotsFree: Int, carSpotsGlobal: Int, fractionColor: UIColor?, wholeColor: UIColor?) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: 40, height: 40))
         return renderer.image { _ in
@@ -74,6 +92,9 @@ class CarParksClusterAnnotationView: MKAnnotationView {
         }
     }
     
+    /// Provide the amount of car park, for a given type, within the cluster
+    /// - Parameter type: Car park type to look for
+    /// - Returns: Amount of car park using the given type
     private func count(carParkType type: CarParkMapAnnotation.CarParkType) -> Int {
         guard let cluster = annotation as? MKClusterAnnotation else {
             return 0
@@ -86,6 +107,8 @@ class CarParksClusterAnnotationView: MKAnnotationView {
             return carPark.type == type
         }.count
     }
+    
+    //SEBASTIEN CHECK REQUIRED : 👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻 <- Duplicate code to me. Could be avoided. Using generics ?
     
     private func getCarSpotsAvailable() -> Int {
             

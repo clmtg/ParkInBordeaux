@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 
+/// View controller for the view displaying the MapsView with annotations for
 final class CarParksMapViewController: UIViewController {
     
     // MARK: - LifeCyle
@@ -55,11 +56,17 @@ final class CarParksMapViewController: UIViewController {
     /// Register the classes generating customer MKAnnotationView. This is uses to reload MkAnnotation rather than generated new one
     func registerAnnotationViewClasses() {
         carParksMapViewController.register(CarParkMapAnnotationMaker.self, forAnnotationViewWithReuseIdentifier: CarParkMapAnnotationMaker.reuseID)
+        
+        //carParksMapViewController.register(CarParkClusterAnnotationMaker.self, forAnnotationViewWithReuseIdentifier: CarParkMapAnnotationMaker.reuseID)
+        
+        
         carParksMapViewController.register(CarParksClusterAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
+        
+        
         //carParksMapViewController.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(CarParkMapAnnotation.self))
     }
     
-    /// Retreive the information related to the car parks provided by the model and load them up into the MapViewControllerz
+    /// Retreive the information related to the car parks provided by the model and load them up into the MapViewController
     func loadCarParksDataSet() {
         self.carParkCore.getLatestUpdate { resultCarParkData in
             DispatchQueue.main.async {
