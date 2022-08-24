@@ -107,13 +107,15 @@ extension CarParksMapViewController: MKMapViewDelegate {
 
 // MARK: - Extensions - Segue
 extension CarParksMapViewController {
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueFromMapToDetails" {
             guard let carParkDetailsVC = segue.destination as? CarParkDetailsViewController,
-                  let annotation = sender as? CarParkMapAnnotation else {
+            let affectedAnnotation = sender as? CarParkMapAnnotation else {
                 return
             }
-            carParkDetailsVC.affectedCarpark = annotation
+            carParkDetailsVC.affectedCarpark = affectedAnnotation
         }
     }
+    
 }

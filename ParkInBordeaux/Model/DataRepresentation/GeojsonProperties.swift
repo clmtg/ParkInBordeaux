@@ -16,5 +16,6 @@ struct GeojsonProperties: Decodable{
     var ta_type: String
     var np_total: Int?
     var libres: Int?
+    var adresse: String?
     
 }
