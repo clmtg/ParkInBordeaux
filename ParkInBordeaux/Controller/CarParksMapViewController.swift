@@ -89,16 +89,13 @@ extension CarParksMapViewController: MKMapViewDelegate {
         guard !annotation.isKind(of: MKUserLocation.self) else {
             return nil
         }
-        
         let view: MKAnnotationView?
-        
         if let mapAnnotation = annotation as? CarParkMapAnnotation {
             view = carParksMapViewController.dequeueReusableAnnotationView(withIdentifier: CarParkMapAnnotationView.reuseID, for: mapAnnotation)
         }
         else {
             view = carParksMapViewController.dequeueReusableAnnotationView(withIdentifier: CarParksClusterAnnotationViewMaker.reuseID, for: annotation)
         }
-        
         return view
     }
     
@@ -109,7 +106,6 @@ extension CarParksMapViewController: MKMapViewDelegate {
              return
          }
          performSegue(withIdentifier: "segueFromMapToDetails", sender: carParkAnnotation)
-         
     }
 }
 

@@ -90,8 +90,5 @@ class CarParkDetailsViewController: UIViewController {
         mapItem.pointOfInterestCategory = .parking
         let launchOption = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving, MKLaunchOptionsShowsTrafficKey: true] as [String : Any]
         mapItem.openInMaps(launchOptions: launchOption)
-        
     }
-    
-    
 }
