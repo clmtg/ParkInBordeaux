@@ -38,6 +38,12 @@ class CarParkMapAnnotationView: MKAnnotationView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override var annotation: MKAnnotation? {
+            willSet {
+                clusteringIdentifier = CarParksClusterAnnotationViewMaker.reuseID
+            }
+        }
+    
     
     // MARK: - Functions
     /// Prepare the annotation to be display including the custom "shape" generation

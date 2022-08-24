@@ -25,7 +25,7 @@ final class CarParksCoreService {
     // MARK: - Functions
     /// Perform the  network calls needed in order to retreive the update data set for all the car parks
     /// - Parameter completionHandler: Steps to perform if this is a success or a failure
-    func getCarParksAvailabilityFromGeojson(completionHandler: @escaping (Result<[MKGeoJSONFeature],CarParksServiceError>) -> Void) {
+    private func getCarParksAvailabilityFromGeojson(completionHandler: @escaping (Result<[MKGeoJSONFeature],CarParksServiceError>) -> Void) {
         session.dataTask(with: ApiEndpoint.getGlobalEndpoint()) { dataReceived, responseReceived, errorReceived in
             guard let data = dataReceived, errorReceived == nil else {
                 completionHandler(.failure(.corruptData))

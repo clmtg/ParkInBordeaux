@@ -51,13 +51,11 @@ final class CarParksMapViewController: UIViewController {
         carParksMapViewController.showsCompass = true
     }
     
-    // SEBASTIEN CHECK REQUIRED : explanation regarding ReuseIdentifier. Why MKMarkerAnnotationView ? Isn't registering all the MKAnnotion and therefore to avoid at all cost ?!
     
     /// Register the classes generating customer MKAnnotationView. This is uses to reload MkAnnotation rather than generated new one
     func registerAnnotationViewClasses() {
         carParksMapViewController.register(CarParkMapAnnotationView.self, forAnnotationViewWithReuseIdentifier: CarParkMapAnnotationView.reuseID)
-        carParksMapViewController.register(CarParksClusterAnnotationViewMaker.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
-        //carParksMapViewController.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(CarParkMapAnnotation.self))
+        carParksMapViewController.register(CarParksClusterAnnotationViewMaker.self, forAnnotationViewWithReuseIdentifier: CarParksClusterAnnotationViewMaker.reuseID)
     }
     
     /// Retreive the information related to the car parks provided by the model and load them up into the MapViewController
@@ -88,10 +86,20 @@ final class CarParksMapViewController: UIViewController {
 extension CarParksMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard !annotation.isKind(of: MKUserLocation.self), let mapAnnotation = annotation as? CarParkMapAnnotation else {
+        guard !annotation.isKind(of: MKUserLocation.self) else {
             return nil
         }
-        return carParksMapViewController.dequeueReusableAnnotationView(withIdentifier: CarParkMapAnnotationView.reuseID, for: mapAnnotation)
+        
+        let view: MKAnnotationView?
+        
+        if let mapAnnotation = annotation as? CarParkMapAnnotation {
+            view = carParksMapViewController.dequeueReusableAnnotationView(withIdentifier: CarParkMapAnnotationView.reuseID, for: mapAnnotation)
+        }
+        else {
+            view = carParksMapViewController.dequeueReusableAnnotationView(withIdentifier: CarParksClusterAnnotationViewMaker.reuseID, for: annotation)
+        }
+        
+        return view
     }
     
     

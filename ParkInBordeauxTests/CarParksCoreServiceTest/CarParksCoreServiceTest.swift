@@ -65,7 +65,7 @@ class CarParksCoreServiceTest: XCTestCase {
     // SEBASTIEN CHECK REQUIRED : Even if Nil is provided as Data the model provided Data instead of nill
     
     func testGivenServiceProvideNoData_WhenMKGeoJSONFeatureRequested_ThenErrorIsThrown() {
-        // FIXME: Even if Nil is provided as Data the model provided Data instead of nill
+     
         
         URLProtocolFake.fakeURLs = [FakeResponseData.openDataBordeauxEndpoint: (nil, FakeResponseData.validResponseCode, nil)]
         let fakeSession = URLSession(configuration: sessionConfiguration)
@@ -87,10 +87,10 @@ class CarParksCoreServiceTest: XCTestCase {
     //------------------------------------------------------------------------------------------------------
     
     //Context -- Data is correct, Correct Answer (200), ERROR provided
-    // SEBASTIEN CHECK REQUIRED : Even if an ERROR is provided, the model ignore the ERROR
+    // -- Need to check core service
     
     func testGivenServiceProvideAnError_WhenMKGeoJSONFeatureRequested_ThenErrorIsThrown() {
-        // FIXME: Even if an ERROR is provided, the model ignore the ERROR
+ 
         
         URLProtocolFake.fakeURLs = [FakeResponseData.openDataBordeauxEndpoint: (FakeResponseData.geocsonCorrectData, FakeResponseData.validResponseCode, CarParksServiceError.unexpectedResponse)]
         let fakeSession = URLSession(configuration: sessionConfiguration)
