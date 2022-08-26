@@ -51,7 +51,7 @@ class SetupPageViewController: UIPageViewController {
         NSLayoutConstraint.activate([
             pageControl.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             pageControl.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-            guide.bottomAnchor.constraint(equalToSystemSpacingBelow: pageControl.bottomAnchor, multiplier: 1.0)
+            guide.bottomAnchor.constraint(equalToSystemSpacingBelow: pageControl.bottomAnchor, multiplier: 0.0)
         ])
     }
     

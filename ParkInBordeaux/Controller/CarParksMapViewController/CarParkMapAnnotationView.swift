@@ -83,7 +83,7 @@ class CarParkMapAnnotationView: MKAnnotationView {
         }
     }
     
-    //SEBASTIEN CHECK REQUIRED : 👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻 <- Duplicate code to me. Could be avoided. Using generics maybe ?
+
     
     private func getCarSpotsFree() -> Int {
         
