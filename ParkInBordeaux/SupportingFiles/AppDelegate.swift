@@ -11,13 +11,9 @@ import Foundation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-        
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        //UserDefaults.standard.set(false, forKey: "firstTimeFlag")
-        if !UserDefaults.standard.bool(forKey: "firstTimeFlag") {
-            print("This is the first time")
-        }
         return true
     }
     

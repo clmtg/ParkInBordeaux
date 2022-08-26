@@ -44,6 +44,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Carte" image="map" catalog="system" id="4X2-U2-CI2" userLabel="Map"/>
+                    <navigationItem key="navigationItem" id="0OQ-SG-UdU"/>
                     <connections>
                         <outlet property="carParksMapViewController" destination="7ZW-VS-h5a" id="r4g-FD-2WL"/>
                         <segue destination="OJw-ip-zy9" kind="presentation" identifier="segueFromMapToDetails" id="B4P-4e-9Xo"/>
@@ -52,6 +53,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2BP-ip-nb5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="684.61538461538464" y="-350.47393364928911"/>
+        </scene>
+        <!--Setup Page View Controller-->
+        <scene sceneID="4Yn-t8-18I">
+            <objects>
+                <pageViewController storyboardIdentifier="SetupPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="qT6-rQ-tol" customClass="SetupPageViewController" customModule="ParkInBordeaux" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rG0-QF-ith" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="685" y="-1376"/>
+        </scene>
+        <!--Setup Part One View Controller-->
+        <scene sceneID="NCa-KR-D5S">
+            <objects>
+                <viewController storyboardIdentifier="SetupPartOneViewController" id="ESR-Yy-oHp" customClass="SetupPartOneViewController" customModule="ParkInBordeaux" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Tb-Am-Okp">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCD-0O-UAC">
+                                <rect key="frame" x="234" y="391" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="GFl-Eo-oFJ"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M42-LJ-lcv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1531" y="-1376"/>
+        </scene>
+        <!--Setup Part Two View Controller-->
+        <scene sceneID="Kfz-mg-igI">
+            <objects>
+                <viewController storyboardIdentifier="SetupPartTwoViewController" id="lfJ-op-i63" customClass="SetupPartTwoViewController" customModule="ParkInBordeaux" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vW7-ma-FeH">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="65s-JL-hmf"/>
+                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZfJ-95-n8h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2385" y="-1376"/>
+        </scene>
+        <!--Setup Part Three View Controller-->
+        <scene sceneID="S7h-6w-UbF">
+            <objects>
+                <viewController storyboardIdentifier="SetupPartThreeViewController" id="Kx3-Zs-pZa" customClass="SetupPartThreeViewController" customModule="ParkInBordeaux" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fud-Gn-3CA">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="UjF-uD-pCX"/>
+                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3ji-SW-j72" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3320" y="-1376.3033175355449"/>
         </scene>
         <!--Car Park Details View Controller-->
         <scene sceneID="aQn-Fh-J12">
@@ -149,6 +212,15 @@
         <image name="map" catalog="system" width="128" height="110"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

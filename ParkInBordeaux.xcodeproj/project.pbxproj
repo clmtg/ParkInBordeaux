@@ -33,6 +33,10 @@
 		EB84219B28AF8E1400BDEC1F /* NoFeatureGeojsonSample.geojson in Resources */ = {isa = PBXBuildFile; fileRef = EB84219A28AF8E1400BDEC1F /* NoFeatureGeojsonSample.geojson */; };
 		EB84219D28AFB10F00BDEC1F /* ExtString.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84219C28AFB10F00BDEC1F /* ExtString.swift */; };
 		EB8421A528AFD8C800BDEC1F /* OneCarParkStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8421A428AFD8C800BDEC1F /* OneCarParkStruct.swift */; };
+		EBF8010B28B9196800A9DE1D /* SetupPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF8010A28B9196800A9DE1D /* SetupPageViewController.swift */; };
+		EBF8010F28B91AC000A9DE1D /* SetupPartOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF8010E28B91AC000A9DE1D /* SetupPartOneViewController.swift */; };
+		EBF8011228B91E8000A9DE1D /* SetupPartTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF8011128B91E8000A9DE1D /* SetupPartTwoViewController.swift */; };
+		EBF8011428B91E9000A9DE1D /* SetupPartThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF8011328B91E9000A9DE1D /* SetupPartThreeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +79,10 @@
 		EB84219A28AF8E1400BDEC1F /* NoFeatureGeojsonSample.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = NoFeatureGeojsonSample.geojson; sourceTree = "<group>"; };
 		EB84219C28AFB10F00BDEC1F /* ExtString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtString.swift; sourceTree = "<group>"; };
 		EB8421A428AFD8C800BDEC1F /* OneCarParkStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneCarParkStruct.swift; sourceTree = "<group>"; };
+		EBF8010A28B9196800A9DE1D /* SetupPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageViewController.swift; sourceTree = "<group>"; };
+		EBF8010E28B91AC000A9DE1D /* SetupPartOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPartOneViewController.swift; sourceTree = "<group>"; };
+		EBF8011128B91E8000A9DE1D /* SetupPartTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPartTwoViewController.swift; sourceTree = "<group>"; };
+		EBF8011328B91E9000A9DE1D /* SetupPartThreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPartThreeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +118,8 @@
 		EB1E375528B8AFC500F464A0 /* SetupViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EBF8011028B91E6800A9DE1D /* Parts */,
+				EBF8010A28B9196800A9DE1D /* SetupPageViewController.swift */,
 			);
 			path = SetupViewController;
 			sourceTree = "<group>";
@@ -234,6 +244,16 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		EBF8011028B91E6800A9DE1D /* Parts */ = {
+			isa = PBXGroup;
+			children = (
+				EBF8010E28B91AC000A9DE1D /* SetupPartOneViewController.swift */,
+				EBF8011128B91E8000A9DE1D /* SetupPartTwoViewController.swift */,
+				EBF8011328B91E9000A9DE1D /* SetupPartThreeViewController.swift */,
+			);
+			path = Parts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -343,15 +363,19 @@
 				EB5592AB28AD75DA00FEF6B9 /* AppDelegate.swift in Sources */,
 				EB1E375128B8AFBD00F464A0 /* CarParksClusterAnnotationViewMaker.swift in Sources */,
 				EB1E375328B8AFBD00F464A0 /* CarParkDetailsViewController.swift in Sources */,
+				EBF8011228B91E8000A9DE1D /* SetupPartTwoViewController.swift in Sources */,
 				EB5592B528AD75DA00FEF6B9 /* ParkInBordeaux.xcdatamodeld in Sources */,
 				EB5592AD28AD75DA00FEF6B9 /* SceneDelegate.swift in Sources */,
 				EB84218C28AF64B500BDEC1F /* ExtUIViewController.swift in Sources */,
 				EB1E375228B8AFBD00F464A0 /* CarParkMapAnnotation.swift in Sources */,
 				EB5592C928AD770900FEF6B9 /* CarParksCoreService.swift in Sources */,
 				EB5592E028AD79CF00FEF6B9 /* ApiInfo.swift in Sources */,
+				EBF8010F28B91AC000A9DE1D /* SetupPartOneViewController.swift in Sources */,
+				EBF8011428B91E9000A9DE1D /* SetupPartThreeViewController.swift in Sources */,
 				EB5592DC28AD791700FEF6B9 /* ApiEndpoint.swift in Sources */,
 				EB617A7728AE572400B9102D /* GeojsonProperties.swift in Sources */,
 				EB1E375028B8AFBD00F464A0 /* CarParkMapAnnotationView.swift in Sources */,
+				EBF8010B28B9196800A9DE1D /* SetupPageViewController.swift in Sources */,
 				EB84219D28AFB10F00BDEC1F /* ExtString.swift in Sources */,
 				EB1E375428B8AFBD00F464A0 /* CarParksMapViewController.swift in Sources */,
 				EB617A7428AE3DF400B9102D /* CarParksServiceError.swift in Sources */,
