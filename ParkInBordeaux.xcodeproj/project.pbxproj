@@ -12,8 +12,6 @@
 		EB1E375228B8AFBD00F464A0 /* CarParkMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1E374D28B8AFBD00F464A0 /* CarParkMapAnnotation.swift */; };
 		EB1E375328B8AFBD00F464A0 /* CarParkDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1E374E28B8AFBD00F464A0 /* CarParkDetailsViewController.swift */; };
 		EB1E375428B8AFBD00F464A0 /* CarParksMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1E374F28B8AFBD00F464A0 /* CarParksMapViewController.swift */; };
-		EB1E375828B8AFDE00F464A0 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1E375628B8AFDE00F464A0 /* SetupViewController.swift */; };
-		EB1E375928B8AFDE00F464A0 /* SetupPartOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1E375728B8AFDE00F464A0 /* SetupPartOneViewController.swift */; };
 		EB5592AB28AD75DA00FEF6B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5592AA28AD75DA00FEF6B9 /* AppDelegate.swift */; };
 		EB5592AD28AD75DA00FEF6B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5592AC28AD75DA00FEF6B9 /* SceneDelegate.swift */; };
 		EB5592B228AD75DA00FEF6B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB5592B028AD75DA00FEF6B9 /* Main.storyboard */; };
@@ -53,8 +51,6 @@
 		EB1E374D28B8AFBD00F464A0 /* CarParkMapAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarParkMapAnnotation.swift; sourceTree = "<group>"; };
 		EB1E374E28B8AFBD00F464A0 /* CarParkDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarParkDetailsViewController.swift; sourceTree = "<group>"; };
 		EB1E374F28B8AFBD00F464A0 /* CarParksMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarParksMapViewController.swift; sourceTree = "<group>"; };
-		EB1E375628B8AFDE00F464A0 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
-		EB1E375728B8AFDE00F464A0 /* SetupPartOneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupPartOneViewController.swift; sourceTree = "<group>"; };
 		EB5592A728AD75DA00FEF6B9 /* ParkInBordeaux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkInBordeaux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5592AA28AD75DA00FEF6B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB5592AC28AD75DA00FEF6B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,8 +110,6 @@
 		EB1E375528B8AFC500F464A0 /* SetupViewController */ = {
 			isa = PBXGroup;
 			children = (
-				EB1E375728B8AFDE00F464A0 /* SetupPartOneViewController.swift */,
-				EB1E375628B8AFDE00F464A0 /* SetupViewController.swift */,
 			);
 			path = SetupViewController;
 			sourceTree = "<group>";
@@ -355,8 +349,6 @@
 				EB1E375228B8AFBD00F464A0 /* CarParkMapAnnotation.swift in Sources */,
 				EB5592C928AD770900FEF6B9 /* CarParksCoreService.swift in Sources */,
 				EB5592E028AD79CF00FEF6B9 /* ApiInfo.swift in Sources */,
-				EB1E375928B8AFDE00F464A0 /* SetupPartOneViewController.swift in Sources */,
-				EB1E375828B8AFDE00F464A0 /* SetupViewController.swift in Sources */,
 				EB5592DC28AD791700FEF6B9 /* ApiEndpoint.swift in Sources */,
 				EB617A7728AE572400B9102D /* GeojsonProperties.swift in Sources */,
 				EB1E375028B8AFBD00F464A0 /* CarParkMapAnnotationView.swift in Sources */,

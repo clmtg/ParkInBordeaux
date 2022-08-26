@@ -11,27 +11,12 @@ import Foundation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    var window: UIWindow?
-    
+        
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        //check if one time setup view is needed. If so, display the required view, otherwise display the CarParkMapViewController
-        
+        //UserDefaults.standard.set(false, forKey: "firstTimeFlag")
         if !UserDefaults.standard.bool(forKey: "firstTimeFlag") {
-            UserDefaults.standard.set(true, forKey: "firstTimeFlag")
-            
-            /**
-             
-             defaults.setObject("No", forKey:"isFirstTime")
-                      let storyboard = UIStoryboard(name: "main", bundle: nil) //Write your storyboard name
-                      let viewController = storyboard.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
-                      self.window.rootViewController = viewController
-                      self.window.makeKeyAndVisible()
-             
-             
-             */
+            print("This is the first time")
         }
         return true
     }
