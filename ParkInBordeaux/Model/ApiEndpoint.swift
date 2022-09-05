@@ -36,11 +36,40 @@ extension ApiEndpoint {
     /// Return the endpoint to reach in order to retreive the data for all the Bordeaux car park
     /// - Returns: Endpoint to reach
     static func getGlobalEndpoint() -> URL {
+            let endpoint = ApiEndpoint(path: "geojson", queryItems: [
+                .init(name: "key", value: ApiInfo.OpenDataBdx),
+                .init(name: "typename", value: "st_park_p")
+            ])
+            return endpoint.url
+        }
+    
+    
+    static func getEndpointWithFilter(_ filters: [String: String]?) -> URL {
+        
+        // Checking if filters have been provided and then generated related JSON based on struct EndpointFilters
+        guard let filtersData = filters else {
+            return ApiEndpoint.getGlobalEndpoint()
+        }
+        
+        var endpointFilters = EndpointFilters()
+        filtersData.forEach { oneFilter in
+            endpointFilters.filters.append([oneFilter.key : oneFilter.value])
+        }
+        
+        guard let data = try? JSONEncoder().encode(endpointFilters),
+              let dataString = String(data: data, encoding: .utf8) else {
+            return ApiEndpoint.getGlobalEndpoint()
+        }
+        
         let endpoint = ApiEndpoint(path: "geojson", queryItems: [
             .init(name: "key", value: ApiInfo.OpenDataBdx),
-            .init(name: "typename", value: "st_park_p")
+            .init(name: "typename", value: "st_park_p"),
+            .init(name: "filter", value: dataString)
         ])
         return endpoint.url
     }
 }
+
+
+
 

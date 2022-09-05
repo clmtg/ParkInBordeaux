@@ -19,14 +19,16 @@ final class CarParksCoreService {
 
     // MARK: - initializer
     init(session: URLSession = .shared) {
+        
         self.session = session
     }
     
     // MARK: - Functions
     /// Perform the  network calls needed in order to retreive the update data set for all the car parks
     /// - Parameter completionHandler: Steps to perform if this is a success or a failure
-    private func getCarParksAvailabilityFromGeojson(completionHandler: @escaping (Result<[MKGeoJSONFeature],CarParksServiceError>) -> Void) {
-        session.dataTask(with: ApiEndpoint.getGlobalEndpoint()) { dataReceived, responseReceived, errorReceived in
+    private func getCarParksAvailabilityFromGeojson(with endpoint: URL, completionHandler: @escaping (Result<[MKGeoJSONFeature],CarParksServiceError>) -> Void) {
+        
+        session.dataTask(with: endpoint) { dataReceived, responseReceived, errorReceived in
             guard let data = dataReceived, errorReceived == nil else {
                 completionHandler(.failure(.corruptData))
                 return
@@ -43,12 +45,17 @@ final class CarParksCoreService {
         }.resume()
     }
     
-    //=========================================================================================================
-   
-    
-    func getLatestUpdate(completionHandler: @escaping (Result<[OneCarParkStruct],CarParksServiceError>) -> Void) {
+    /// Retreive car park occupency using OpenData Bordeaux api then parse the data to perform a closure
+    /// - Parameter completionHandler: close which would pass a CarParks var  ( = [OneCarParkStruct]) for success of a CarParksServiceError for failure
+    func getLatestUpdate(with filters: [String: String]?, completionHandler: @escaping (Result<[OneCarParkStruct],CarParksServiceError>) -> Void) {
         
-        getCarParksAvailabilityFromGeojson { resultGeojsonFeatures in
+        var endpoindToUse = ApiEndpoint.getGlobalEndpoint()
+        
+        if let filters = filters {
+            endpoindToUse = ApiEndpoint.getEndpointWithFilter(filters)
+        }
+        
+        getCarParksAvailabilityFromGeojson(with: endpoindToUse) { resultGeojsonFeatures in
             guard case .success(let geojsonFeaturesData) = resultGeojsonFeatures else {
                 completionHandler(.failure(.networkCallFailed))
                 return
@@ -69,9 +76,6 @@ final class CarParksCoreService {
             } else {
                 completionHandler(.success(self.carParksData))
             }
-            
         }
-        
     }
-    
 }

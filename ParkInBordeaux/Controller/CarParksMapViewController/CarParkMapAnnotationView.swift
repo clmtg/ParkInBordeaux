@@ -34,7 +34,6 @@ class CarParkMapAnnotationView: MKAnnotationView {
             }
         }
     
-    
     // MARK: - Functions
     /// Prepare the annotation to be display including the custom "shape" generation
     override func prepareForDisplay() {

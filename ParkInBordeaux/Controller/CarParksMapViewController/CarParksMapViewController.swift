@@ -60,7 +60,7 @@ final class CarParksMapViewController: UIViewController {
     
     /// Retreive the information related to the car parks provided by the model and load them up into the MapViewController
     func loadCarParksDataSet() {
-        self.carParkCore.getLatestUpdate { resultCarParkData in
+        self.carParkCore.getLatestUpdate(with: nil) { resultCarParkData in
             DispatchQueue.main.async {
                 guard case .success(let carParksData) = resultCarParkData else {
                     if case .failure(let errorInfo) = resultCarParkData {
@@ -100,14 +100,15 @@ extension CarParksMapViewController: MKMapViewDelegate {
     }
     
     
-     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-         guard let annotationView = view as? CarParkMapAnnotationView,
-               let carParkAnnotation = annotationView.annotation as? CarParkMapAnnotation else {
-             return
-         }
-         performSegue(withIdentifier: "segueFromMapToDetails", sender: carParkAnnotation)
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        guard let annotationView = view as? CarParkMapAnnotationView,
+              let carParkAnnotation = annotationView.annotation as? CarParkMapAnnotation else {
+            return
+        }
+        performSegue(withIdentifier: "segueFromMapToDetails", sender: carParkAnnotation)
     }
 }
+
 
 // MARK: - Extensions - Segue
 extension CarParksMapViewController {
@@ -115,7 +116,7 @@ extension CarParksMapViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueFromMapToDetails" {
             guard let carParkDetailsVC = segue.destination as? CarParkDetailsViewController,
-            let affectedAnnotation = sender as? CarParkMapAnnotation else {
+                  let affectedAnnotation = sender as? CarParkMapAnnotation else {
                 return
             }
             carParkDetailsVC.affectedCarpark = affectedAnnotation
@@ -123,3 +124,6 @@ extension CarParksMapViewController {
     }
     
 }
+
+
+

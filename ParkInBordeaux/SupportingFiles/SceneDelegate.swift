@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //UserDefaults.standard.set(false, forKey: "firstTimeFlag")
 
         if UserDefaults.standard.bool(forKey: "firstTimeFlag") == false {
-            //UserDefaults.standard.set(true, forKey: "firstTimeFlag")
+            UserDefaults.standard.set(true, forKey: "firstTimeFlag")
             guard let scene = (scene as? UIWindowScene) else { return }
             window = UIWindow(windowScene: scene)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

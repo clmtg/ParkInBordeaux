@@ -10,6 +10,8 @@ import MapKit
 
 class CarParkDetailsViewController: UIViewController {
     
+    // MARK: - Life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadDetails()
@@ -17,29 +19,30 @@ class CarParkDetailsViewController: UIViewController {
     }
     
     // MARK: - Vars
+    /// Data related to the affected car park to display
     var affectedCarpark: CarParkMapAnnotation?
-    
+    /// Affected car park name
     var carParkName: String {
         guard let name = affectedCarpark?.carParkInfo?.properties?.nom else {
             return ""
         }
         return name
     }
-    
+    /// Affected car park location
     var carParkLocation: CLLocationCoordinate2D {
         guard let location = affectedCarpark?.coordinate else {
             return CLLocationCoordinate2D(latitude: 44.84203155780349, longitude: -0.5744705263091234)
         }
         return location
     }
-    
+    /// Amount of car space within the affected car park (occupied + available)
     var carParkSpotTotal: Int {
         guard let amount = affectedCarpark?.carParkInfo?.carSpotsAmount else {
             return 0
         }
         return amount
     }
-    
+    /// Amount of available car space within the affected car park
     var carParkSpotFree: Int {
         guard let amount = affectedCarpark?.carParkInfo?.carSpotsFree else {
             return 0
@@ -48,25 +51,29 @@ class CarParkDetailsViewController: UIViewController {
     }
     
     // MARK: - IBOutlet
-    
+    /// MapView Controller used to display the exact location of the affected car park
     @IBOutlet weak var mapView: MKMapView!
+    ///  Label for the affected car park name
     @IBOutlet weak var carPakNameLabel: UILabel!
+    /// Label used to display the amount of car spot within the affected car park
     @IBOutlet weak var carSpotTotalAmountLabel: UILabel!
+    ///  Label used to display the amount of available car spots within the car park
     @IBOutlet weak var carSpotFreeAmountLabel: UILabel!
+    /// Label used to display car park postal address
     @IBOutlet weak var carParkAddress: UILabel!
     
     // MARK: - IBAction
-    
+    ///  Performed when user select the "Annuler" button. This would dismiss the modal detailed view
     @IBAction func didTapCancelButton(_ sender: Any) {
         self.dismiss(animated: true)
     }
-    
+    /// Performed when user select the "S'y rendre" button. This would use the openWithMap function to launch Apple Maps
     @IBAction func didTapGoButton(_ sender: Any) {
         openWithMap()
     }
     
     // MARK: - Functions
-    
+    /// Set the labels with the affected car park data. This is performed when the view has been loaded (viewDidLoad())
     func loadDetails() {
         carPakNameLabel.text = carParkName
         carParkAddress.text = affectedCarpark?.carParkInfo?.properties?.adresse
