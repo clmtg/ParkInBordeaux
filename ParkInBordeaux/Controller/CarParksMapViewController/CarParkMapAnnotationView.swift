@@ -8,9 +8,10 @@
 import UIKit
 import MapKit
 
-/// Used to display a CarParkAnnotation within the MapViewController. This AnnotationView does dispay a camembert graph related to the occupancy
+/// Used to display a CarParkAnnotation within the MapViewController. This AnnotationView does dispay a camembert graph related to the park occupancy
 class CarParkMapAnnotationView: MKAnnotationView {
     
+    /// ID used to reuse annotation within the view controller. Performance related: In order to avoid overcreation of annotation view
     static let reuseID = "carParkAnnotation"
     
     // MARK: - Initializer
@@ -27,6 +28,8 @@ class CarParkMapAnnotationView: MKAnnotationView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Vars
     
     override var annotation: MKAnnotation? {
             willSet {
@@ -82,10 +85,9 @@ class CarParkMapAnnotationView: MKAnnotationView {
         }
     }
     
-
-    
+    /// Used to get the amount of car spot available for the affected car park through the related annotation
+    /// - Returns: Amount of car spot available for the affected car park
     private func getCarSpotsFree() -> Int {
-        
         guard let annotation = annotation as? CarParkMapAnnotation,
               let amountFreeSpot = annotation.carParkInfo?.carSpotsFree else {
             return 0
@@ -93,8 +95,9 @@ class CarParkMapAnnotationView: MKAnnotationView {
         return amountFreeSpot
     }
     
+    /// Used to get the amount of car spot (global (busy+free)) for the affected car park through the related annotation
+    /// - Returns: Amount of car spot  for the affected car park
     private func getCarSpotsAvailable() -> Int {
-        
         guard let annotation = annotation as? CarParkMapAnnotation,
               let amountFreeSpot = annotation.carParkInfo?.carSpotsAmount else {
             return 0

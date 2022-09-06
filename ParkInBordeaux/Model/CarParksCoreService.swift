@@ -46,7 +46,7 @@ final class CarParksCoreService {
     }
     
     /// Retreive car park occupency using OpenData Bordeaux api then parse the data to perform a closure
-    /// - Parameter completionHandler: close which would pass a CarParks var  ( = [OneCarParkStruct]) for success of a CarParksServiceError for failure
+    /// - Parameter completionHandler: closure which would pass a CarParks var  ( = [OneCarParkStruct]) for success of a CarParksServiceError for failure
     func getLatestUpdate(with filters: [String: String]?, completionHandler: @escaping (Result<[OneCarParkStruct],CarParksServiceError>) -> Void) {
         
         var endpoindToUse = ApiEndpoint.getGlobalEndpoint()

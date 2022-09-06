@@ -14,8 +14,6 @@ class FiltersSettingsViewController: UIViewController {
         filtersSettingsNavigatonBar.leftBarButtonItem = UIBarButtonItem(title: "Annuler", style: .plain, target: self, action: #selector(dismissTheView))
         filtersSettingsNavigatonBar.rightBarButtonItem = UIBarButtonItem(title: "OK", style: .plain, target: self, action: #selector(didTapSaveFiltersSettings))
         filtersOptionsUITableView.dataSource = self
-  
-
     }
     
     
@@ -26,25 +24,12 @@ class FiltersSettingsViewController: UIViewController {
                                      "propr": "SNCF",
                                      ]
 
-    
-    
-    
-    
     // MARK: - @IBOutlet
 
     @IBOutlet weak var filtersSettingsNavigatonBar: UINavigationItem!
     @IBOutlet weak var filtersOptionsUITableView: UITableView!
     
     // MARK: - @IBActions
-
-    
-    
-    
-
-    
-    
-    
-    
     
     // MARK: - Functions
     
@@ -60,8 +45,6 @@ class FiltersSettingsViewController: UIViewController {
 
     
 }
-
-
 
 // MARK: - Extensions - UITableViewDataSource
 
@@ -84,8 +67,6 @@ extension FiltersSettingsViewController: UITableViewDataSource {
         cell.configure(for: affectedKey, filterValue: filtersOptionList[affectedKey] ?? "")
         return cell
     }
-    
-    
 }
 
 

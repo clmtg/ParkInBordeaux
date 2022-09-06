@@ -8,16 +8,6 @@
 import UIKit
 import MapKit
 
-// TODO: Sebastien check needed
-
-/**
- Comments :
- - MKAnnotationView is a view and is needed to display an annotaion (type : MKAnnotation).
- - MKMarkerAnnotationView provides an MKAnnotationView using the balloon shaped to display an annotaion (type : MKAnnotation).
- - An annotaion (type : MKAnnotation) is always needed.
- - A cluster is an annotaion
- */
-
 /// Used to display a cluster of CarParkMapAnnotation
 class CarParksClusterAnnotationViewMaker: MKMarkerAnnotationView {
     

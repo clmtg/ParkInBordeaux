@@ -8,10 +8,10 @@
 import UIKit
 import MapKit
 
+/// View controller for the view displaying detailed information relqted to a  specific car park
 class CarParkDetailsViewController: UIViewController {
     
     // MARK: - Life cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadDetails()

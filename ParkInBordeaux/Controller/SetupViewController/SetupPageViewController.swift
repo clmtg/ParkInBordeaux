@@ -7,8 +7,10 @@
 
 import UIKit
 
+/// View controller for the view displaying the one time "tutorial" view control one first launch
 class SetupPageViewController: UIPageViewController {
     
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPagesViewController()
@@ -16,7 +18,6 @@ class SetupPageViewController: UIPageViewController {
     }
     
     // MARK: - Vars
-    
     /// Book of array listing the UIViewControllers part of the one time setup views
     var pages = [UIViewController]()
     /// Line of dots to manage Page View controller
@@ -27,7 +28,6 @@ class SetupPageViewController: UIPageViewController {
     func setupPagesViewController(){
         delegate = self
         dataSource = self
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         pages.append(storyboard.instantiateViewController(withIdentifier: "SetupPartOneViewController"))
         pages.append(storyboard.instantiateViewController(withIdentifier: "SetupPartTwoViewController"))
@@ -63,12 +63,9 @@ class SetupPageViewController: UIPageViewController {
 // MARK: - Extension - Delegate
 
 extension SetupPageViewController: UIPageViewControllerDelegate {
-    
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        
         guard let viewControllers = pageViewController.viewControllers else { return }
         guard let currentIndex = pages.firstIndex(of: viewControllers[0]) else { return }
-        
         pageControl.currentPage = currentIndex
     }
 }
@@ -77,10 +74,8 @@ extension SetupPageViewController: UIPageViewControllerDelegate {
 
 extension SetupPageViewController: UIPageViewControllerDataSource {
     
-    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let currentIndex = pages.firstIndex(of: viewController) else { return nil }
-        
         if currentIndex == 0 {
             return pages.last               // wrap to last
         } else {
@@ -96,4 +91,5 @@ extension SetupPageViewController: UIPageViewControllerDataSource {
             return pages.first              // wrap to first
         }
     }
+    
 }
