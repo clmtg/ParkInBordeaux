@@ -33,6 +33,21 @@
                                     <segue destination="m9l-fK-MKc" kind="show" id="UtL-y3-5K2"/>
                                 </connections>
                             </button>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IdL-k8-Dxy" userLabel="activityIndicatorView">
+                                <rect key="frame" x="145" y="372" width="100" height="100"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="rbh-MQ-NHU" userLabel="activityIndicator">
+                                        <rect key="frame" x="31.666666666666657" y="31.666666666666686" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="7f3-U7-MHa"/>
+                                    <constraint firstItem="rbh-MQ-NHU" firstAttribute="centerX" secondItem="IdL-k8-Dxy" secondAttribute="centerX" id="Qp0-d2-DO9"/>
+                                    <constraint firstAttribute="height" constant="100" id="jBU-gm-O0P"/>
+                                    <constraint firstItem="rbh-MQ-NHU" firstAttribute="centerY" secondItem="IdL-k8-Dxy" secondAttribute="centerY" id="k6R-DS-dpj"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6KB-Bm-Ejf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -42,12 +57,16 @@
                             <constraint firstItem="Kl4-1D-8TB" firstAttribute="top" secondItem="6KB-Bm-Ejf" secondAttribute="top" constant="10" id="GVO-6w-GcC"/>
                             <constraint firstItem="7ZW-VS-h5a" firstAttribute="leading" secondItem="NQS-wk-RUM" secondAttribute="leading" id="N9g-D0-KAD"/>
                             <constraint firstAttribute="bottom" secondItem="7ZW-VS-h5a" secondAttribute="bottom" id="PgC-No-7bp"/>
+                            <constraint firstItem="IdL-k8-Dxy" firstAttribute="centerX" secondItem="NQS-wk-RUM" secondAttribute="centerX" id="hkI-dJ-hbT"/>
+                            <constraint firstItem="IdL-k8-Dxy" firstAttribute="centerY" secondItem="NQS-wk-RUM" secondAttribute="centerY" id="oC2-uU-22d"/>
                             <constraint firstItem="7ZW-VS-h5a" firstAttribute="top" secondItem="NQS-wk-RUM" secondAttribute="top" id="tvG-pJ-MV2"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Carte" image="map" catalog="system" id="4X2-U2-CI2" userLabel="Map"/>
                     <navigationItem key="navigationItem" id="0OQ-SG-UdU"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="rbh-MQ-NHU" id="YDK-3D-xKB"/>
+                        <outlet property="activityIndicatorViewController" destination="IdL-k8-Dxy" id="cnK-uA-Izu"/>
                         <outlet property="carParksMapViewController" destination="7ZW-VS-h5a" id="r4g-FD-2WL"/>
                         <segue destination="OJw-ip-zy9" kind="presentation" identifier="segueFromMapToDetails" id="B4P-4e-9Xo"/>
                     </connections>
@@ -360,6 +379,9 @@
         <image name="map" catalog="system" width="128" height="110"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -26,6 +26,12 @@ final class CarParksMapViewController: UIViewController {
     // MARK: - IBOutlet
     /// MKMapView controller used to display car maps on Maps
     @IBOutlet weak var carParksMapViewController: MKMapView!
+    @IBOutlet weak var activityIndicatorViewController: UIView! {
+        didSet {
+            activityIndicatorViewController.layer.cornerRadius = 6
+        }
+    }
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - IBAction
     
@@ -47,8 +53,8 @@ final class CarParksMapViewController: UIViewController {
     private func setupCompassButton() {
         let compass = MKCompassButton(mapView: carParksMapViewController)
         compass.compassVisibility = .visible
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: compass)
-        carParksMapViewController.showsCompass = true
+        //navigationItem.rightBarButtonItem = UIBarButtonItem(customView: compass)
+        //carParksMapViewController.showsCompass = true
     }
     
     
@@ -62,6 +68,7 @@ final class CarParksMapViewController: UIViewController {
     func loadCarParksDataSet() {
         self.carParkCore.getLatestUpdate(with: nil) { resultCarParkData in
             DispatchQueue.main.async {
+                self.displayLoadingView(false)
                 guard case .success(let carParksData) = resultCarParkData else {
                     if case .failure(let errorInfo) = resultCarParkData {
                         self.displayAnAlert(title: "Oups", message: errorInfo.description, actions: nil)
@@ -77,9 +84,19 @@ final class CarParksMapViewController: UIViewController {
                                                                                           carParkInfo: oneCarPark))
                     }
                 }
+                self.displayLoadingView(true)
+                
             }
         }
     }
+    
+    
+    func displayLoadingView(_ status: Bool) {
+        self.activityIndicatorViewController.isHidden = status
+        self.carParksMapViewController.isUserInteractionEnabled = status
+    }
+    
+    
 }
 
 // MARK: - Extensions - Maps
@@ -122,8 +139,4 @@ extension CarParksMapViewController {
             carParkDetailsVC.affectedCarpark = affectedAnnotation
         }
     }
-    
 }
-
-
-
