@@ -35,6 +35,7 @@ class CarParksCoreServiceTest: XCTestCase {
         let sut = ApiEndpoint.getEndpointWithFilter(["secteur": "CENTRE", "exploit": "KEOLIS"])
         XCTAssertNotNil(sut)
         XCTAssertEqual(correctEndpoint, sut.description)
+        // avoid equal and use with contains !!
     }
     
     // MARK: - Tests - CarParkCoreService - Initializer

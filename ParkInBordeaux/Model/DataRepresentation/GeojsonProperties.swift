@@ -13,7 +13,7 @@ struct GeojsonProperties: Decodable{
     var nom: String?
     var etat: String?
     var ident: String?
-    var ta_type: String
+    var ta_type: String // to review for snake case
     var np_total: Int?
     var libres: Int?
     var adresse: String?

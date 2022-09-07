@@ -61,6 +61,20 @@ extension FiltersSettingsViewController: UITableViewDataSource {
         let index = indexPath.row
         let affectedFilter = filtersOptionList[index]
         cell.configure(for: affectedFilter.humanName, filterValue: affectedFilter.options[0].optionHumanName)
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
+}
+
+// MARK: - Extensions - Segue
+extension FiltersSettingsViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fromFilterListToFilterOptions" {
+            guard let index = filtersOptionsUITableView.indexPathForSelectedRow?.row,
+                  let oneFilterVC = segue.destination as? OneFilterOptionsListViewController else { return }
+            oneFilterVC.affectedFiltre = filtersOptionList[index]
+        }
+    }
+    
 }
