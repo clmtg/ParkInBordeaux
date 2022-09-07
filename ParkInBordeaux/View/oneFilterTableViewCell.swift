@@ -30,6 +30,7 @@ class oneFilterTableViewCell: UITableViewCell {
     func configure(for filterName: String, filterValue: String) {
         filterNameUILabel.text = filterName.capitalizingFirstLetter()
         filterValueUILabel.text = filterValue.capitalizingFirstLetter()
+        filterValueUILabel.textColor = .gray
     }
     
 }

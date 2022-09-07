@@ -35,7 +35,12 @@ final class CarParkMapAnnotation: NSObject, MKAnnotation {
     init(for coordinate: CLLocationCoordinate2D, title: String?, subtitle: String?, carParkInfo: OneCarParkStruct?) {
         self.coordinate = coordinate
         self.title = title?.capitalizingFirstLetter()
-        self.subtitle = "\(carParkInfo!.carSpotsFree) places disponible"
+        if carParkInfo!.carSpotsFree == 0 {
+            self.subtitle = "Aucune place disponible"
+        }
+        else {
+            self.subtitle = "\(carParkInfo!.carSpotsFree) places disponible"
+        }
         self.carParkInfo = carParkInfo
     }
 }

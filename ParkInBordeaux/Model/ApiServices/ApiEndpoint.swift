@@ -42,8 +42,7 @@ extension ApiEndpoint {
             ])
             return endpoint.url
         }
-    
-    
+
     static func getEndpointWithFilter(_ filters: [String: String]?) -> URL {
         
         // Checking if filters have been provided and then generated related JSON based on struct EndpointFilters
@@ -72,7 +71,6 @@ extension ApiEndpoint {
     static func getFiltersOptions() -> FiltersList? {
         let bundle = Bundle(for: CarParksCoreService.self)
         let filtersOptionsRawJson = bundle.dataFromJson("FiltersListData")
-        
         guard let filterListData = try? JSONDecoder().decode(FiltersList.self, from: filtersOptionsRawJson) else {
             return nil
         }
