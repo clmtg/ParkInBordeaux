@@ -68,6 +68,16 @@ extension ApiEndpoint {
         ])
         return endpoint.url
     }
+    
+    static func getFiltersOptions() -> FiltersList? {
+        let bundle = Bundle(for: CarParksCoreService.self)
+        let filtersOptionsRawJson = bundle.dataFromJson("FiltersListData")
+        
+        guard let filterListData = try? JSONDecoder().decode(FiltersList.self, from: filtersOptionsRawJson) else {
+            return nil
+        }
+        return filterListData
+    }
 }
 
 

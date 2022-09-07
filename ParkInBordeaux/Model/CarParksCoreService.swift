@@ -62,6 +62,9 @@ final class CarParksCoreService {
             }
             geojsonFeaturesData.forEach { oneFeature in
                 if let geometrey = oneFeature.geometry.first, let jsonProperties = oneFeature.properties {
+                    
+                    //let decoder = JSONDecoder()
+                    //decoder.keyDecodingStrategy = .convertFromSnakeCase
                     if let properties = try? JSONDecoder().decode(GeojsonProperties.self, from: jsonProperties) {
                         
                         if let id = properties.ident {

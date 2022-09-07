@@ -1,0 +1,188 @@
+{
+  "fitres": [
+    {
+      "sysmName" : "exploit",
+      "humanName" : "Exploitant",
+      "options": [
+        {
+          "optionSystemName" : "URBIS_PARK",
+          "optionHumanName" : "Urbis park"
+        },
+        {
+          "optionSystemName" : "Q_PARK",
+          "optionHumanName" : "Q-park"
+        },
+        {
+          "optionSystemName" : "INTERPARKING",
+          "optionHumanName" : "Interparking"
+        },
+        {
+          "optionSystemName" : "INDIGO_PARK",
+          "optionHumanName" : "Indigo park"
+        },
+        {
+          "optionSystemName" : "KEOLIS",
+          "optionHumanName" : "Keolis"
+        },
+        {
+          "optionSystemName" : "EFFIA_STATIONNEMENT",
+          "optionHumanName" : "Effia Stationnement"
+        },
+        {
+          "optionSystemName" : "MEGARAMA",
+          "optionHumanName" : "Megarama"
+        },
+        {
+          "optionSystemName" : "GERAUD",
+          "optionHumanName" : "Geraud"
+        },
+        {
+          "optionSystemName" : "PARCUB_BORDEAUX_METROPOLE",
+          "optionHumanName" : "Parcub Bordeaux Metropole"
+        }
+      ]
+    },
+    {
+      "sysmName" : "ta_type",
+      "humanName" : "Type de tarif",
+      "options": [
+        {
+          "optionSystemName" : "GRATUIT",
+          "optionHumanName" : "Parking gratuit"
+        },
+        {
+          "optionSystemName" : "PAYANT_RESERVE_ABONNES",
+          "optionHumanName" : "Parking payant réservé aux abonnés"
+        },
+        {
+          "optionSystemName" : "PAYANT_TARIF_HORAIRE",
+          "optionHumanName" : "Tarif payant horaire"
+        },
+        {
+          "optionSystemName" : "PAYANT_TARIF_PARC_RELAIS",
+          "optionHumanName" : "Tarif payant Parc-Relais"
+        },
+        {
+          "optionSystemName" : "PAYANT_TARIF_VOIRIE",
+          "optionHumanName" : "Tarif payant voirie"
+        },
+        {
+          "optionSystemName" : "PAYANT_AUTRE_TYPE_DE_TARIF",
+          "optionHumanName" : "Payant autre type de tarif"
+        }
+      ]
+    },
+    {
+      "sysmName" : "secteur",
+      "humanName" : "Secteur",
+      "options": [
+        {
+          "optionSystemName" : "CENTRE",
+          "optionHumanName" : "Centre"
+        },
+        {
+          "optionSystemName" : "PERIPHERIE",
+          "optionHumanName" : "Périphérie"
+        },
+        {
+          "optionSystemName" : "HYPER_CENTRE",
+          "optionHumanName" : "Hyper centre"
+        }
+      ]
+    },
+    {
+      "sysmName" : "propr",
+      "humanName" : "Propriétaire",
+      "options": [
+        {
+          "optionSystemName" : "AGORA_CINEMA",
+          "optionHumanName" : "Agora cinéma"
+        },
+        {
+          "optionSystemName" : "CHU_GROUPE_HOSPITALIER_PELLEGRIN",
+          "optionHumanName" : "CHU Groupe hospitalier Pellegrin"
+        },
+        {
+          "optionSystemName" : "Q_PARK",
+          "optionHumanName" : "Q-PAR"
+        },
+        {
+          "optionSystemName" : "SNCF_GARES_ET_CONNEXIONS_BAIL_45_ANS",
+          "optionHumanName" : "SNCF Gares et connexions (bail 45 ans)"
+        },
+        {
+          "optionSystemName" : "VILLE_DE_BORDEAUX",
+          "optionHumanName" : "Ville de Bordeaux"
+        },
+        {
+          "optionSystemName" : "INTERPARKING",
+          "optionHumanName" : "Interparking"
+        },
+        {
+          "optionSystemName" : "AEROPORT_DE_BORDEAUX",
+          "optionHumanName" : "Aéroport de Bordeaux"
+        },
+        {
+          "optionSystemName" : "QUAI_DES_MARQUES",
+          "optionHumanName" : "Quai des marques"
+        },
+        {
+          "optionSystemName" : "BORDEAUX_METROPOLE",
+          "optionHumanName" : "Bordeaux Métropole"
+        }
+      ]
+    },
+    {
+      "sysmName" : "etat",
+      "humanName" : "État du parking",
+      "options": [
+        {
+          "optionSystemName" : "LIBRE",
+          "optionHumanName" : "Places libres disponibles (temps réel"
+        },
+        {
+          "optionSystemName" : "COMPLET",
+          "optionHumanName" : "Parking complet (temps réel)"
+        },
+        {
+          "optionSystemName" : "ABONNES",
+          "optionHumanName" : "Accès réservé aux abonnés (temps réel)"
+        },
+        {
+          "optionSystemName" : "FERME",
+          "optionHumanName" : "Parking fermé"
+        },
+        {
+          "optionSystemName" : "OUVERT",
+          "optionHumanName" : "Parking en service"
+        }
+      ]
+    },
+    {
+      "sysmName" : "type",
+      "humanName" : "Type de construction",
+      "options": [
+        {
+          "optionSystemName" : "SURFACE",
+          "optionHumanName" : "Surface"
+        },
+        {
+          "optionSystemName" : "ENTERRE",
+          "optionHumanName" : "En terre"
+        },
+        {
+          "optionSystemName" : "SILO",
+          "optionHumanName" : "Silo"
+        },
+        {
+          "optionSystemName" : "ENCLOS",
+          "optionHumanName" : "Enclos"
+        },
+        {
+          "optionSystemName" : "MIXTE",
+          "optionHumanName" : "Mixte"
+        }
+      ]
+    }
+  ]
+}

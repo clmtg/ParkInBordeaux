@@ -24,10 +24,9 @@
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kl4-1D-8TB">
-                                <rect key="frame" x="10.000000000000004" y="53.999999999999993" width="46.333333333333343" height="30.666666666666664"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <imageReference key="image" image="gearshape" catalog="system" symbolScale="large"/>
+                                <rect key="frame" x="10.000000000000004" y="54" width="61.333333333333343" height="46.666666666666657"/>
+                                <buttonConfiguration key="configuration" style="plain" buttonSize="large">
+                                    <imageReference key="image" image="gearshape.circle.fill" catalog="system" symbolScale="large"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="m9l-fK-MKc" kind="show" id="UtL-y3-5K2"/>
@@ -295,7 +294,7 @@
             </objects>
             <point key="canvasLocation" x="1530.7692307692307" y="-350.47393364928911"/>
         </scene>
-        <!--Title-->
+        <!--Filtres-->
         <scene sceneID="FIS-NJ-oWX">
             <objects>
                 <viewController id="gV8-BN-xXK" customClass="FiltersSettingsViewController" customModule="ParkInBordeaux" customModuleProvider="target" sceneMemberID="viewController">
@@ -362,7 +361,7 @@
                             <constraint firstItem="w1M-SV-q8l" firstAttribute="bottom" secondItem="WTq-nc-3BY" secondAttribute="bottom" id="P8B-Cl-XJx"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="7Vk-Sd-vGz"/>
+                    <navigationItem key="navigationItem" title="Filtres" id="7Vk-Sd-vGz"/>
                     <connections>
                         <outlet property="filtersOptionsUITableView" destination="WTq-nc-3BY" id="uGA-gE-DcL"/>
                         <outlet property="filtersSettingsNavigatonBar" destination="7Vk-Sd-vGz" id="izJ-2z-qTe"/>
@@ -375,7 +374,7 @@
     </scenes>
     <resources>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="gearshape.circle.fill" catalog="system" width="128" height="121"/>
         <image name="map" catalog="system" width="128" height="110"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

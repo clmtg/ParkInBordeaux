@@ -34,7 +34,7 @@ final class FakeResponseData {
 // MARK: - Extensions related to Bundle
 extension Bundle {
     
-    /// Extract data to a json file
+    /// Extract data from a json file
     /// - Parameter name: json file name
     /// - Returns: data
     func dataFromJson(_ name: String) -> Data {

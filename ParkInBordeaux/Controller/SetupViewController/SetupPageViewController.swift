@@ -88,7 +88,8 @@ extension SetupPageViewController: UIPageViewControllerDataSource {
         if currentIndex < pages.count - 1 {
             return pages[currentIndex + 1]  // go next
         } else {
-            return pages.first              // wrap to first
+            //return pages.first
+            return nil
         }
     }
     

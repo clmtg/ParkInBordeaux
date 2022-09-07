@@ -14,18 +14,17 @@ class FiltersSettingsViewController: UIViewController {
         filtersSettingsNavigatonBar.leftBarButtonItem = UIBarButtonItem(title: "Annuler", style: .plain, target: self, action: #selector(dismissTheView))
         filtersSettingsNavigatonBar.rightBarButtonItem = UIBarButtonItem(title: "OK", style: .plain, target: self, action: #selector(didTapSaveFiltersSettings))
         filtersOptionsUITableView.dataSource = self
+        
+        if let filtersOptionData = ApiEndpoint.getFiltersOptions() {
+            filtersOptionList.append(contentsOf: filtersOptionData.fitres)
+        }
     }
     
+    // MARK: - Vars
     
-    // MARK: - @Vars
-    
-    private var filtersOptionList = ["exploit": "KEOLIS",
-                                     "secteur": "CENTRE",
-                                     "propr": "SNCF",
-                                     ]
+    private var filtersOptionList = [Filtre]()
 
     // MARK: - @IBOutlet
-
     @IBOutlet weak var filtersSettingsNavigatonBar: UINavigationItem!
     @IBOutlet weak var filtersOptionsUITableView: UITableView!
     
@@ -41,12 +40,9 @@ class FiltersSettingsViewController: UIViewController {
         print("Filtre modifié")
         self.dismiss(animated: true)
     }
-    
-
-    
 }
 
-// MARK: - Extensions - UITableViewDataSource
+// MARK: - Extensions - UITableView
 
 extension FiltersSettingsViewController: UITableViewDataSource {
     
@@ -63,12 +59,8 @@ extension FiltersSettingsViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         let index = indexPath.row
-        let affectedKey = Array(filtersOptionList.keys)[index]
-        cell.configure(for: affectedKey, filterValue: filtersOptionList[affectedKey] ?? "")
+        let affectedFilter = filtersOptionList[index]
+        cell.configure(for: affectedFilter.humanName, filterValue: affectedFilter.options[0].optionHumanName)
         return cell
     }
 }
-
-
-// MARK: - Extensions - UITableViewDelegate
-
