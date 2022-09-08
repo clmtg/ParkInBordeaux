@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 // MARK: - FiltersList
 struct FiltersList: Decodable {
     let fitres: [Filtre]

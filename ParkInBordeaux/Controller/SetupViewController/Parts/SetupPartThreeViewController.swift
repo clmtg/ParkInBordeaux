@@ -19,29 +19,13 @@ class SetupPartThreeViewController: UIViewController {
     // MARK: - Functions
     
     @IBAction func didTappedTutorialButtonComplet(_ sender: Any) {
-        //UserDefaults.standard.set(true, forKey: "firstTimeFlag")
+        UserDefaults.standard.set(true, forKey: "firstTimeFlag")
+        ApiEndpoint.generateCarparkFiltersDefaultSettings()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let carParksViewController = storyboard.instantiateViewController(withIdentifier: "CarParksMapViewController") as! CarParksMapViewController
-        
         guard var viewControllers = navigationController?.viewControllers else { return }
         _ = viewControllers.popLast()
         viewControllers.append(carParksViewController)
        navigationController?.setViewControllers(viewControllers, animated: true)
-        
     }
-    
-    // MARK: - Functions
-
-
-
-    
-    
-
-}
-
-// MARK: - Extensions - Segue
-extension CarParksMapViewController {
-    
-
-    
 }

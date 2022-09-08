@@ -13,24 +13,24 @@ class FiltersSettingsViewController: UIViewController {
         super.viewDidLoad()
         filtersSettingsNavigatonBar.leftBarButtonItem = UIBarButtonItem(title: "Annuler", style: .plain, target: self, action: #selector(dismissTheView))
         filtersSettingsNavigatonBar.rightBarButtonItem = UIBarButtonItem(title: "OK", style: .plain, target: self, action: #selector(didTapSaveFiltersSettings))
-        filtersOptionsUITableView.dataSource = self
-        
-        if let filtersOptionData = ApiEndpoint.getFiltersOptions() {
-            filtersOptionList.append(contentsOf: filtersOptionData.fitres)
-        }
+        setupOptionsUITableView()
     }
     
     // MARK: - Vars
-    
     private var filtersOptionList = [Filtre]()
 
     // MARK: - @IBOutlet
     @IBOutlet weak var filtersSettingsNavigatonBar: UINavigationItem!
     @IBOutlet weak var filtersOptionsUITableView: UITableView!
     
-    // MARK: - @IBActions
-    
     // MARK: - Functions
+    
+    private func setupOptionsUITableView() {
+        filtersOptionsUITableView.dataSource = self
+        if let filtersOptionData = ApiEndpoint.getFiltersOptions() {
+            filtersOptionList.append(contentsOf: filtersOptionData.fitres)
+        }
+    }
     
     @objc private func dismissTheView(){
         self.dismiss(animated: true)
@@ -76,5 +76,4 @@ extension FiltersSettingsViewController {
             oneFilterVC.affectedFiltre = filtersOptionList[index]
         }
     }
-    
 }

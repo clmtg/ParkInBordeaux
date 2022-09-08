@@ -17,6 +17,7 @@ final class CarParksMapViewController: UIViewController {
         super.viewDidLoad()
         setCarParksMapView()
         loadCarParksDataSet()
+        //ApiEndpoint.getCarparkFiltersCurrentSettings()
     }
     
     // MARK: - Vars

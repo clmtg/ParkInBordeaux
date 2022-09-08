@@ -1,11 +1,13 @@
 {
   "images" : [
     {
+      "filename" : "iosNotification@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
+      "filename" : "iosNotification@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
@@ -31,11 +33,13 @@
       "size" : "40x40"
     },
     {
+      "filename" : "iosApp@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
+      "filename" : "iosApp@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"

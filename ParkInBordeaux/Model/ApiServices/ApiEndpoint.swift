@@ -36,30 +36,26 @@ extension ApiEndpoint {
     /// Return the endpoint to reach in order to retreive the data for all the Bordeaux car park
     /// - Returns: Endpoint to reach
     static func getGlobalEndpoint() -> URL {
-            let endpoint = ApiEndpoint(path: "geojson", queryItems: [
-                .init(name: "key", value: ApiInfo.OpenDataBdx),
-                .init(name: "typename", value: "st_park_p")
-            ])
-            return endpoint.url
-        }
-
+        let endpoint = ApiEndpoint(path: "geojson", queryItems: [
+            .init(name: "key", value: ApiInfo.OpenDataBdx),
+            .init(name: "typename", value: "st_park_p")
+        ])
+        return endpoint.url
+    }
+    
     static func getEndpointWithFilter(_ filters: [String: String]?) -> URL {
-        
         // Checking if filters have been provided and then generated related JSON based on struct EndpointFilters
         guard let filtersData = filters else {
             return ApiEndpoint.getGlobalEndpoint()
         }
-        
         var endpointFilters = EndpointFilters()
         filtersData.forEach { oneFilter in
             endpointFilters.filters.append([oneFilter.key : oneFilter.value])
         }
-        
         guard let data = try? JSONEncoder().encode(endpointFilters),
               let dataString = String(data: data, encoding: .utf8) else {
             return ApiEndpoint.getGlobalEndpoint()
         }
-        
         let endpoint = ApiEndpoint(path: "geojson", queryItems: [
             .init(name: "key", value: ApiInfo.OpenDataBdx),
             .init(name: "typename", value: "st_park_p"),
@@ -68,16 +64,45 @@ extension ApiEndpoint {
         return endpoint.url
     }
     
+    
+    
+    // provide the globale list of option for the view
     static func getFiltersOptions() -> FiltersList? {
         let bundle = Bundle(for: CarParksCoreService.self)
-        let filtersOptionsRawJson = bundle.dataFromJson("FiltersListData")
+        let filtersOptionsRawJson = bundle.dataFromJson("FiltersDefaulListData")
         guard let filterListData = try? JSONDecoder().decode(FiltersList.self, from: filtersOptionsRawJson) else {
             return nil
         }
         return filterListData
     }
+    
+    /// does generate the defaultsettings in iOS !! absolutely USED ONLY ONCE. This is config is based on FiltersDefaulListData.json file
+    static func generateCarparkFiltersDefaultSettings() {
+        let filterList = ApiEndpoint.getFiltersOptions()
+        guard let filterList = filterList else { return }
+        var defaultFilterSetting = [String: String]()
+        filterList.fitres.forEach { oneFilter in
+            defaultFilterSetting[oneFilter.sysmName] = ""
+            UserDefaults.standard.set(defaultFilterSetting, forKey: "carParkFiltersSettings")
+        }
+    }
+    
+    
+    /*
+    static func getCarparkFiltersCurrentSettings(_ completionHandler: @escaping (Result<[[]],CarParksServiceError>) -> Void)  {
+        let currentSettings =  UserDefaults.standard.object(forKey: "carParkFiltersSettings") as? [[String: String]] ?? [[String: String]]()
+        print(currentSettings)
+        
+        
+    }
+    
+    
+    
+    */
+    
+    
+    
+    
+    
+    
 }
-
-
-
-

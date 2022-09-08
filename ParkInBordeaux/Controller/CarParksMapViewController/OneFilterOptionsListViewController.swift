@@ -14,6 +14,7 @@ class OneFilterOptionsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         optionsUITableView.dataSource = self
+        optionsUITableView.delegate = self
         loadFilterOption()
     }
     
@@ -23,17 +24,18 @@ class OneFilterOptionsListViewController: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet weak var optionsUITableView: UITableView!
     
-    
-    // MARK: - IBAction
-    
     // MARK: - Functions
     
     private func loadFilterOption() {
-        self.title = affectedFiltre?.humanName
+        guard let affectedFiltre = affectedFiltre else {
+            self.title = "Inconnu"
+            return
+        }
+        self.title = affectedFiltre.humanName
     }
 }
 
-// MARK: - Extension - TableView
+// MARK: - Extension - TableView - DataSource
 
 extension OneFilterOptionsListViewController: UITableViewDataSource {
     
@@ -49,13 +51,25 @@ extension OneFilterOptionsListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let index = indexPath.row
         let cell = UITableViewCell(style: .default, reuseIdentifier: "oneOptionReuseID")
         cell.textLabel?.text = affectedFiltre?.options[index].optionHumanName
         return cell
     }
+}
+
+// MARK: - Extension - TableView - Delegate
+
+extension OneFilterOptionsListViewController: UITableViewDelegate {
+   // tableView(_:accessoryButtonTappedForRowWith:)
     
-   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let affectedRow = tableView.cellForRow(at: indexPath) else { return }
+        affectedRow.accessoryType = .checkmark
+    }
     
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let affectedRow = tableView.cellForRow(at: indexPath) else { return }
+        affectedRow.accessoryType = .none
+    }
 }
