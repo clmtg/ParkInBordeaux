@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import SwiftUI
 
 /// Struct which defines endpoints for the OpenData Bordeaux api.
 struct ApiEndpoint {
+ 
     
     // MARK: - Vars
     /// The endpoint to reach. (Part added after the api address. E.g.: myapi.com/path)
@@ -64,45 +66,29 @@ extension ApiEndpoint {
         return endpoint.url
     }
     
-    
-    
-    // provide the globale list of option for the view
-    static func getFiltersOptions() -> FiltersList? {
-        let bundle = Bundle(for: CarParksCoreService.self)
-        let filtersOptionsRawJson = bundle.dataFromJson("FiltersDefaulListData")
-        guard let filterListData = try? JSONDecoder().decode(FiltersList.self, from: filtersOptionsRawJson) else {
-            return nil
+    static func getEndpointWithConfigFilter() -> URL? {
+        guard let appdelegate = UIApplication.shared.delegate as? AppDelegate else { return nil}
+        let coredataStack = appdelegate.coreDataStack
+        let coreDataManager = CoreDataRepo(coreDataStack: coredataStack)
+        var endpointFilters = EndpointFilters()
+        coreDataManager.filtersList.forEach { oneFilter in
+            if let currentOption = oneFilter.currentOption {
+                endpointFilters.filters.append([oneFilter.systemName! : currentOption.systemName!])
+            }
         }
-        return filterListData
-    }
-    
-    /// does generate the defaultsettings in iOS !! absolutely USED ONLY ONCE. This is config is based on FiltersDefaulListData.json file
-    static func generateCarparkFiltersDefaultSettings() {
-        let filterList = ApiEndpoint.getFiltersOptions()
-        guard let filterList = filterList else { return }
-        var defaultFilterSetting = [String: String]()
-        filterList.fitres.forEach { oneFilter in
-            defaultFilterSetting[oneFilter.sysmName] = ""
-            UserDefaults.standard.set(defaultFilterSetting, forKey: "carParkFiltersSettings")
+        if endpointFilters.filters.count == 0 {
+            return ApiEndpoint.getGlobalEndpoint()
         }
+        guard let data = try? JSONEncoder().encode(endpointFilters),
+              let dataString = String(data: data, encoding: .utf8) else {
+            return ApiEndpoint.getGlobalEndpoint()
+        }
+        let endpoint = ApiEndpoint(path: "geojson", queryItems: [
+            .init(name: "key", value: ApiInfo.OpenDataBdx),
+            .init(name: "typename", value: "st_park_p"),
+            .init(name: "filter", value: dataString)
+        ])
+        return endpoint.url
     }
-    
-    
-    /*
-    static func getCarparkFiltersCurrentSettings(_ completionHandler: @escaping (Result<[[]],CarParksServiceError>) -> Void)  {
-        let currentSettings =  UserDefaults.standard.object(forKey: "carParkFiltersSettings") as? [[String: String]] ?? [[String: String]]()
-        print(currentSettings)
-        
-        
-    }
-    
-    
-    
-    */
-    
-    
-    
-    
-    
-    
+
 }

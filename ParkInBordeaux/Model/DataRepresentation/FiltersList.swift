@@ -7,6 +7,11 @@
 
 import Foundation
 
+// This is used to create the default database or filter related to the app.
+// The raw config is located within the file DefaultFilterConfig.json
+
+
+
 // MARK: - FiltersList
 struct FiltersList: Decodable {
     let fitres: [Filtre]
@@ -15,10 +20,10 @@ struct FiltersList: Decodable {
 // MARK: - Fitre
 struct Filtre: Decodable {
     let sysmName, humanName: String
-    let options: [Option]
+    let options: [OptionsForOneFilter]
 }
 
 // MARK: - Option
-struct Option: Decodable {
+struct OptionsForOneFilter: Decodable {
     let optionSystemName, optionHumanName: String
 }

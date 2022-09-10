@@ -16,13 +16,20 @@ final class CarParksMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setCarParksMapView()
-        loadCarParksDataSet()
-        //ApiEndpoint.getCarparkFiltersCurrentSettings()
+        //loadCarParksDataSet()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        carParksMapViewController.removeAnnotations(annotationDisplayed)
+        loadCarParksDataSet()
+    }
+    
+    
     
     // MARK: - Vars
     /// Model instance
     let carParkCore = CarParksCoreService()
+    var annotationDisplayed = [MKAnnotation]()
     
     // MARK: - IBOutlet
     /// MKMapView controller used to display car maps on Maps
@@ -67,9 +74,9 @@ final class CarParksMapViewController: UIViewController {
     
     /// Retreive the information related to the car parks provided by the model and load them up into the MapViewController
     func loadCarParksDataSet() {
-        self.carParkCore.getLatestUpdate(with: nil) { resultCarParkData in
+        self.carParkCore.getLatestUpdate() { resultCarParkData in
             DispatchQueue.main.async {
-                self.displayLoadingView(false)
+                self.displayLoadingView(true)
                 guard case .success(let carParksData) = resultCarParkData else {
                     if case .failure(let errorInfo) = resultCarParkData {
                         self.displayAnAlert(title: "Oups", message: errorInfo.description, actions: nil)
@@ -79,13 +86,17 @@ final class CarParksMapViewController: UIViewController {
                 carParksData.forEach { oneCarPark in
                     if let location = oneCarPark.location, let properties = oneCarPark.properties {
                         
-                        self.carParksMapViewController.addAnnotation(CarParkMapAnnotation(for: location ,
-                                                                                          title: properties.nom ?? "No name",
-                                                                                          subtitle: properties.etat ?? "Inconnu",
-                                                                                          carParkInfo: oneCarPark))
+                        let affectedAnnotation = CarParkMapAnnotation(for: location ,
+                                                                      title: properties.nom ?? "No name",
+                                                                      subtitle: properties.etat ?? "Inconnu",
+                                                                      carParkInfo: oneCarPark)
+                        
+                        self.annotationDisplayed.append(affectedAnnotation)
+                        
+                        self.carParksMapViewController.addAnnotation(affectedAnnotation)
                     }
                 }
-                self.displayLoadingView(true)
+                self.displayLoadingView(false)
                 
             }
         }
@@ -93,8 +104,8 @@ final class CarParksMapViewController: UIViewController {
     
     
     func displayLoadingView(_ status: Bool) {
-        self.activityIndicatorViewController.isHidden = status
-        self.carParksMapViewController.isUserInteractionEnabled = status
+        self.activityIndicatorViewController.isHidden = !status
+        self.carParksMapViewController.isUserInteractionEnabled = !status
     }
     
     

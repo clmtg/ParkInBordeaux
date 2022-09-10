@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="FiltresCD" representedClassName=".FiltresCD" syncable="YES" codeGenerationType="class">
+        <attribute name="humanName" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="systemName" optional="YES" attributeType="String"/>
+        <relationship name="currentOption" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OptionsFiltreCD"/>
+        <relationship name="optionsAvailable" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OptionsFiltreCD" inverseName="affectedFiltre" inverseEntity="OptionsFiltreCD"/>
+    </entity>
+    <entity name="OptionsFiltreCD" representedClassName=".OptionsFiltreCD" syncable="YES" codeGenerationType="class">
+        <attribute name="humanName" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="systemName" optional="YES" attributeType="String"/>
+        <relationship name="affectedFiltre" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FiltresCD" inverseName="optionsAvailable" inverseEntity="FiltresCD"/>
+    </entity>
+    <elements>
+        <element name="FiltresCD" positionX="166.29833984375" positionY="-106.7102355957031" width="128" height="104"/>
+        <element name="OptionsFiltreCD" positionX="462.098876953125" positionY="-64.26031494140625" width="128" height="89"/>
+    </elements>
+</model>

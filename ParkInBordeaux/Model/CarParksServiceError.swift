@@ -14,6 +14,8 @@ enum CarParksServiceError: Error {
     case undecodableGeojson
     case networkCallFailed
     case noCarParkWithinArea
+    case localDataCorrupt
+    
 }
 
 extension CarParksServiceError: CustomStringConvertible {
@@ -24,6 +26,7 @@ extension CarParksServiceError: CustomStringConvertible {
         case .undecodableGeojson: return "GeoJSON - Les données fournies ne respected pas le standart Geojson"
         case .networkCallFailed: return "L'appel réseau a échoué"
         case .noCarParkWithinArea: return "Aucun parking n'est disponible dans cette zone géographique"
+        case .localDataCorrupt: return "Impossible de chharger et appliquer les filtres choisis"
         }
     }
 }

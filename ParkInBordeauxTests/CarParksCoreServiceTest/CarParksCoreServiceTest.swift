@@ -55,7 +55,7 @@ class CarParksCoreServiceTest: XCTestCase {
         let sut = CarParksCoreService(session: fakeSession)
         let expectation = XCTestExpectation(description: "Waiting...")
         
-        sut.getLatestUpdate(with: nil) { result in
+        sut.getLatestUpdate() { result in
             guard case .success(let resultData) = result else {
                 XCTFail(#function)
                 return
@@ -76,7 +76,7 @@ class CarParksCoreServiceTest: XCTestCase {
         let expectation = XCTestExpectation(description: "Waiting...")
         
         
-        sut.getLatestUpdate(with: nil) { result in
+        sut.getLatestUpdate() { result in
             guard case .failure(let resultData) = result else {
                 XCTFail(#function)
                 return
@@ -96,7 +96,7 @@ class CarParksCoreServiceTest: XCTestCase {
         let sut = CarParksCoreService(session: fakeSession)
         let expectation = XCTestExpectation(description: "Waiting...")
         
-        sut.getLatestUpdate(with: nil) { result in
+        sut.getLatestUpdate() { result in
             guard case .failure(let resultData) = result else {
                 XCTFail(#function)
                 return
@@ -116,7 +116,7 @@ class CarParksCoreServiceTest: XCTestCase {
         let sut = CarParksCoreService(session: fakeSession)
         let expectation = XCTestExpectation(description: "Waiting...")
         
-        sut.getLatestUpdate(with: nil) { result in
+        sut.getLatestUpdate() { result in
             guard case .failure(let resultData) = result else {
                 XCTFail(#function)
                 return
@@ -136,7 +136,7 @@ class CarParksCoreServiceTest: XCTestCase {
         let sut = CarParksCoreService(session: fakeSession)
         let expectation = XCTestExpectation(description: "Waiting...")
         
-        sut.getLatestUpdate(with: nil) { result in
+        sut.getLatestUpdate() { result in
             guard case .failure(let resultData) = result else {
                 XCTFail(#function)
                 return

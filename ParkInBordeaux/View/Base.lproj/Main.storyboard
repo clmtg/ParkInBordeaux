@@ -356,7 +356,7 @@
                                 <rect key="frame" x="0.0" y="56" width="390" height="734"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="oneFilterBasicCell" id="OM6-VW-WWg" customClass="oneFilterTableViewCell" customModule="ParkInBordeaux" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="oneFilterBasicCell" id="OM6-VW-WWg" customClass="oneFilterTableViewCell" customModule="ParkInBordeaux" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="50.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OM6-VW-WWg" id="ZHz-b7-HkI">
@@ -398,6 +398,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="gV8-BN-xXK" id="fo7-az-9ko"/>
+                                    <outlet property="delegate" destination="gV8-BN-xXK" id="gw2-dZ-nuL"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="w1M-SV-q8l"/>

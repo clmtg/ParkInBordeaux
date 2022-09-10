@@ -8,24 +8,34 @@
 import UIKit
 
 class SetupPartThreeViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let appdelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let coredataStack = appdelegate.coreDataStack
+        coreDataManager = CoreDataRepo(coreDataStack: coredataStack)
     }
     
     // MARK: - Vars
+    /// CoreData instance
+    private var coreDataManager: CoreDataRepo?
     
     
     // MARK: - Functions
     
     @IBAction func didTappedTutorialButtonComplet(_ sender: Any) {
         UserDefaults.standard.set(true, forKey: "firstTimeFlag")
-        ApiEndpoint.generateCarparkFiltersDefaultSettings()
+
+        if let coreDataManager = coreDataManager {
+            coreDataManager.generateDefaultFilterConfig()
+        }
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let carParksViewController = storyboard.instantiateViewController(withIdentifier: "CarParksMapViewController") as! CarParksMapViewController
         guard var viewControllers = navigationController?.viewControllers else { return }
         _ = viewControllers.popLast()
         viewControllers.append(carParksViewController)
-       navigationController?.setViewControllers(viewControllers, animated: true)
+        navigationController?.setViewControllers(viewControllers, animated: true)
     }
 }

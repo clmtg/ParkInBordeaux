@@ -11,29 +11,32 @@ class FiltersSettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        filtersSettingsNavigatonBar.leftBarButtonItem = UIBarButtonItem(title: "Annuler", style: .plain, target: self, action: #selector(dismissTheView))
+        filtersSettingsNavigatonBar.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(dismissTheView))
         filtersSettingsNavigatonBar.rightBarButtonItem = UIBarButtonItem(title: "OK", style: .plain, target: self, action: #selector(didTapSaveFiltersSettings))
-        setupOptionsUITableView()
+        
+        guard let appdelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let coredataStack = appdelegate.coreDataStack
+        coreDataManager = CoreDataRepo(coreDataStack: coredataStack)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        filtersOptionsUITableView.reloadData()
     }
     
     // MARK: - Vars
-    private var filtersOptionList = [Filtre]()
+    /// CoreData instance
+    private var coreDataManager: CoreDataRepo?
 
     // MARK: - @IBOutlet
     @IBOutlet weak var filtersSettingsNavigatonBar: UINavigationItem!
     @IBOutlet weak var filtersOptionsUITableView: UITableView!
     
     // MARK: - Functions
-    
-    private func setupOptionsUITableView() {
-        filtersOptionsUITableView.dataSource = self
-        if let filtersOptionData = ApiEndpoint.getFiltersOptions() {
-            filtersOptionList.append(contentsOf: filtersOptionData.fitres)
-        }
-    }
-    
+
     @objc private func dismissTheView(){
-        self.dismiss(animated: true)
+        //self.dismiss(animated: true)
+        coreDataManager?.resetFilter()
+        filtersOptionsUITableView.reloadData()
     }
     
     @objc private func didTapSaveFiltersSettings() {
@@ -51,29 +54,31 @@ extension FiltersSettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filtersOptionList.count
+        return coreDataManager?.filtersList.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "oneFilterBasicCell", for: indexPath) as? oneFilterTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "oneFilterBasicCell", for: indexPath) as? oneFilterTableViewCell,
+              let coreDataManager = coreDataManager else {
             return UITableViewCell()
         }
         let index = indexPath.row
-        let affectedFilter = filtersOptionList[index]
-        cell.configure(for: affectedFilter.humanName, filterValue: affectedFilter.options[0].optionHumanName)
+        let affectedFilter = coreDataManager.filtersList[index]
+        cell.configure(for: affectedFilter.humanName ?? "Inconnu", filterValue: affectedFilter.currentOption?.humanName ?? "Aucune")
         cell.accessoryType = .disclosureIndicator
         return cell
     }
 }
 
+
 // MARK: - Extensions - Segue
 extension FiltersSettingsViewController {
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromFilterListToFilterOptions" {
             guard let index = filtersOptionsUITableView.indexPathForSelectedRow?.row,
-                  let oneFilterVC = segue.destination as? OneFilterOptionsListViewController else { return }
-            oneFilterVC.affectedFiltre = filtersOptionList[index]
+                  let oneFilterVC = segue.destination as? OneFilterOptionsListViewController,
+                  let coreDataManager = coreDataManager else { return }
+            oneFilterVC.affectedFiltre = coreDataManager.filtersList[index]
         }
     }
 }

@@ -15,18 +15,34 @@ class OneFilterOptionsListViewController: UIViewController {
         super.viewDidLoad()
         optionsUITableView.dataSource = self
         optionsUITableView.delegate = self
-        loadFilterOption()
+        loadViewControllerTitle()
+        
+        guard let appdelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let coredataStack = appdelegate.coreDataStack
+        coreDataManager = CoreDataRepo(coreDataStack: coredataStack)
     }
     
     // MARK: - Vars
-    var affectedFiltre: Filtre?
+    var affectedFiltre: FiltresCD?
+    
+    var optionAvailable: [OptionsFiltreCD] {
+        guard let affectedFiltre = affectedFiltre, let optionsAvailable = affectedFiltre.optionsAvailable else {
+            return [OptionsFiltreCD]()
+        }
+        return optionsAvailable.allObjects as! [OptionsFiltreCD]
+        //let optionToClear = OptionsFiltreCD().
+        //data.append()
+    }
+    
+    /// CoreData instance
+    private var coreDataManager: CoreDataRepo?
     
     // MARK: - IBOutlet
     @IBOutlet weak var optionsUITableView: UITableView!
     
     // MARK: - Functions
     
-    private func loadFilterOption() {
+    private func loadViewControllerTitle() {
         guard let affectedFiltre = affectedFiltre else {
             self.title = "Inconnu"
             return
@@ -44,16 +60,17 @@ extension OneFilterOptionsListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let affectedFiltre = affectedFiltre else {
+        guard let affectedFiltre = affectedFiltre,
+                let optionsAvailable = affectedFiltre.optionsAvailable else {
             return 0
         }
-        return affectedFiltre.options.count
+        return optionsAvailable.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let index = indexPath.row
         let cell = UITableViewCell(style: .default, reuseIdentifier: "oneOptionReuseID")
-        cell.textLabel?.text = affectedFiltre?.options[index].optionHumanName
+        cell.textLabel?.text = optionAvailable[index].humanName
         return cell
     }
 }
@@ -61,11 +78,14 @@ extension OneFilterOptionsListViewController: UITableViewDataSource {
 // MARK: - Extension - TableView - Delegate
 
 extension OneFilterOptionsListViewController: UITableViewDelegate {
-   // tableView(_:accessoryButtonTappedForRowWith:)
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let affectedRow = tableView.cellForRow(at: indexPath) else { return }
         affectedRow.accessoryType = .checkmark
+        let index = indexPath.row
+        let selectedOptionCD = optionAvailable[index]
+        guard let coreDataManager = coreDataManager, let affectedFiltre = affectedFiltre else { return }
+        coreDataManager.editFiltreCurrentOption(for: affectedFiltre, with: selectedOptionCD)
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
