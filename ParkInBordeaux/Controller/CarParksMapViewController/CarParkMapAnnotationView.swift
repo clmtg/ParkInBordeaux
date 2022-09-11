@@ -55,6 +55,7 @@ class CarParkMapAnnotationView: MKAnnotationView {
     /// - Returns: Image of the generated camembert graph
     private func drawRatio(carSpotsFree: Int, carSpotsGlobal: Int, fractionColor: UIColor?, wholeColor: UIColor?) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: 40, height: 40))
+        //return UIImage(systemName: "figure.roll")!
         return renderer.image { _ in
             // Fill full circle with wholeColor
             wholeColor?.setFill()
