@@ -24,8 +24,7 @@ final class CarParksMapViewController: UIViewController {
         loadCarParksDataSet()
     }
     
-    
-    
+
     // MARK: - Vars
     /// Model instance
     let carParkCore = CarParksCoreService()

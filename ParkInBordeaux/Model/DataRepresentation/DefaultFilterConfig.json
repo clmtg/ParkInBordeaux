@@ -134,7 +134,7 @@
     },
     {
       "sysmName" : "etat",
-      "humanName" : "État du parking",
+      "humanName" : "Etat du parking",
       "options": [
         {
           "optionSystemName" : "LIBRE",

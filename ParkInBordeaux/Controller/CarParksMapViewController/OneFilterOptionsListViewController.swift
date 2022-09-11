@@ -16,6 +16,7 @@ class OneFilterOptionsListViewController: UIViewController {
         optionsUITableView.dataSource = self
         optionsUITableView.delegate = self
         loadViewControllerTitle()
+        setupTableView()
         
         guard let appdelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let coredataStack = appdelegate.coreDataStack
@@ -29,9 +30,8 @@ class OneFilterOptionsListViewController: UIViewController {
         guard let affectedFiltre = affectedFiltre, let optionsAvailable = affectedFiltre.optionsAvailable else {
             return [OptionsFiltreCD]()
         }
-        return optionsAvailable.allObjects as! [OptionsFiltreCD]
-        //let optionToClear = OptionsFiltreCD().
-        //data.append()
+        let unsortedOptions = optionsAvailable.allObjects as! [OptionsFiltreCD]
+        return unsortedOptions.sorted(by: { $0.humanName! < $1.humanName! })
     }
     
     /// CoreData instance
@@ -48,6 +48,10 @@ class OneFilterOptionsListViewController: UIViewController {
             return
         }
         self.title = affectedFiltre.humanName
+    }
+    
+    func setupTableView(){
+        optionsUITableView.allowsMultipleSelection = false
     }
 }
 
@@ -71,6 +75,14 @@ extension OneFilterOptionsListViewController: UITableViewDataSource {
         let index = indexPath.row
         let cell = UITableViewCell(style: .default, reuseIdentifier: "oneOptionReuseID")
         cell.textLabel?.text = optionAvailable[index].humanName
+        
+        guard let affectedFiltre = affectedFiltre,
+              let affectedFiltreOptionId = affectedFiltre.currentOption?.id,
+              let cellOptionId = optionAvailable[index].id else { return  cell}
+        
+        if affectedFiltreOptionId == cellOptionId {
+            cell.accessoryType = .checkmark
+        }
         return cell
     }
 }
@@ -78,18 +90,19 @@ extension OneFilterOptionsListViewController: UITableViewDataSource {
 // MARK: - Extension - TableView - Delegate
 
 extension OneFilterOptionsListViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let affectedRow = tableView.cellForRow(at: indexPath) else { return }
         affectedRow.accessoryType = .checkmark
         let index = indexPath.row
         let selectedOptionCD = optionAvailable[index]
-        guard let coreDataManager = coreDataManager, let affectedFiltre = affectedFiltre else { return }
-        coreDataManager.editFiltreCurrentOption(for: affectedFiltre, with: selectedOptionCD)
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        guard let affectedRow = tableView.cellForRow(at: indexPath) else { return }
-        affectedRow.accessoryType = .none
+        guard let coreDataManager = coreDataManager,
+              let affectedFiltre = affectedFiltre else { return }
+        if affectedFiltre.currentOption?.id == selectedOptionCD.id {
+            coreDataManager.editFiltreCurrentOption(for: affectedFiltre, with: nil)
+        }
+        else {
+            coreDataManager.editFiltreCurrentOption(for: affectedFiltre, with: selectedOptionCD)
+        }
+        tableView.reloadData()
     }
 }

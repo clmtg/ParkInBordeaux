@@ -42,7 +42,7 @@ final class CoreDataRepo {
         guard let defaultFiltersList = getDefaultFilterConfigFromJson() else { return }
         defaultFiltersList.fitres.forEach { oneFiltre in
             addFilterToConfig(oneFiltre.humanName, oneFiltre.sysmName, oneFiltre.options) { resultFilterAdded in
-                print("Nous avons essayé d'ajouter un filtre")
+                return
             }
         }
     }
@@ -113,5 +113,13 @@ final class CoreDataRepo {
         }
         coreDataStack.saveContext()
         
+    }
+    
+    func getFilterDetailWithID(_ idLooked: UUID) -> FiltresCD? {
+        let filterRequest: NSFetchRequest<FiltresCD> = FiltresCD.fetchRequest()
+        let filterCDFilter = NSPredicate(format: "id == %@", idLooked as CVarArg)
+        filterRequest.predicate = filterCDFilter
+        guard let dataFilter = try? coreDataStack.mainContext.fetch(filterRequest), dataFilter.count == 1 else { return nil }
+        return dataFilter.first
     }
 }
