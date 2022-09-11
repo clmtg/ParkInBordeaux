@@ -48,13 +48,13 @@ final class CarParksCoreService {
     /// Retreive car park occupency using OpenData Bordeaux api then parse the data to perform a closure
     /// - Parameter completionHandler: closure which would pass a CarParks var  ( = [OneCarParkStruct]) for success of a CarParksServiceError for failure
     func getLatestUpdate(_ completionHandler: @escaping (Result<[OneCarParkStruct],CarParksServiceError>) -> Void) {
-        
+        self.carParksData.removeAll()
         var endpoindToUse = ApiEndpoint.getGlobalEndpoint()
         
         if let endpoind = ApiEndpoint.getEndpointWithConfigFilter() {
             endpoindToUse = endpoind
         }
-        
+    
         getCarParksAvailabilityFromGeojson(with: endpoindToUse) { resultGeojsonFeatures in
             guard case .success(let geojsonFeaturesData) = resultGeojsonFeatures else {
                 completionHandler(.failure(.networkCallFailed))

@@ -21,6 +21,7 @@ final class CarParksMapViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         carParksMapViewController.removeAnnotations(annotationDisplayed)
+        annotationDisplayed.removeAll()
         loadCarParksDataSet()
     }
     
@@ -39,6 +40,14 @@ final class CarParksMapViewController: UIViewController {
         }
     }
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
+    @IBAction func didtapReload(_ sender: Any) {
+        carParksMapViewController.removeAnnotations(annotationDisplayed)
+        annotationDisplayed.removeAll()
+        loadCarParksDataSet()
+    }
+    
     
     // MARK: - IBAction
     
@@ -60,8 +69,6 @@ final class CarParksMapViewController: UIViewController {
     private func setupCompassButton() {
         let compass = MKCompassButton(mapView: carParksMapViewController)
         compass.compassVisibility = .visible
-        //navigationItem.rightBarButtonItem = UIBarButtonItem(customView: compass)
-        //carParksMapViewController.showsCompass = true
     }
     
     
@@ -74,14 +81,17 @@ final class CarParksMapViewController: UIViewController {
     /// Retreive the information related to the car parks provided by the model and load them up into the MapViewController
     func loadCarParksDataSet() {
         self.carParkCore.getLatestUpdate() { resultCarParkData in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [self] in
                 self.displayLoadingView(true)
                 guard case .success(let carParksData) = resultCarParkData else {
                     if case .failure(let errorInfo) = resultCarParkData {
                         self.displayAnAlert(title: "Oups", message: errorInfo.description, actions: nil)
+                        self.displayLoadingView(false)
                     }
                     return
                 }
+                
+                
                 carParksData.forEach { oneCarPark in
                     if let location = oneCarPark.location, let properties = oneCarPark.properties {
                         
@@ -89,14 +99,12 @@ final class CarParksMapViewController: UIViewController {
                                                                       title: properties.nom ?? "No name",
                                                                       subtitle: properties.etat ?? "Inconnu",
                                                                       carParkInfo: oneCarPark)
-                        
+                    
                         self.annotationDisplayed.append(affectedAnnotation)
-                        
                         self.carParksMapViewController.addAnnotation(affectedAnnotation)
                     }
                 }
                 self.displayLoadingView(false)
-                
             }
         }
     }

@@ -29,7 +29,7 @@ class FiltersSettingsViewController: UIViewController {
     
     private var filtresList: [FiltresCD] {
         guard let coreDataManager = coreDataManager else { return [FiltresCD]() }
-        var list = coreDataManager.filtersList
+        let list = coreDataManager.filtersList
         return list.sorted(by: {$0.humanName! < $1.humanName!})
     }
 
