@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 //Give the ability to encode parameters filters for the related API call to to the car park service
 // MARK: - FiltersInfo
 public struct EndpointFilters: Encodable {

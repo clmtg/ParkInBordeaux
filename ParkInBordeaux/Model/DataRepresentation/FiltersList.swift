@@ -9,16 +9,13 @@ import Foundation
 
 // This is used to create the default database or filter related to the app.
 // The raw config is located within the file DefaultFilterConfig.json
-
-
-
 // MARK: - FiltersList
 struct FiltersList: Decodable {
-    let fitres: [Filtre]
+    let filters: [Filter]
 }
 
 // MARK: - Fitre
-struct Filtre: Decodable {
+struct Filter: Decodable {
     let sysmName, humanName: String
     let options: [OptionsForOneFilter]
 }

@@ -30,7 +30,6 @@ class CarParkMapAnnotationView: MKAnnotationView {
     }
     
     // MARK: - Vars
-    
     override var annotation: MKAnnotation? {
             willSet {
                 clusteringIdentifier = CarParksClusterAnnotationViewMaker.reuseID

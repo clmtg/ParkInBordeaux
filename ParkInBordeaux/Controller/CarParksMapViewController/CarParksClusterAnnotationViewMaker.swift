@@ -11,6 +11,7 @@ import MapKit
 /// Used to display a cluster of CarParkMapAnnotation
 class CarParksClusterAnnotationViewMaker: MKMarkerAnnotationView {
     
+    /// Id used to reused MapAnnotation. Performance related (avoid to create new annotation again and agin whereas annotation could be reused )
     static let reuseID = "clusterAnnotation"
     
     // MARK: - Initializer

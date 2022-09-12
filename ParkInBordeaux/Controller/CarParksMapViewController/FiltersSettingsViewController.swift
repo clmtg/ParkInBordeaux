@@ -7,13 +7,14 @@
 
 import UIKit
 
+/// View controller handling filters menu. This is not the view controller handling filter options selections
 class FiltersSettingsViewController: UIViewController {
 
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         filtersSettingsNavigatonBar.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(resetFilterSelection))
         filtersSettingsNavigatonBar.rightBarButtonItem = UIBarButtonItem(title: "OK", style: .plain, target: self, action: #selector(didTapSaveFiltersSettings))
-        
         guard let appdelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let coredataStack = appdelegate.coreDataStack
         coreDataManager = CoreDataRepo(coreDataStack: coredataStack)
@@ -27,8 +28,9 @@ class FiltersSettingsViewController: UIViewController {
     /// CoreData instance
     private var coreDataManager: CoreDataRepo?
     
-    private var filtresList: [FiltresCD] {
-        guard let coreDataManager = coreDataManager else { return [FiltresCD]() }
+    /// List of filter wich can be edited and apply on the map
+    private var filtresList: [FiltersCD] {
+        guard let coreDataManager = coreDataManager else { return [FiltersCD]() }
         let list = coreDataManager.filtersList
         return list.sorted(by: {$0.humanName! < $1.humanName!})
     }
@@ -38,7 +40,8 @@ class FiltersSettingsViewController: UIViewController {
     @IBOutlet weak var filtersOptionsUITableView: UITableView!
     
     // MARK: - Functions
-
+    
+    /// Performed when Reset button (within navagication view controller) is tapped. Remove all filter applied to the map
     @objc private func resetFilterSelection(){
         coreDataManager?.resetFilter()
         filtersOptionsUITableView.reloadData()
@@ -52,7 +55,6 @@ class FiltersSettingsViewController: UIViewController {
 // MARK: - Extensions - UITableView
 
 extension FiltersSettingsViewController: UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -67,7 +69,7 @@ extension FiltersSettingsViewController: UITableViewDataSource {
         }
         let index = indexPath.row
         let affectedFilter = filtresList[index]
-        cell.configure(for: affectedFilter.humanName ?? "Inconnu", filterValue: affectedFilter.currentOption?.humanName ?? "Aucune")
+        cell.configure(for: affectedFilter.humanName ?? "Inconnu", filterValue: affectedFilter.currentOption?.humanName ?? "")
         cell.accessoryType = .disclosureIndicator
         return cell
     }

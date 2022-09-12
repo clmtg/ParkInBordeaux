@@ -10,8 +10,7 @@ import SwiftUI
 
 /// Struct which defines endpoints for the OpenData Bordeaux api.
 struct ApiEndpoint {
- 
-    
+
     // MARK: - Vars
     /// The endpoint to reach. (Part added after the api address. E.g.: myapi.com/path)
     var path: String
@@ -45,27 +44,8 @@ extension ApiEndpoint {
         return endpoint.url
     }
     
-    static func getEndpointWithFilter(_ filters: [String: String]?) -> URL {
-        // Checking if filters have been provided and then generated related JSON based on struct EndpointFilters
-        guard let filtersData = filters else {
-            return ApiEndpoint.getGlobalEndpoint()
-        }
-        var endpointFilters = EndpointFilters()
-        filtersData.forEach { oneFilter in
-            endpointFilters.filters.append([oneFilter.key : oneFilter.value])
-        }
-        guard let data = try? JSONEncoder().encode(endpointFilters),
-              let dataString = String(data: data, encoding: .utf8) else {
-            return ApiEndpoint.getGlobalEndpoint()
-        }
-        let endpoint = ApiEndpoint(path: "geojson", queryItems: [
-            .init(name: "key", value: ApiInfo.OpenDataBdx),
-            .init(name: "typename", value: "st_park_p"),
-            .init(name: "filter", value: dataString)
-        ])
-        return endpoint.url
-    }
-    
+    /// Return the endpoint to reach in order to retreive the data where a filter has been applied (retrieved using CoreData)
+    /// - Returns: URL to reach 
     static func getEndpointWithConfigFilter() -> URL? {
         guard let appdelegate = UIApplication.shared.delegate as? AppDelegate else { return nil}
         let coredataStack = appdelegate.coreDataStack
@@ -90,5 +70,4 @@ extension ApiEndpoint {
         ])
         return endpoint.url
     }
-
 }

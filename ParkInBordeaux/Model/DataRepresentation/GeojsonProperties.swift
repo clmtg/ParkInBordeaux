@@ -9,7 +9,6 @@ import Foundation
 
 // MARK: - GeojsonProperties
 struct GeojsonProperties: Decodable{
-    
     var nom: String?
     var etat: String?
     var ident: String?
@@ -17,5 +16,4 @@ struct GeojsonProperties: Decodable{
     var np_total: Int?
     var libres: Int?
     var adresse: String?
-    
 }

@@ -15,7 +15,6 @@ enum CarParksServiceError: Error {
     case networkCallFailed
     case noCarParkWithinArea
     case localDataCorrupt
-    
 }
 
 extension CarParksServiceError: CustomStringConvertible {

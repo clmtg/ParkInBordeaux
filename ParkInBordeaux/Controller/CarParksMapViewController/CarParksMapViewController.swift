@@ -12,7 +12,6 @@ import MapKit
 final class CarParksMapViewController: UIViewController {
 
     // MARK: - LifeCyle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setCarParksMapView()
@@ -25,7 +24,6 @@ final class CarParksMapViewController: UIViewController {
         reloadDataOnMapViewBasedOnNewConfig()
     }
     
-
     // MARK: - Vars
     /// Model instance
     let carParkCore = CarParksCoreService()
@@ -69,13 +67,13 @@ final class CarParksMapViewController: UIViewController {
         compass.compassVisibility = .visible
     }
     
-    
     /// Register the classes generating customer MKAnnotationView. This is uses to reload MkAnnotation rather than generated new one
     func registerAnnotationViewClasses() {
         carParksMapViewController.register(CarParkMapAnnotationView.self, forAnnotationViewWithReuseIdentifier: CarParkMapAnnotationView.reuseID)
         carParksMapViewController.register(CarParksClusterAnnotationViewMaker.self, forAnnotationViewWithReuseIdentifier: CarParksClusterAnnotationViewMaker.reuseID)
     }
     
+    /// Used to reload data within MapView following a refresh or a new config filter
     func reloadDataOnMapViewBasedOnNewConfig(){
         carParksMapViewController.removeAnnotations(annotationDisplayed)
         annotationDisplayed.removeAll()
@@ -106,7 +104,6 @@ final class CarParksMapViewController: UIViewController {
                                                                       title: properties.nom ?? "No name",
                                                                       subtitle: properties.etat ?? "Inconnu",
                                                                       carParkInfo: oneCarPark)
-                    
                         self.annotationDisplayed.append(affectedAnnotation)
                         self.carParksMapViewController.addAnnotation(affectedAnnotation)
                     }
@@ -116,16 +113,13 @@ final class CarParksMapViewController: UIViewController {
         }
     }
     
-    
     func displayLoadingView(_ status: Bool) {
         self.activityIndicatorViewController.isHidden = !status
         self.carParksMapViewController.isUserInteractionEnabled = !status
     }
-    
-    
 }
 
-// MARK: - Extensions - Maps
+// MARK: - Extensions - Maps - Delegate
 extension CarParksMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -155,7 +149,6 @@ extension CarParksMapViewController: MKMapViewDelegate {
 
 // MARK: - Extensions - Segue
 extension CarParksMapViewController {
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueFromMapToDetails" {
             guard let carParkDetailsVC = segue.destination as? CarParkDetailsViewController,

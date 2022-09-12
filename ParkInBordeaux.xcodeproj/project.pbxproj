@@ -14,9 +14,9 @@
 		EB1E375428B8AFBD00F464A0 /* CarParksMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1E374F28B8AFBD00F464A0 /* CarParksMapViewController.swift */; };
 		EB2FB25428CB0E13007A906F /* CoreDataRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2FB25328CB0E13007A906F /* CoreDataRepo.swift */; };
 		EB2FB25628CB0E46007A906F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2FB25528CB0E46007A906F /* CoreDataStack.swift */; };
-		EB2FB31628CB11F9007A906F /* ParkInBordeauxDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB2FB31428CB11F9007A906F /* ParkInBordeauxDataModel.xcdatamodeld */; };
 		EB371AA428C1E1CF001DD50D /* FiltersSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB371AA328C1E1CF001DD50D /* FiltersSettingsViewController.swift */; };
 		EB371AA628C33484001DD50D /* oneFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB371AA528C33484001DD50D /* oneFilterTableViewCell.swift */; };
+		EB38D6BA28CF30B000AD5629 /* ParkInBordeauxDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB38D6B828CF30B000AD5629 /* ParkInBordeauxDataModel.xcdatamodeld */; };
 		EB45D17E28C9377A006CCDF6 /* OneFilterOptionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB45D17D28C9377A006CCDF6 /* OneFilterOptionsListViewController.swift */; };
 		EB5592AB28AD75DA00FEF6B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5592AA28AD75DA00FEF6B9 /* AppDelegate.swift */; };
 		EB5592AD28AD75DA00FEF6B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5592AC28AD75DA00FEF6B9 /* SceneDelegate.swift */; };
@@ -66,9 +66,9 @@
 		EB1E374F28B8AFBD00F464A0 /* CarParksMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarParksMapViewController.swift; sourceTree = "<group>"; };
 		EB2FB25328CB0E13007A906F /* CoreDataRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepo.swift; sourceTree = "<group>"; };
 		EB2FB25528CB0E46007A906F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		EB2FB31528CB11F9007A906F /* ParkInBordeauxDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ParkInBordeauxDataModel.xcdatamodel; sourceTree = "<group>"; };
 		EB371AA328C1E1CF001DD50D /* FiltersSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersSettingsViewController.swift; sourceTree = "<group>"; };
 		EB371AA528C33484001DD50D /* oneFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oneFilterTableViewCell.swift; sourceTree = "<group>"; };
+		EB38D6B928CF30B000AD5629 /* ParkInBordeauxDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ParkInBordeauxDataModel.xcdatamodel; sourceTree = "<group>"; };
 		EB45D17D28C9377A006CCDF6 /* OneFilterOptionsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneFilterOptionsListViewController.swift; sourceTree = "<group>"; };
 		EB5592A728AD75DA00FEF6B9 /* ParkInBordeaux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkInBordeaux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5592AA28AD75DA00FEF6B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 			children = (
 				EB2FB25328CB0E13007A906F /* CoreDataRepo.swift */,
 				EB2FB25528CB0E46007A906F /* CoreDataStack.swift */,
-				EB2FB31428CB11F9007A906F /* ParkInBordeauxDataModel.xcdatamodeld */,
+				EB38D6B828CF30B000AD5629 /* ParkInBordeauxDataModel.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -409,7 +409,7 @@
 				EB1E375328B8AFBD00F464A0 /* CarParkDetailsViewController.swift in Sources */,
 				EBF8011228B91E8000A9DE1D /* SetupPartTwoViewController.swift in Sources */,
 				EB9BFA1928C89F05002CB733 /* ExtBundle.swift in Sources */,
-				EB2FB31628CB11F9007A906F /* ParkInBordeauxDataModel.xcdatamodeld in Sources */,
+				EB38D6BA28CF30B000AD5629 /* ParkInBordeauxDataModel.xcdatamodeld in Sources */,
 				EB2FB25628CB0E46007A906F /* CoreDataStack.swift in Sources */,
 				EB5592AD28AD75DA00FEF6B9 /* SceneDelegate.swift in Sources */,
 				EB84218C28AF64B500BDEC1F /* ExtUIViewController.swift in Sources */,
@@ -715,12 +715,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		EB2FB31428CB11F9007A906F /* ParkInBordeauxDataModel.xcdatamodeld */ = {
+		EB38D6B828CF30B000AD5629 /* ParkInBordeauxDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				EB2FB31528CB11F9007A906F /* ParkInBordeauxDataModel.xcdatamodel */,
+				EB38D6B928CF30B000AD5629 /* ParkInBordeauxDataModel.xcdatamodel */,
 			);
-			currentVersion = EB2FB31528CB11F9007A906F /* ParkInBordeauxDataModel.xcdatamodel */;
+			currentVersion = EB38D6B928CF30B000AD5629 /* ParkInBordeauxDataModel.xcdatamodel */;
 			path = ParkInBordeauxDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

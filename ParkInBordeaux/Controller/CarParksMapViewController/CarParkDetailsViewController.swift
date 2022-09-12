@@ -24,7 +24,7 @@ class CarParkDetailsViewController: UIViewController {
     /// Affected car park name
     var carParkName: String {
         guard let name = affectedCarpark?.carParkInfo?.properties?.nom else {
-            return ""
+            return "Inconnu"
         }
         return name
     }

@@ -7,30 +7,31 @@
 
 import UIKit
 
+/// View controller handling filter option selection
 class OneFilterOptionsListViewController: UIViewController {
     
     // MARK: - LifeCycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         optionsUITableView.dataSource = self
         optionsUITableView.delegate = self
         loadViewControllerTitle()
         setupTableView()
-        
         guard let appdelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let coredataStack = appdelegate.coreDataStack
         coreDataManager = CoreDataRepo(coreDataStack: coredataStack)
     }
     
     // MARK: - Vars
-    var affectedFiltre: FiltresCD?
+    /// The filter affected by the current edit
+    var affectedFiltre: FiltersCD?
     
-    var optionAvailable: [OptionsFiltreCD] {
+    /// The option available for the filter being edited
+    var optionAvailable: [OptionsFilterCD] {
         guard let affectedFiltre = affectedFiltre, let optionsAvailable = affectedFiltre.optionsAvailable else {
-            return [OptionsFiltreCD]()
+            return [OptionsFilterCD]()
         }
-        let unsortedOptions = optionsAvailable.allObjects as! [OptionsFiltreCD]
+        let unsortedOptions = optionsAvailable.allObjects as! [OptionsFilterCD]
         return unsortedOptions.sorted(by: { $0.humanName! < $1.humanName! })
     }
     
@@ -38,10 +39,11 @@ class OneFilterOptionsListViewController: UIViewController {
     private var coreDataManager: CoreDataRepo?
     
     // MARK: - IBOutlet
+    /// Table view listing the filter options
     @IBOutlet weak var optionsUITableView: UITableView!
     
     // MARK: - Functions
-    
+    /// Set the view controller title based on the affected filter being edited
     private func loadViewControllerTitle() {
         guard let affectedFiltre = affectedFiltre else {
             self.title = "Inconnu"
@@ -50,13 +52,13 @@ class OneFilterOptionsListViewController: UIViewController {
         self.title = affectedFiltre.humanName
     }
     
+    /// Set the table view listing the options for the filter being edited
     func setupTableView(){
         optionsUITableView.allowsMultipleSelection = false
     }
 }
 
 // MARK: - Extension - TableView - DataSource
-
 extension OneFilterOptionsListViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -88,7 +90,6 @@ extension OneFilterOptionsListViewController: UITableViewDataSource {
 }
 
 // MARK: - Extension - TableView - Delegate
-
 extension OneFilterOptionsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let affectedRow = tableView.cellForRow(at: indexPath) else { return }
@@ -98,10 +99,10 @@ extension OneFilterOptionsListViewController: UITableViewDelegate {
         guard let coreDataManager = coreDataManager,
               let affectedFiltre = affectedFiltre else { return }
         if affectedFiltre.currentOption?.id == selectedOptionCD.id {
-            coreDataManager.editFiltreCurrentOption(for: affectedFiltre, with: nil)
+            coreDataManager.editFilterCurrentOption(for: affectedFiltre, with: nil)
         }
         else {
-            coreDataManager.editFiltreCurrentOption(for: affectedFiltre, with: selectedOptionCD)
+            coreDataManager.editFiltetCurrentOption(for: affectedFiltre, with: selectedOptionCD)
         }
         tableView.reloadData()
     }

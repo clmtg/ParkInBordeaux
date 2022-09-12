@@ -15,19 +15,20 @@ final class CarParksCoreService {
     /// URLSession handling the call to the REST apis
     private let session: URLSession
     
+    /// Array of  OneCarParkStruct
     var carParksData = CarParks()
 
     // MARK: - initializer
     init(session: URLSession = .shared) {
-        
         self.session = session
     }
     
     // MARK: - Functions
     /// Perform the  network calls needed in order to retreive the update data set for all the car parks
     /// - Parameter completionHandler: Steps to perform if this is a success or a failure
+    /// - Parameter endpoint: The endpoint to reach in order to retreive the geojson.
+    /// This URL may differs based on filters applied
     private func getCarParksAvailabilityFromGeojson(with endpoint: URL, completionHandler: @escaping (Result<[MKGeoJSONFeature],CarParksServiceError>) -> Void) {
-        
         session.dataTask(with: endpoint) { dataReceived, responseReceived, errorReceived in
             guard let data = dataReceived, errorReceived == nil else {
                 completionHandler(.failure(.corruptData))
@@ -50,11 +51,9 @@ final class CarParksCoreService {
     func getLatestUpdate(_ completionHandler: @escaping (Result<[OneCarParkStruct],CarParksServiceError>) -> Void) {
         self.carParksData.removeAll()
         var endpoindToUse = ApiEndpoint.getGlobalEndpoint()
-        
         if let endpoind = ApiEndpoint.getEndpointWithConfigFilter() {
             endpoindToUse = endpoind
         }
-    
         getCarParksAvailabilityFromGeojson(with: endpoindToUse) { resultGeojsonFeatures in
             guard case .success(let geojsonFeaturesData) = resultGeojsonFeatures else {
                 completionHandler(.failure(.networkCallFailed))
@@ -62,18 +61,15 @@ final class CarParksCoreService {
             }
             geojsonFeaturesData.forEach { oneFeature in
                 if let geometrey = oneFeature.geometry.first, let jsonProperties = oneFeature.properties {
-                    
                     //let decoder = JSONDecoder()
                     //decoder.keyDecodingStrategy = .convertFromSnakeCase
                     if let properties = try? JSONDecoder().decode(GeojsonProperties.self, from: jsonProperties) {
-                        
                         if let id = properties.ident {
                             self.carParksData.append(OneCarParkStruct(for: id, location:  geometrey.coordinate, properties: properties))
                         }
                     }
                 }
             }
-            
             if(self.carParksData.isEmpty) {
                 completionHandler(.failure(.noCarParkWithinArea))
             } else {

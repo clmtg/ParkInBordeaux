@@ -10,6 +10,7 @@ import MapKit
 
 typealias CarParks = [OneCarParkStruct]
 
+/// Does represente a car park.  (Location/capacity/available spots,etc ...)
 struct OneCarParkStruct {
     // MARK: - Vars
     /// Car park id
@@ -18,14 +19,14 @@ struct OneCarParkStruct {
     var location: CLLocationCoordinate2D?
     /// Car park properties 
     var properties: GeojsonProperties?
-    
+    /// Amount of free car spots
     var carSpotsFree: Int {
         guard let properties = properties else {
             return 0
         }
         return properties.libres ?? 0
     }
-    
+    /// Amount of available car spot (also know as capacity) for the affected car park
     var carSpotsAmount: Int {
         guard let properties = properties else {
             return 0
