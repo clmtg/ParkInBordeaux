@@ -3,7 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,15 +23,6 @@
                                     <outlet property="delegate" destination="Ifp-Nz-eNL" id="V9W-eK-yPb"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kl4-1D-8TB">
-                                <rect key="frame" x="10.000000000000004" y="54" width="61.333333333333343" height="46.666666666666657"/>
-                                <buttonConfiguration key="configuration" style="plain" buttonSize="large">
-                                    <imageReference key="image" image="gearshape.circle.fill" catalog="system" symbolScale="large"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="m9l-fK-MKc" kind="show" id="UtL-y3-5K2"/>
-                                </connections>
-                            </button>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IdL-k8-Dxy" userLabel="activityIndicatorView">
                                 <rect key="frame" x="145" y="372" width="100" height="100"/>
                                 <subviews>
@@ -47,14 +38,18 @@
                                     <constraint firstItem="rbh-MQ-NHU" firstAttribute="centerY" secondItem="IdL-k8-Dxy" secondAttribute="centerY" id="k6R-DS-dpj"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oUl-9c-7ky">
-                                <rect key="frame" x="252" y="143" width="85" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGO-As-ZIS">
+                                <rect key="frame" x="152" y="44" width="86" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="59T-9T-gpP"/>
+                                </constraints>
+                                <color key="tintColor" name="filterButton"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Reload" buttonSize="large"/>
+                                <buttonConfiguration key="configuration" style="filled" image="camera.filters" catalog="system" title="Filtres">
+                                    <color key="baseBackgroundColor" name="filterButton"/>
+                                </buttonConfiguration>
                                 <connections>
-                                    <action selector="didtapReload:" destination="Ifp-Nz-eNL" eventType="touchUpInside" id="taG-zU-2pu"/>
+                                    <segue destination="m9l-fK-MKc" kind="presentation" id="Kez-ci-iCf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -62,11 +57,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7ZW-VS-h5a" firstAttribute="trailing" secondItem="6KB-Bm-Ejf" secondAttribute="trailing" id="1Yu-1j-r8d"/>
-                            <constraint firstItem="Kl4-1D-8TB" firstAttribute="leading" secondItem="6KB-Bm-Ejf" secondAttribute="leading" constant="10" id="8BY-jw-OXA"/>
-                            <constraint firstItem="Kl4-1D-8TB" firstAttribute="top" secondItem="6KB-Bm-Ejf" secondAttribute="top" constant="10" id="GVO-6w-GcC"/>
+                            <constraint firstItem="LGO-As-ZIS" firstAttribute="top" secondItem="6KB-Bm-Ejf" secondAttribute="top" id="BSh-b5-MQf"/>
                             <constraint firstItem="7ZW-VS-h5a" firstAttribute="leading" secondItem="NQS-wk-RUM" secondAttribute="leading" id="N9g-D0-KAD"/>
                             <constraint firstAttribute="bottom" secondItem="7ZW-VS-h5a" secondAttribute="bottom" id="PgC-No-7bp"/>
                             <constraint firstItem="IdL-k8-Dxy" firstAttribute="centerX" secondItem="NQS-wk-RUM" secondAttribute="centerX" id="hkI-dJ-hbT"/>
+                            <constraint firstItem="LGO-As-ZIS" firstAttribute="centerX" secondItem="NQS-wk-RUM" secondAttribute="centerX" id="mTM-Mf-1EW"/>
                             <constraint firstItem="IdL-k8-Dxy" firstAttribute="centerY" secondItem="NQS-wk-RUM" secondAttribute="centerY" id="oC2-uU-22d"/>
                             <constraint firstItem="7ZW-VS-h5a" firstAttribute="top" secondItem="NQS-wk-RUM" secondAttribute="top" id="tvG-pJ-MV2"/>
                         </constraints>
@@ -77,6 +72,7 @@
                         <outlet property="activityIndicator" destination="rbh-MQ-NHU" id="YDK-3D-xKB"/>
                         <outlet property="activityIndicatorViewController" destination="IdL-k8-Dxy" id="cnK-uA-Izu"/>
                         <outlet property="carParksMapViewController" destination="7ZW-VS-h5a" id="r4g-FD-2WL"/>
+                        <outlet property="filterMenuUIButton" destination="LGO-As-ZIS" id="dGL-Zt-dez"/>
                         <segue destination="OJw-ip-zy9" kind="presentation" identifier="segueFromMapToDetails" id="B4P-4e-9Xo"/>
                     </connections>
                 </viewController>
@@ -100,12 +96,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ap-oG-Av7">
-                                <rect key="frame" x="50" y="64" width="290" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bienvenue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ap-oG-Av7">
+                                <rect key="frame" x="50" y="213.33333333333334" width="290" height="50.000000000000028"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="uVW-ji-FZK"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="61"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="61"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iJ-bE-SBQ">
+                                <rect key="frame" x="10" y="338.33333333333331" width="370" height="167.33333333333331"/>
+                                <string key="text">Se garer à Bordeaux n'a jamais été aussi simple.
+
+Ne perdez plus votre temps à chercher une place dans la Métropole de Bordeaux. Votre application
+Park in Bordeaux répertorie tous les parkings de la métropole.
+
+Suivez le guide.
+En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous vous y conduisons.</string>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -113,9 +122,13 @@
                         <viewLayoutGuide key="safeArea" id="GFl-Eo-oFJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="9iJ-bE-SBQ" firstAttribute="leading" secondItem="GFl-Eo-oFJ" secondAttribute="leading" constant="10" id="4IV-Js-IAc"/>
+                            <constraint firstItem="9iJ-bE-SBQ" firstAttribute="centerX" secondItem="3Tb-Am-Okp" secondAttribute="centerX" id="53R-pI-C9c"/>
+                            <constraint firstItem="9iJ-bE-SBQ" firstAttribute="centerY" secondItem="3Tb-Am-Okp" secondAttribute="centerY" id="GQc-Es-4dk"/>
                             <constraint firstItem="GFl-Eo-oFJ" firstAttribute="trailing" secondItem="2Ap-oG-Av7" secondAttribute="trailing" constant="50" id="ON4-sz-eHr"/>
+                            <constraint firstItem="GFl-Eo-oFJ" firstAttribute="trailing" secondItem="9iJ-bE-SBQ" secondAttribute="trailing" constant="10" id="XeX-fO-ilM"/>
                             <constraint firstItem="2Ap-oG-Av7" firstAttribute="leading" secondItem="GFl-Eo-oFJ" secondAttribute="leading" constant="50" id="edR-Kp-sME"/>
-                            <constraint firstItem="2Ap-oG-Av7" firstAttribute="top" secondItem="GFl-Eo-oFJ" secondAttribute="top" constant="20" id="nJo-lU-EfN"/>
+                            <constraint firstItem="9iJ-bE-SBQ" firstAttribute="top" secondItem="2Ap-oG-Av7" secondAttribute="bottom" constant="75" id="frd-6o-SIg"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -163,9 +176,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pP-7a-89V">
-                                <rect key="frame" x="50" y="754" width="290" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Commencer"/>
+                                <rect key="frame" x="95" y="744" width="200" height="36"/>
+                                <color key="backgroundColor" name="ratioRed"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Dzn-qW-pcy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Commencer"/>
                                 <connections>
                                     <action selector="didTappedTutorialButtonComplet:" destination="Kx3-Zs-pZa" eventType="touchUpInside" id="HEO-6C-iYf"/>
                                 </connections>
@@ -179,22 +198,34 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="carWash" translatesAutoresizingMaskIntoConstraints="NO" id="Ysk-Rh-HiK">
+                                <rect key="frame" x="95" y="322" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Jnb-lO-J3c"/>
+                                    <constraint firstAttribute="height" constant="200" id="kQ6-Do-FhC"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UjF-uD-pCX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="iYu-2b-rlr" firstAttribute="top" secondItem="UjF-uD-pCX" secondAttribute="top" constant="20" id="4Y1-uE-dzg"/>
                             <constraint firstItem="iYu-2b-rlr" firstAttribute="leading" secondItem="UjF-uD-pCX" secondAttribute="leading" constant="50" id="5dT-XG-Dhc"/>
-                            <constraint firstItem="UjF-uD-pCX" firstAttribute="trailing" secondItem="8pP-7a-89V" secondAttribute="trailing" constant="50" id="60h-oV-zwi"/>
-                            <constraint firstItem="UjF-uD-pCX" firstAttribute="bottom" secondItem="8pP-7a-89V" secondAttribute="bottom" constant="25" id="RK8-6f-mOX"/>
+                            <constraint firstItem="Ysk-Rh-HiK" firstAttribute="centerY" secondItem="Fud-Gn-3CA" secondAttribute="centerY" id="GDb-zP-8q9"/>
+                            <constraint firstItem="UjF-uD-pCX" firstAttribute="bottom" secondItem="8pP-7a-89V" secondAttribute="bottom" constant="30" id="RK8-6f-mOX"/>
+                            <constraint firstItem="Ysk-Rh-HiK" firstAttribute="centerX" secondItem="Fud-Gn-3CA" secondAttribute="centerX" id="ZKo-sH-Lbg"/>
                             <constraint firstItem="UjF-uD-pCX" firstAttribute="trailing" secondItem="iYu-2b-rlr" secondAttribute="trailing" constant="50" id="aEj-cM-nsN"/>
-                            <constraint firstItem="8pP-7a-89V" firstAttribute="leading" secondItem="UjF-uD-pCX" secondAttribute="leading" constant="50" id="kWe-z7-sVM"/>
+                            <constraint firstItem="8pP-7a-89V" firstAttribute="centerX" secondItem="Fud-Gn-3CA" secondAttribute="centerX" id="c8z-eZ-ADb"/>
+                            <constraint firstItem="Ysk-Rh-HiK" firstAttribute="centerX" secondItem="Fud-Gn-3CA" secondAttribute="centerX" id="hRs-x8-WmD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="startUIButton" destination="8pP-7a-89V" id="oBD-ho-O6A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ji-SW-j72" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2852" y="-1376"/>
+            <point key="canvasLocation" x="2850.7692307692305" y="-1376.3033175355449"/>
         </scene>
         <!--Filtres-->
         <scene sceneID="sSD-Ty-5vm">
@@ -421,24 +452,30 @@
                     <connections>
                         <outlet property="filtersOptionsUITableView" destination="WTq-nc-3BY" id="uGA-gE-DcL"/>
                         <outlet property="filtersSettingsNavigatonBar" destination="7Vk-Sd-vGz" id="izJ-2z-qTe"/>
+                        <segue destination="G0U-08-i0B" kind="unwind" identifier="segueFromFiltersListToMap" unwindAction="unwind:" id="nYZ-0s-EQa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVR-2D-zJq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="G0U-08-i0B" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1878.4615384615383" y="-350.47393364928911"/>
         </scene>
     </scenes>
     <resources>
-        <image name="gearshape.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="camera.filters" catalog="system" width="128" height="116"/>
+        <image name="carWash" width="480" height="481"/>
         <image name="map" catalog="system" width="128" height="110"/>
+        <namedColor name="filterButton">
+            <color red="0.17647058823529413" green="0.17254901960784313" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ratioRed">
+            <color red="1" green="0.27058823529411763" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

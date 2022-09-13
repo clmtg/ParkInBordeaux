@@ -24,6 +24,7 @@ class FiltersSettingsViewController: UIViewController {
         filtersOptionsUITableView.reloadData()
     }
     
+    
     // MARK: - Vars
     /// CoreData instance
     private var coreDataManager: CoreDataRepo?
@@ -48,7 +49,8 @@ class FiltersSettingsViewController: UIViewController {
     }
     
     @objc private func didTapSaveFiltersSettings() {
-        self.dismiss(animated: true)
+        //self.dismiss(animated: true)
+        performSegue(withIdentifier: "segueFromFiltersListToMap", sender: self)
     }
 }
 

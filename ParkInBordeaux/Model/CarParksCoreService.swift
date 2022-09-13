@@ -54,6 +54,7 @@ final class CarParksCoreService {
         if let endpoind = ApiEndpoint.getEndpointWithConfigFilter() {
             endpoindToUse = endpoind
         }
+        print(endpoindToUse)
         getCarParksAvailabilityFromGeojson(with: endpoindToUse) { resultGeojsonFeatures in
             guard case .success(let geojsonFeaturesData) = resultGeojsonFeatures else {
                 completionHandler(.failure(.networkCallFailed))

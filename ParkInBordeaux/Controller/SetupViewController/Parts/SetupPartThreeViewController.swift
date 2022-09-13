@@ -11,6 +11,7 @@ class SetupPartThreeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        startUIButton.layer.cornerRadius = 6
         
         guard let appdelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let coredataStack = appdelegate.coreDataStack
@@ -21,8 +22,10 @@ class SetupPartThreeViewController: UIViewController {
     /// CoreData instance
     private var coreDataManager: CoreDataRepo?
     
+    // MARK: - @IBOutlet
+    @IBOutlet weak var startUIButton: UIButton!
     
-    // MARK: - Functions
+    // MARK: - @IBAction
     
     @IBAction func didTappedTutorialButtonComplet(_ sender: Any) {
         UserDefaults.standard.set(true, forKey: "firstTimeFlag")

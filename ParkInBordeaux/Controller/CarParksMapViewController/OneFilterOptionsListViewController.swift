@@ -102,7 +102,7 @@ extension OneFilterOptionsListViewController: UITableViewDelegate {
             coreDataManager.editFilterCurrentOption(for: affectedFiltre, with: nil)
         }
         else {
-            coreDataManager.editFiltetCurrentOption(for: affectedFiltre, with: selectedOptionCD)
+            coreDataManager.editFilterCurrentOption(for: affectedFiltre, with: selectedOptionCD)
         }
         tableView.reloadData()
     }

@@ -41,7 +41,7 @@ class CarParkMapAnnotationView: MKAnnotationView {
     override func prepareForDisplay() {
         super.prepareForDisplay()
         if annotation is CarParkMapAnnotation {
-                image = drawRatio(carSpotsFree: getCarSpotsFree(), carSpotsGlobal: getCarSpotsAvailable(), fractionColor: UIColor.systemTeal, wholeColor: UIColor.systemOrange)
+                image = drawRatio(carSpotsFree: getCarSpotsFree(), carSpotsGlobal: getCarSpotsAvailable(), fractionColor: UIColor(named: "ratioPurple"), wholeColor: UIColor(named: "ratioRed"))
         }
     }
     
@@ -54,7 +54,6 @@ class CarParkMapAnnotationView: MKAnnotationView {
     /// - Returns: Image of the generated camembert graph
     private func drawRatio(carSpotsFree: Int, carSpotsGlobal: Int, fractionColor: UIColor?, wholeColor: UIColor?) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: 40, height: 40))
-        //return UIImage(systemName: "figure.roll")!
         return renderer.image { _ in
             // Fill full circle with wholeColor
             wholeColor?.setFill()
@@ -71,11 +70,16 @@ class CarParkMapAnnotationView: MKAnnotationView {
             piePath.fill()
 
             // Fill inner circle with white color
-            UIColor.white.setFill()
+            UIColor(named: "ratioBackgound")!.setFill()
             UIBezierPath(ovalIn: CGRect(x: 8, y: 8, width: 24, height: 24)).fill()
 
             // Finally draw count text vertically and horizontally centered
-            let attributes = [ NSAttributedString.Key.foregroundColor: UIColor.black,
+            var centerColor = UIColor(named: "ratioText")
+            if carSpotsFree == 0 {
+                centerColor = UIColor(named: "lightPink")
+            }
+            
+            let attributes = [ NSAttributedString.Key.foregroundColor: centerColor,
                                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20)]
             
             let text = "P"
@@ -89,19 +93,19 @@ class CarParkMapAnnotationView: MKAnnotationView {
     /// - Returns: Amount of car spot available for the affected car park
     private func getCarSpotsFree() -> Int {
         guard let annotation = annotation as? CarParkMapAnnotation,
-              let amountFreeSpot = annotation.carParkInfo?.carSpotsFree else {
-            return 0
-        }
-        return amountFreeSpot
+              let carPark = annotation.carParkInfo,
+              carPark.isClosed == false,
+              carPark.isFull == false else { return 0 }
+        return carPark.carSpotsFree
     }
     
     /// Used to get the amount of car spot (global (busy+free)) for the affected car park through the related annotation
     /// - Returns: Amount of car spot  for the affected car park
     private func getCarSpotsAvailable() -> Int {
         guard let annotation = annotation as? CarParkMapAnnotation,
-              let amountFreeSpot = annotation.carParkInfo?.carSpotsAmount else {
+              let spotAmount = annotation.carParkInfo?.carSpotsAmount else {
             return 0
         }
-        return amountFreeSpot
+        return spotAmount
     }
 }

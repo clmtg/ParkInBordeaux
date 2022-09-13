@@ -33,6 +33,34 @@ struct OneCarParkStruct {
         }
         return properties.np_total ?? 0
     }
+    /// Car park status (Open/Close/Free/...)
+    var carParkStatus: String? {
+        guard let properties = properties else {
+            return nil
+        }
+        return properties.etat
+    }
+    
+    /// Is the car park closed
+    var isClosed: Bool {
+        guard let carParkStatus = carParkStatus else { return false }
+        if carParkStatus == "FERME" {
+            return true
+        }
+        return false
+    }
+    
+    var isFull: Bool {
+        guard let carParkStatus = carParkStatus else { return false }
+        if carParkStatus == "COMPLET" {
+            return true
+        }
+        return false
+    }
+    
+    
+    
+    
     
     // MARK: - initializer
     init(for id: String?, location: CLLocationCoordinate2D?, properties: GeojsonProperties?) {

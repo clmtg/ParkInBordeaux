@@ -27,7 +27,7 @@ class CarParksClusterAnnotationViewMaker: MKMarkerAnnotationView {
     // MARK: - Functions
     override func prepareForDisplay() {
         super.prepareForDisplay()
-        //markerTintColor = UIColor.systemFill
+        markerTintColor = UIColor(named: "balloonAnnotation")
         displayPriority = .defaultLow
         animatesWhenAdded = true
     }

@@ -1,5 +1,5 @@
 {
-  "fitres": [
+  "filters": [
     {
       "sysmName" : "exploit",
       "humanName" : "Exploitant",
@@ -138,7 +138,7 @@
       "options": [
         {
           "optionSystemName" : "LIBRE",
-          "optionHumanName" : "Places libres disponibles (temps réel"
+          "optionHumanName" : "Places libres disponibles (temps réel)"
         },
         {
           "optionSystemName" : "COMPLET",

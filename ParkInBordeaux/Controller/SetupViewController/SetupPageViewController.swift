@@ -30,7 +30,6 @@ class SetupPageViewController: UIPageViewController {
         dataSource = self
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         pages.append(storyboard.instantiateViewController(withIdentifier: "SetupPartOneViewController"))
-        pages.append(storyboard.instantiateViewController(withIdentifier: "SetupPartTwoViewController"))
         pages.append(storyboard.instantiateViewController(withIdentifier: "SetupPartThreeViewController"))
         setViewControllers([pages[0]], direction: .forward, animated: true, completion: nil)
     }
@@ -39,8 +38,8 @@ class SetupPageViewController: UIPageViewController {
     func setupPagesController() {
         pageControl.addTarget(self, action: #selector(pageControlTapped(_:)), for: .valueChanged)
         pageControl.translatesAutoresizingMaskIntoConstraints = false
-        pageControl.currentPageIndicatorTintColor = .systemBlue
-        pageControl.pageIndicatorTintColor = .systemGray2
+        pageControl.currentPageIndicatorTintColor = UIColor(named: "ratioRed")
+        pageControl.pageIndicatorTintColor = UIColor(named: "lightPink")
         pageControl.numberOfPages = pages.count
         pageControl.currentPage = 0
         
@@ -77,7 +76,7 @@ extension SetupPageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let currentIndex = pages.firstIndex(of: viewController) else { return nil }
         if currentIndex == 0 {
-            return pages.last               // wrap to last
+            return nil               // wrap to last
         } else {
             return pages[currentIndex - 1]  // go previous
         }

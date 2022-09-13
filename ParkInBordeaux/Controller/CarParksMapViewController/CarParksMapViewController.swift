@@ -10,7 +10,7 @@ import MapKit
 
 /// View controller for the view displaying the MapsView with annotations for
 final class CarParksMapViewController: UIViewController {
-
+    
     // MARK: - LifeCyle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,11 @@ final class CarParksMapViewController: UIViewController {
     // MARK: - Vars
     /// Model instance
     let carParkCore = CarParksCoreService()
-    var annotationDisplayed = [MKAnnotation]()
+    var annotationDisplayed = [MKAnnotation]() {
+        didSet {
+            setFilterButtonTitle()
+        }
+    }
     /// CoreData instance
     private var coreDataManager: CoreDataRepo?
     
@@ -40,22 +44,22 @@ final class CarParksMapViewController: UIViewController {
         }
     }
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var filterMenuUIButton: UIButton!
+    
+    
     
     // MARK: - IBAction
-
-    @IBAction func didtapReload(_ sender: Any) {
-        reloadDataOnMapViewBasedOnNewConfig()
-    }
     
     // MARK: - Functions
     
     /// Set the MKMapView which will be used within the view. (Region limit, zoom limit, initial location, etc ...)
     private func setCarParksMapView() {
         let cityCenterLocation = CLLocationCoordinate2D(latitude: 44.84203155780349, longitude: -0.5744705263091234)
-        let region = MKCoordinateRegion(center: cityCenterLocation, latitudinalMeters: 7000, longitudinalMeters: 7000)
-        carParksMapViewController.setRegion(region, animated: true)
-        carParksMapViewController.setCameraBoundary(MKMapView.CameraBoundary(coordinateRegion: region), animated: true)
-        let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 40000)
+        let regionCenter = MKCoordinateRegion(center: cityCenterLocation, latitudinalMeters: 7000, longitudinalMeters: 7000)
+        let regionAccessible = MKCoordinateRegion(center: cityCenterLocation, latitudinalMeters: 25000, longitudinalMeters: 25000)
+        carParksMapViewController.setRegion(regionCenter, animated: true)
+        carParksMapViewController.setCameraBoundary(MKMapView.CameraBoundary(coordinateRegion: regionAccessible), animated: true)
+        let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 60000)
         carParksMapViewController.setCameraZoomRange(zoomRange, animated: true)
         setupCompassButton()
         registerAnnotationViewClasses()
@@ -73,18 +77,32 @@ final class CarParksMapViewController: UIViewController {
         carParksMapViewController.register(CarParksClusterAnnotationViewMaker.self, forAnnotationViewWithReuseIdentifier: CarParksClusterAnnotationViewMaker.reuseID)
     }
     
-    /// Used to reload data within MapView following a refresh or a new config filter
-    func reloadDataOnMapViewBasedOnNewConfig(){
-        carParksMapViewController.removeAnnotations(annotationDisplayed)
-        annotationDisplayed.removeAll()
-        loadCarParksDataSet()
+    /// Set the UIbutton filterMenuUIButton title based on the amount annotation being displayed
+    func setFilterButtonTitle() {
+        var titleFilterButton: String
+        switch annotationDisplayed.count {
+        case 0:
+            titleFilterButton = "Aucun parking trouvé"
+        case 1:
+            titleFilterButton = "\(annotationDisplayed.count) parking trouvé"
+        default:
+            titleFilterButton = "\(annotationDisplayed.count) parkings trouvés"
+        }
+        filterMenuUIButton.setTitle(titleFilterButton, for: .normal)
     }
+    
+    func displayLoadingView(_ status: Bool) {
+        self.activityIndicatorViewController.isHidden = !status
+        self.carParksMapViewController.isUserInteractionEnabled = !status
+    }
+    
+    
     
     /// Retreive the information related to the car parks provided by the model and load them up into the MapViewController
     func loadCarParksDataSet() {
         self.carParkCore.getLatestUpdate() { resultCarParkData in
             DispatchQueue.main.async { [self] in
-                self.displayLoadingView(true)
+                displayLoadingView(true)
                 guard case .success(let carParksData) = resultCarParkData else {
                     if case .failure(let errorInfo) = resultCarParkData {
                         let resetAction = UIAlertAction(title: "Afficher tous les parking", style: .default) { alertAction in
@@ -108,14 +126,20 @@ final class CarParksMapViewController: UIViewController {
                         self.carParksMapViewController.addAnnotation(affectedAnnotation)
                     }
                 }
-                self.displayLoadingView(false)
+                displayLoadingView(false)
             }
         }
     }
     
-    func displayLoadingView(_ status: Bool) {
-        self.activityIndicatorViewController.isHidden = !status
-        self.carParksMapViewController.isUserInteractionEnabled = !status
+   
+    
+    
+    
+    /// Used to reload data within MapView following a refresh or a new config filter
+    func reloadDataOnMapViewBasedOnNewConfig(){
+        carParksMapViewController.removeAnnotations(annotationDisplayed)
+        annotationDisplayed.removeAll()
+        loadCarParksDataSet()
     }
 }
 
@@ -158,4 +182,9 @@ extension CarParksMapViewController {
             carParkDetailsVC.affectedCarpark = affectedAnnotation
         }
     }
+    
+    @IBAction func unwind( _ seg: UIStoryboardSegue) {
+        reloadDataOnMapViewBasedOnNewConfig()
+    }
+    
 }
