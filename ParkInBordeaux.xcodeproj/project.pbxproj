@@ -41,6 +41,7 @@
 		EB84219D28AFB10F00BDEC1F /* ExtString.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB84219C28AFB10F00BDEC1F /* ExtString.swift */; };
 		EB8421A528AFD8C800BDEC1F /* OneCarParkStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8421A428AFD8C800BDEC1F /* OneCarParkStruct.swift */; };
 		EB9BFA1928C89F05002CB733 /* ExtBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9BFA1828C89F05002CB733 /* ExtBundle.swift */; };
+		EBA43E3E28D0BF7B009B6013 /* ExtMKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA43E3D28D0BF7B009B6013 /* ExtMKMapView.swift */; };
 		EBF8010B28B9196800A9DE1D /* SetupPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF8010A28B9196800A9DE1D /* SetupPageViewController.swift */; };
 		EBF8010F28B91AC000A9DE1D /* SetupPartOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF8010E28B91AC000A9DE1D /* SetupPartOneViewController.swift */; };
 		EBF8011228B91E8000A9DE1D /* SetupPartTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF8011128B91E8000A9DE1D /* SetupPartTwoViewController.swift */; };
@@ -96,6 +97,7 @@
 		EB84219C28AFB10F00BDEC1F /* ExtString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtString.swift; sourceTree = "<group>"; };
 		EB8421A428AFD8C800BDEC1F /* OneCarParkStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneCarParkStruct.swift; sourceTree = "<group>"; };
 		EB9BFA1828C89F05002CB733 /* ExtBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtBundle.swift; sourceTree = "<group>"; };
+		EBA43E3D28D0BF7B009B6013 /* ExtMKMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtMKMapView.swift; sourceTree = "<group>"; };
 		EBF8010A28B9196800A9DE1D /* SetupPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPageViewController.swift; sourceTree = "<group>"; };
 		EBF8010E28B91AC000A9DE1D /* SetupPartOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPartOneViewController.swift; sourceTree = "<group>"; };
 		EBF8011128B91E8000A9DE1D /* SetupPartTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPartTwoViewController.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				EB84218B28AF64B500BDEC1F /* ExtUIViewController.swift */,
 				EB84219C28AFB10F00BDEC1F /* ExtString.swift */,
 				EB9BFA1828C89F05002CB733 /* ExtBundle.swift */,
+				EBA43E3D28D0BF7B009B6013 /* ExtMKMapView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				EB5592C928AD770900FEF6B9 /* CarParksCoreService.swift in Sources */,
 				EB55A5D028BF212D00343136 /* EndpointFiltersParamters.swift in Sources */,
 				EB371AA628C33484001DD50D /* oneFilterTableViewCell.swift in Sources */,
+				EBA43E3E28D0BF7B009B6013 /* ExtMKMapView.swift in Sources */,
 				EB45D17E28C9377A006CCDF6 /* OneFilterOptionsListViewController.swift in Sources */,
 				EB371AA428C1E1CF001DD50D /* FiltersSettingsViewController.swift in Sources */,
 				EB5592E028AD79CF00FEF6B9 /* ApiInfo.swift in Sources */,

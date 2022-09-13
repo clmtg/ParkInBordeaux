@@ -21,19 +21,16 @@ final class CarParksMapViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        reloadDataOnMapViewBasedOnNewConfig()
+        loadCarParksDataSet()
     }
     
     // MARK: - Vars
     /// Model instance
     let carParkCore = CarParksCoreService()
-    var annotationDisplayed = [MKAnnotation]() {
-        didSet {
-            setFilterButtonTitle()
-        }
-    }
     /// CoreData instance
     private var coreDataManager: CoreDataRepo?
+    
+    var amountOfCarPark = 0
     
     // MARK: - IBOutlet
     /// MKMapView controller used to display car maps on Maps
@@ -46,8 +43,6 @@ final class CarParksMapViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var filterMenuUIButton: UIButton!
     
-    
-    
     // MARK: - IBAction
     
     // MARK: - Functions
@@ -59,7 +54,7 @@ final class CarParksMapViewController: UIViewController {
         let regionAccessible = MKCoordinateRegion(center: cityCenterLocation, latitudinalMeters: 25000, longitudinalMeters: 25000)
         carParksMapViewController.setRegion(regionCenter, animated: true)
         carParksMapViewController.setCameraBoundary(MKMapView.CameraBoundary(coordinateRegion: regionAccessible), animated: true)
-        let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 60000)
+        let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 90000)
         carParksMapViewController.setCameraZoomRange(zoomRange, animated: true)
         setupCompassButton()
         registerAnnotationViewClasses()
@@ -80,13 +75,14 @@ final class CarParksMapViewController: UIViewController {
     /// Set the UIbutton filterMenuUIButton title based on the amount annotation being displayed
     func setFilterButtonTitle() {
         var titleFilterButton: String
-        switch annotationDisplayed.count {
+        let amountOfAnnotation = amountOfCarPark
+        switch amountOfAnnotation {
         case 0:
             titleFilterButton = "Aucun parking trouvé"
         case 1:
-            titleFilterButton = "\(annotationDisplayed.count) parking trouvé"
+            titleFilterButton = "\(amountOfAnnotation) parking trouvé"
         default:
-            titleFilterButton = "\(annotationDisplayed.count) parkings trouvés"
+            titleFilterButton = "\(amountOfAnnotation) parkings trouvés"
         }
         filterMenuUIButton.setTitle(titleFilterButton, for: .normal)
     }
@@ -95,8 +91,6 @@ final class CarParksMapViewController: UIViewController {
         self.activityIndicatorViewController.isHidden = !status
         self.carParksMapViewController.isUserInteractionEnabled = !status
     }
-    
-    
     
     /// Retreive the information related to the car parks provided by the model and load them up into the MapViewController
     func loadCarParksDataSet() {
@@ -108,38 +102,30 @@ final class CarParksMapViewController: UIViewController {
                         let resetAction = UIAlertAction(title: "Afficher tous les parking", style: .default) { alertAction in
                             guard let coreDataManager = self.coreDataManager else { return }
                             coreDataManager.resetFilter()
-                            self.reloadDataOnMapViewBasedOnNewConfig()
+                            self.loadCarParksDataSet()
                         }
                         self.displayAnAlert(title: "Oups", message: errorInfo.description, actions: [resetAction])
                         self.displayLoadingView(false)
                     }
                     return
                 }
-                
+                self.carParksMapViewController.removeAnnotations(carParksMapViewController.annotations)
+                self.amountOfCarPark = carParksData.count
                 carParksData.forEach { oneCarPark in
                     if let location = oneCarPark.location, let properties = oneCarPark.properties {
                         let affectedAnnotation = CarParkMapAnnotation(for: location ,
                                                                       title: properties.nom ?? "No name",
                                                                       subtitle: properties.etat ?? "Inconnu",
                                                                       carParkInfo: oneCarPark)
-                        self.annotationDisplayed.append(affectedAnnotation)
                         self.carParksMapViewController.addAnnotation(affectedAnnotation)
                     }
                 }
+                carParksMapViewController.fitAll()
+                setFilterButtonTitle()
                 displayLoadingView(false)
+                
             }
         }
-    }
-    
-   
-    
-    
-    
-    /// Used to reload data within MapView following a refresh or a new config filter
-    func reloadDataOnMapViewBasedOnNewConfig(){
-        carParksMapViewController.removeAnnotations(annotationDisplayed)
-        annotationDisplayed.removeAll()
-        loadCarParksDataSet()
     }
 }
 
@@ -184,7 +170,7 @@ extension CarParksMapViewController {
     }
     
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
-        reloadDataOnMapViewBasedOnNewConfig()
+        loadCarParksDataSet()
     }
     
 }
