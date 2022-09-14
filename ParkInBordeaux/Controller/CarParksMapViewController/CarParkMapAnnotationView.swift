@@ -83,9 +83,9 @@ class CarParkMapAnnotationView: MKAnnotationView {
                                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20)]
             
             let text = "P"
-            let size = text.size(withAttributes: attributes)
+            let size = text.size(withAttributes: attributes as [NSAttributedString.Key : Any])
             let rect = CGRect(x: 20 - size.width / 2, y: 20 - size.height / 2, width: size.width, height: size.height)
-            text.draw(in: rect, withAttributes: attributes)
+            text.draw(in: rect, withAttributes: attributes as [NSAttributedString.Key : Any])
         }
     }
     
