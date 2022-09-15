@@ -99,6 +99,11 @@ struct OneCarParkStruct {
         guard let data = properties?.npStlav, data > 0 else { return false }
         return true
     }
+    
+    var hasEvCharger: Bool {
+        guard let data = properties?.npVle, data > 0 else { return false }
+        return true
+    }
  
     
     

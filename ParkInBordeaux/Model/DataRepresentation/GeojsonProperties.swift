@@ -24,5 +24,4 @@ struct GeojsonProperties: Decodable{
     var npCovoit: Int?
     var npVle: Int?
     var np2rmot: Int?
-    
 }

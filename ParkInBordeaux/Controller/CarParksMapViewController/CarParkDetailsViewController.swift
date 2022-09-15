@@ -56,7 +56,7 @@ class CarParkDetailsViewController: UIViewController {
     }
     /// Performed when user select the "S'y rendre" button. This would use the openWithMap function to launch Apple Maps
     @IBAction func didTapGoButton(_ sender: Any) {
-        //openWithMap()
+        openWithMap()
     }
     
     // MARK: - Functions - View Setup
@@ -94,8 +94,15 @@ class CarParkDetailsViewController: UIViewController {
         serviceAssets[3].isHidden = !carPark.hasCarpoolSpots
         // Vallet asset
         serviceAssets[4].isHidden = !carPark.hasValletService
-        // Night asset
-        serviceAssets[5].isHidden = true
+        // Ev charger asset
+        serviceAssets[5].isHidden = !carPark.hasEvCharger
+        
+        let filtered = serviceAssets.filter { oneService in
+            return oneService.isHidden == false
+        }
+        if filtered.isEmpty {
+            carParkServicesSatck.isHidden = true
+        }
     }
     
     
@@ -125,8 +132,8 @@ class CarParkDetailsViewController: UIViewController {
     /// Set the label related to the car park free info from OD using the affected car park details.
     /// - Parameter carPark: Details of the affected car park
     private func setCarParkInfor(_ carPark: OneCarParkStruct) {
-            carParkInfoLabel.text = carPark.infor
-        }
+        carParkInfoLabel.text = carPark.infor
+    }
     
     // MARK: - Functions - Others
     
@@ -141,8 +148,14 @@ class CarParkDetailsViewController: UIViewController {
         
     }
     
-    
-    
-    
-    
+    /// Used when user tap on "Go" button. This would open the built-in Maps app and attempt to display an itinerary using thr driving mode
+    func openWithMap() {
+        guard let affectedCarpark = affectedCarpark else { return }
+        let placeMark = MKPlacemark(coordinate: affectedCarpark.coordinate)
+        let mapItem = MKMapItem(placemark: placeMark)
+        mapItem.name = affectedCarpark.title
+        mapItem.pointOfInterestCategory = .parking
+        let launchOption = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving, MKLaunchOptionsShowsTrafficKey: true] as [String : Any]
+        mapItem.openInMaps(launchOptions: launchOption)
+    }
 }

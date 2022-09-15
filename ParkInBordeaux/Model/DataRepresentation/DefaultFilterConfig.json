@@ -183,21 +183,7 @@
           "optionHumanName" : "Mixte"
         }
       ]
-    },
-    {
-      "sysmName" : "np_vle",
-      "humanName" : "Places pour voiture électrique",
-      "options": [
-        {
-          "optionSystemName" : "yes",
-          "optionHumanName" : "Oui"
-        },
-        {
-          "optionSystemName" : "non",
-          "optionHumanName" : "Non"
-        }
-      ]
-    },
+    }
   ]
 }
 
