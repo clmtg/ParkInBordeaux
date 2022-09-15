@@ -54,7 +54,6 @@ final class CarParksCoreService {
         if let endpoind = ApiEndpoint.getEndpointWithConfigFilter() {
             endpoindToUse = endpoind
         }
-        print(endpoindToUse)
         getCarParksAvailabilityFromGeojson(with: endpoindToUse) { resultGeojsonFeatures in
             guard case .success(let geojsonFeaturesData) = resultGeojsonFeatures else {
                 completionHandler(.failure(.networkCallFailed))
@@ -62,9 +61,9 @@ final class CarParksCoreService {
             }
             geojsonFeaturesData.forEach { oneFeature in
                 if let geometrey = oneFeature.geometry.first, let jsonProperties = oneFeature.properties {
-                    //let decoder = JSONDecoder()
-                    //decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    if let properties = try? JSONDecoder().decode(GeojsonProperties.self, from: jsonProperties) {
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    if let properties = try? decoder.decode(GeojsonProperties.self, from: jsonProperties) {
                         if let id = properties.ident {
                             self.carParksData.append(OneCarParkStruct(for: id, location:  geometrey.coordinate, properties: properties))
                         }

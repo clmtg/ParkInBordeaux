@@ -68,6 +68,7 @@ extension ApiEndpoint {
             .init(name: "typename", value: "st_park_p"),
             .init(name: "filter", value: dataString)
         ])
+        print(dataString)
         return endpoint.url
     }
 }

@@ -96,16 +96,17 @@ class CarParkMapAnnotationView: MKAnnotationView {
               let carPark = annotation.carParkInfo,
               carPark.isClosed == false,
               carPark.isFull == false else { return 0 }
-        return carPark.carSpotsFree
+        return carPark.freeSpot
     }
     
     /// Used to get the amount of car spot (global (busy+free)) for the affected car park through the related annotation
     /// - Returns: Amount of car spot  for the affected car park
     private func getCarSpotsAvailable() -> Int {
         guard let annotation = annotation as? CarParkMapAnnotation,
-              let spotAmount = annotation.carParkInfo?.carSpotsAmount else {
+              let spotAmount = annotation.carParkInfo?.capacity else {
             return 0
         }
         return spotAmount
     }
+         
 }
