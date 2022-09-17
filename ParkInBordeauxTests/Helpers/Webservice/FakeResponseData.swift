@@ -18,17 +18,17 @@ final class FakeResponseData {
     static let invalidResponseCode = HTTPURLResponse(url: URL(string: "https://www.apple.com")!, statusCode: 500, httpVersion: nil, headerFields: nil)!
     
     // MARK: - Data
-    static var geocsonCorrectData: Data {
+    static var geojsonCorrectData: Data {
         let bundle = Bundle(for: FakeResponseData.self)
         return bundle.dataFromJson("correctGeojsonSample")
     }
     
-    static var geocsonCorrectDataNoCarPark: Data {
+    static var geojsonCorrectDataNoCarPark: Data {
         let bundle = Bundle(for: FakeResponseData.self)
         return bundle.dataFromJson("NoFeatureGeojsonSample")
     }
         
-    static let incorrectGeocsonData = "erreur".data(using: .utf8)!
+    static let incorrectGeojsonData = "erreur".data(using: .utf8)!
 }
 
 // MARK: - Extensions related to Bundle

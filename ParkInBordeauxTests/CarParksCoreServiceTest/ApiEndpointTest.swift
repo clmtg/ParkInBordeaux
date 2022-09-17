@@ -53,14 +53,12 @@ class ApiEndpointTest: XCTestCase {
         optionToLink.humanName = "Filter option for endpoint"
         optionToLink.systemName = "optionFilterForEndpoint"
         _ = coreDataManager.editFilterCurrentOption(for: affectedFilter, with: optionToLink)
-        /// Performing test
-        let sut = ApiEndpoint.getEndpointWithConfigFilter(coreDataManager)
-        guard let sut = sut else {
+        // Performing test
+        guard let sut = ApiEndpoint.getEndpointWithConfigFilter(coreDataManager) else {
             XCTFail("ApiEndpoint didn't manage to generated a proper URL")
+            return
         }
-        
-        
-        
+        XCTAssertTrue(sut.description.contains(optionToLink.systemName!))        
     }
     
     

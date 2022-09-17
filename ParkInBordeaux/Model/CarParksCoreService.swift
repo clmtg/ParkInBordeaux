@@ -59,6 +59,9 @@ final class CarParksCoreService {
                 completionHandler(.failure(.networkCallFailed))
                 return
             }
+            
+            
+            
             geojsonFeaturesData.forEach { oneFeature in
                 if let geometrey = oneFeature.geometry.first, let jsonProperties = oneFeature.properties {
                     let decoder = JSONDecoder()
@@ -70,6 +73,8 @@ final class CarParksCoreService {
                     }
                 }
             }
+            
+            
             if(self.carParksData.isEmpty) {
                 completionHandler(.failure(.noCarParkWithinArea))
             } else {
