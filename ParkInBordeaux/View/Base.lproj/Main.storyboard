@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ifp-Nz-eNL">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
@@ -16,20 +16,20 @@
             <objects>
                 <viewController storyboardIdentifier="CarParksMapViewController" id="Ifp-Nz-eNL" customClass="CarParksMapViewController" customModule="ParkInBordeaux" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NQS-wk-RUM">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7ZW-VS-h5a">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
                                     <outlet property="delegate" destination="Ifp-Nz-eNL" id="V9W-eK-yPb"/>
                                 </connections>
                             </mapView>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IdL-k8-Dxy" userLabel="activityIndicatorView">
-                                <rect key="frame" x="145" y="372" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="283.5" width="100" height="100"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="rbh-MQ-NHU" userLabel="activityIndicator">
-                                        <rect key="frame" x="31.666666666666657" y="31.666666666666686" width="37" height="37"/>
+                                        <rect key="frame" x="31.5" y="31.5" width="37" height="37"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray4Color"/>
@@ -41,7 +41,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGO-As-ZIS">
-                                <rect key="frame" x="146" y="47" width="98" height="34.666666666666657"/>
+                                <rect key="frame" x="138.5" y="0.0" width="98" height="34.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="59T-9T-gpP"/>
                                 </constraints>
@@ -95,11 +95,11 @@
             <objects>
                 <viewController storyboardIdentifier="SetupPartOneViewController" id="ESR-Yy-oHp" customClass="SetupPartOneViewController" customModule="ParkInBordeaux" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Tb-Am-Okp">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bienvenue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ap-oG-Av7">
-                                <rect key="frame" x="50" y="213.33333333333334" width="290" height="50.000000000000028"/>
+                                <rect key="frame" x="50" y="125" width="275" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="uVW-ji-FZK"/>
                                 </constraints>
@@ -108,7 +108,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iJ-bE-SBQ">
-                                <rect key="frame" x="10" y="338.33333333333331" width="370" height="167.33333333333331"/>
+                                <rect key="frame" x="10" y="250" width="355" height="167.5"/>
                                 <string key="text">Se garer à Bordeaux n'a jamais été aussi simple.
 
 Ne perdez plus votre temps à chercher une place dans la Métropole de Bordeaux. Votre application
@@ -143,11 +143,11 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
             <objects>
                 <viewController storyboardIdentifier="SetupPartThreeViewController" id="Kx3-Zs-pZa" customClass="SetupPartThreeViewController" customModule="ParkInBordeaux" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fud-Gn-3CA">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pP-7a-89V">
-                                <rect key="frame" x="20" y="735" width="350" height="45"/>
+                                <rect key="frame" x="20" y="592" width="335" height="45"/>
                                 <color key="backgroundColor" name="ratioRed"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="T7k-TC-CGB"/>
@@ -162,20 +162,20 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="emH-ci-fII">
-                                <rect key="frame" x="20" y="269.66666666666674" width="350" height="445.33333333333326"/>
+                                <rect key="frame" x="20" y="125" width="335" height="447"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hXP-x5-yLy">
-                                        <rect key="frame" x="0.0" y="0.0" width="350" height="40.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="41"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="bike" translatesAutoresizingMaskIntoConstraints="NO" id="pvB-iI-URA">
-                                                <rect key="frame" x="0.0" y="0.33333333333331439" width="40" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.5" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="Pgs-wN-9PW"/>
                                                     <constraint firstAttribute="height" constant="40" id="X6M-oo-JbS"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking sélectionné est doté de places dédiées aux vélos." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCg-el-5Af">
-                                                <rect key="frame" x="60" y="0.0" width="290" height="40.666666666666664"/>
+                                                <rect key="frame" x="60" y="0.0" width="275" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -183,17 +183,17 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Og1-qm-fIp">
-                                        <rect key="frame" x="0.0" y="60.666666666666629" width="350" height="40.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="61" width="335" height="41"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="pmr" translatesAutoresizingMaskIntoConstraints="NO" id="mLX-tz-RJg">
-                                                <rect key="frame" x="0.0" y="0.33333333333337123" width="40" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.5" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="8VA-ra-Oic"/>
                                                     <constraint firstAttribute="height" constant="40" id="czq-lr-rUB"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking sélectionné est doté de places et d'un accès PMR." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIB-re-JP6">
-                                                <rect key="frame" x="60" y="0.0" width="290" height="40.666666666666664"/>
+                                                <rect key="frame" x="60" y="0.0" width="275" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -201,17 +201,17 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xcm-gM-r5T">
-                                        <rect key="frame" x="0.0" y="121.33333333333333" width="350" height="40.666666666666671"/>
+                                        <rect key="frame" x="0.0" y="122" width="335" height="41"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="bike" translatesAutoresizingMaskIntoConstraints="NO" id="scR-pe-i0B">
-                                                <rect key="frame" x="0.0" y="0.33333333333331439" width="40" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.5" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="6Rb-uE-ojh"/>
                                                     <constraint firstAttribute="height" constant="40" id="fnW-Ld-bDv"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking sélectionné est doté de places dédiées aux vélos." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acF-BD-Ppm">
-                                                <rect key="frame" x="60" y="0.0" width="290" height="40.666666666666664"/>
+                                                <rect key="frame" x="60" y="0.0" width="275" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -219,17 +219,17 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NVJ-a6-y2d">
-                                        <rect key="frame" x="0.0" y="182" width="350" height="61"/>
+                                        <rect key="frame" x="0.0" y="183" width="335" height="61"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="motorbike" translatesAutoresizingMaskIntoConstraints="NO" id="pIx-pI-gLF">
-                                                <rect key="frame" x="0.0" y="10.666666666666629" width="40" height="40"/>
+                                                <rect key="frame" x="0.0" y="10.5" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="1s5-1e-hyf"/>
                                                     <constraint firstAttribute="width" constant="40" id="Oll-Ss-r79"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking sélectionné est doté de places dédiées aux deux roues motorisés." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOC-8T-s4d">
-                                                <rect key="frame" x="60" y="0.0" width="290" height="61"/>
+                                                <rect key="frame" x="60" y="0.0" width="275" height="61"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -237,17 +237,17 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Mxi-C9-nIr">
-                                        <rect key="frame" x="0.0" y="262.99999999999994" width="350" height="40.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="264" width="335" height="41"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="carpool" translatesAutoresizingMaskIntoConstraints="NO" id="XKT-eO-KMM">
-                                                <rect key="frame" x="0.0" y="0.33333333333337123" width="40" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.5" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="MeJ-Hv-rZx"/>
                                                     <constraint firstAttribute="width" constant="40" id="YcI-iy-6z4"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking sélectionné est doté d'un espace dédié au covoiturage." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nv9-Zj-Erb">
-                                                <rect key="frame" x="60" y="0.0" width="290" height="40.666666666666664"/>
+                                                <rect key="frame" x="60" y="0.0" width="275" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -255,17 +255,17 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xfs-IP-cw3">
-                                        <rect key="frame" x="0.0" y="323.66666666666669" width="350" height="40.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="325" width="335" height="41"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="carwash" translatesAutoresizingMaskIntoConstraints="NO" id="1A5-r8-Has">
-                                                <rect key="frame" x="0.0" y="0.33333333333325754" width="40" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.5" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="RUr-NH-f1O"/>
                                                     <constraint firstAttribute="width" constant="40" id="RxP-EI-kaD"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking sélectionné est doté d'un service de lavage." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xn-ES-k7b">
-                                                <rect key="frame" x="60" y="0.0" width="290" height="40.666666666666664"/>
+                                                <rect key="frame" x="60" y="0.0" width="275" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -273,17 +273,17 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ZQf-Uj-Q8S">
-                                        <rect key="frame" x="0.0" y="384.33333333333331" width="350" height="61"/>
+                                        <rect key="frame" x="0.0" y="386" width="335" height="61"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="evCharger" translatesAutoresizingMaskIntoConstraints="NO" id="XDW-rt-F16">
-                                                <rect key="frame" x="0.0" y="10.666666666666629" width="40" height="40"/>
+                                                <rect key="frame" x="0.0" y="10.5" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="07c-Ws-mEr"/>
                                                     <constraint firstAttribute="width" constant="40" id="Vmz-ZQ-Dkx"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking est doté d'emplacements dédiés à la recharge de vehicule electrique." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hyx-p2-qHj">
-                                                <rect key="frame" x="60" y="0.0" width="290" height="61"/>
+                                                <rect key="frame" x="60" y="0.0" width="275" height="61"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -318,7 +318,7 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                 <navigationController title="Filtres" id="m9l-fK-MKc" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="I5u-uB-eJs"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="R8w-2j-RRb">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -334,27 +334,27 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
             <objects>
                 <viewController id="OJw-ip-zy9" customClass="CarParkDetailsViewController" customModule="ParkInBordeaux" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xba-zx-7JD">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20h-DO-Hfv">
-                                <rect key="frame" x="20" y="67" width="350" height="200"/>
+                                <rect key="frame" x="20" y="20" width="335" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="UYs-zW-DIx"/>
                                 </constraints>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="ID3-Me-Mns" userLabel="carParkInfoTopStackView">
-                                <rect key="frame" x="20" y="287" width="350" height="49.666666666666686"/>
+                                <rect key="frame" x="20" y="240" width="335" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Se0-wO-22F" userLabel="carParkNameLabel">
-                                        <rect key="frame" x="0.0" y="0.0" width="350" height="28.666666666666668"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="postalAddress" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAV-wp-a6i" userLabel="carParkAddressLabel">
-                                        <rect key="frame" x="0.0" y="31.666666666666686" width="350" height="18"/>
+                                        <rect key="frame" x="0.0" y="32" width="335" height="18"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -362,7 +362,7 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WKN-Dz-Rix" userLabel="carParkServicesSatck">
-                                <rect key="frame" x="20" y="361.66666666666669" width="290" height="40"/>
+                                <rect key="frame" x="20" y="315" width="290" height="40"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="pmr" translatesAutoresizingMaskIntoConstraints="NO" id="1Kg-Uh-uvJ" userLabel="pmrAsset">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -406,28 +406,28 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qBb-k7-kEJ" userLabel="carParkInfoBottomStackView">
-                                <rect key="frame" x="20" y="426.66666666666669" width="350" height="105.33333333333331"/>
+                                <rect key="frame" x="20" y="380" width="335" height="106"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="capacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f84-tm-cv4" userLabel="carParkCapacityLabel">
-                                        <rect key="frame" x="0.0" y="0.0" width="350" height="20.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="spotAvailable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDT-6w-qgf" userLabel="carParkFreeSpotLabel">
-                                        <rect key="frame" x="0.0" y="28.333333333333314" width="350" height="20.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="28.5" width="335" height="20.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Information supplémentaire :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIW-Bg-rbY">
-                                        <rect key="frame" x="0.0" y="56.666666666666636" width="350" height="20.333333333333336"/>
+                                        <rect key="frame" x="0.0" y="57" width="335" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="InfoAboutCarPark" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRq-c4-26X" userLabel="carParkInfoLabel">
-                                        <rect key="frame" x="0.0" y="85" width="350" height="20.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="85.5" width="335" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -435,10 +435,10 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="w7h-Yd-Np7" userLabel="stackUiButton">
-                                <rect key="frame" x="20" y="697" width="350" height="50"/>
+                                <rect key="frame" x="20" y="557" width="335" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djO-go-wJq">
-                                        <rect key="frame" x="0.0" y="0.0" width="170" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="162.5" height="50"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Annuler">
                                             <color key="baseForegroundColor" name="ratioRed"/>
@@ -448,7 +448,7 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHJ-AC-H3g">
-                                        <rect key="frame" x="180" y="0.0" width="170" height="50"/>
+                                        <rect key="frame" x="172.5" y="0.0" width="162.5" height="50"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="S'y rendre">
                                             <color key="baseBackgroundColor" name="ratioRed"/>
@@ -511,18 +511,18 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
             <objects>
                 <viewController id="VNp-uZ-mH9" customClass="OneFilterOptionsListViewController" customModule="ParkInBordeaux" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VTa-WD-COb">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Yzr-V6-Vfy" userLabel="optionsUITableView">
-                                <rect key="frame" x="0.0" y="66" width="390" height="721"/>
+                                <rect key="frame" x="0.0" y="66" width="375" height="581"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="oneOptionReuseID" id="oqs-It-pEt">
-                                        <rect key="frame" x="0.0" y="50" width="390" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oqs-It-pEt" id="pw0-Z3-Zur">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -552,25 +552,25 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
             <objects>
                 <viewController id="gV8-BN-xXK" customClass="FiltersSettingsViewController" customModule="ParkInBordeaux" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bfU-oK-qzo">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WTq-nc-3BY">
-                                <rect key="frame" x="0.0" y="56" width="390" height="731"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="591"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="oneFilterBasicCell" id="OM6-VW-WWg" customClass="oneFilterTableViewCell" customModule="ParkInBordeaux" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="390" height="50.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="50.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OM6-VW-WWg" id="ZHz-b7-HkI">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="50.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="C8S-ru-0Ow">
-                                                    <rect key="frame" x="5" y="0.0" width="380" height="50.333333333333336"/>
+                                                    <rect key="frame" x="5" y="0.0" width="365" height="50.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAm-Wx-ps4" userLabel="filterNameUILabel">
-                                                            <rect key="frame" x="0.0" y="0.0" width="169.33333333333334" height="50.333333333333336"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="163" height="50.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="1H3-Pu-z1g"/>
                                                             </constraints>
@@ -579,7 +579,7 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85D-Ms-WaQ" userLabel="filterValueUILabel">
-                                                            <rect key="frame" x="179.33333333333337" y="0.0" width="200.66666666666663" height="50.333333333333336"/>
+                                                            <rect key="frame" x="173" y="0.0" width="192" height="50.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>

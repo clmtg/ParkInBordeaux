@@ -46,10 +46,13 @@ extension ApiEndpoint {
     
     /// Return the endpoint to reach in order to retreive the data where a filter has been applied (retrieved using CoreData)
     /// - Returns: URL to reach 
-    static func getEndpointWithConfigFilter() -> URL? {
+    static func getEndpointWithConfigFilter(_ dataModel: CoreDataRepo?) -> URL? {
         guard let appdelegate = UIApplication.shared.delegate as? AppDelegate else { return nil}
         let coredataStack = appdelegate.coreDataStack
-        let coreDataManager = CoreDataRepo(coreDataStack: coredataStack)
+        var coreDataManager = CoreDataRepo(coreDataStack: coredataStack)
+        if let dataModel = dataModel {
+            coreDataManager = dataModel
+        }
         var endpointFilters = EndpointFilters()
         coreDataManager.filtersList.forEach { oneFilter in
             if let currentOption = oneFilter.currentOption {
@@ -68,7 +71,6 @@ extension ApiEndpoint {
             .init(name: "typename", value: "st_park_p"),
             .init(name: "filter", value: dataString)
         ])
-        print(dataString)
         return endpoint.url
     }
 }

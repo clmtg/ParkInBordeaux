@@ -51,7 +51,7 @@ final class CarParksCoreService {
     func getLatestUpdate(_ completionHandler: @escaping (Result<[OneCarParkStruct],CarParksServiceError>) -> Void) {
         self.carParksData.removeAll()
         var endpoindToUse = ApiEndpoint.getGlobalEndpoint()
-        if let endpoind = ApiEndpoint.getEndpointWithConfigFilter() {
+        if let endpoind = ApiEndpoint.getEndpointWithConfigFilter(nil) {
             endpoindToUse = endpoind
         }
         getCarParksAvailabilityFromGeojson(with: endpoindToUse) { resultGeojsonFeatures in

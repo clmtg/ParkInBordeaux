@@ -56,7 +56,7 @@ final class CoreDataRepo {
     ///   - systemName: Name used by the system of the affected new filter
     ///   - optionsFilter: Available option for the affected new filter
     ///   - completionHandler: Steps to perform once an attempt to store the new filter has been made.
-    func addFilterToConfig(_ humanName: String,
+    private func addFilterToConfig(_ humanName: String,
                            _ systemName: String,
                            _ optionsFilter: [OptionsForOneFilter]?,
                            _ completionHandler: (Result<FiltersCD, CarParksServiceError>) -> Void) {
@@ -87,7 +87,7 @@ final class CoreDataRepo {
     ///   - options: List of option to create and link to the affected filter
     ///   - affectedFilter: Target filter to link the options
     /// - Returns: true if no issue occured during link. Otherwise false
-    func linkOptionsToFilter(options: [OptionsForOneFilter], affectedFilter: FiltersCD) -> Bool {
+    private func linkOptionsToFilter(options: [OptionsForOneFilter], affectedFilter: FiltersCD) -> Bool {
         var optionsToSave = [OptionsFilterCD]()
         options.forEach { oneOption in
             let data = OptionsFilterCD(context: managedObjectContext)
@@ -105,18 +105,19 @@ final class CoreDataRepo {
     /// - Parameters:
     ///   - filterFromMenu: Affected filter
     ///   - selectedOption: New option used by the affected filter
-    func editFilterCurrentOption(for filterFromMenu: FiltersCD, with selectedOption: OptionsFilterCD?) {
+    func editFilterCurrentOption(for filterFromMenu: FiltersCD, with selectedOption: OptionsFilterCD?) -> Bool {
         guard let idProvided = filterFromMenu.id,
-              let affectedFilter = getFilterDetailWithID(idProvided) else { return }
+              let affectedFilter = getFilterDetailWithID(idProvided) else { return false }
         
         guard let selectedOptionId = selectedOption?.id,
               let affectedOption = getOptionDetailWithID(selectedOptionId) else {
             affectedFilter.currentOption = nil
             coreDataStack.saveContext()
-            return
+            return true
         }
         affectedFilter.currentOption = affectedOption
         coreDataStack.saveContext()
+        return true
     }
     
     /// Remove currently used options for all the filters
@@ -132,7 +133,7 @@ final class CoreDataRepo {
     /// Retreive a specific filter using the related id
     /// - Parameter idLooked: filter id to look for
     /// - Returns: The filter found otherwise nil
-    func getFilterDetailWithID(_ idLooked: UUID) -> FiltersCD? {
+    private func getFilterDetailWithID(_ idLooked: UUID) -> FiltersCD? {
         let filterRequest: NSFetchRequest<FiltersCD> = FiltersCD.fetchRequest()
         let filterCDFilter = NSPredicate(format: "id == %@", idLooked as CVarArg)
         filterRequest.predicate = filterCDFilter
@@ -143,7 +144,7 @@ final class CoreDataRepo {
     /// Retreive a specific option using the related id
     /// - Parameter idLooked: option id to look for
     /// - Returns: The option found otherwise nil
-    func getOptionDetailWithID(_ idLooked: UUID) -> OptionsFilterCD? {
+    private func getOptionDetailWithID(_ idLooked: UUID) -> OptionsFilterCD? {
         let optionRequest: NSFetchRequest<OptionsFilterCD> = OptionsFilterCD.fetchRequest()
         let optionRequestFilter = NSPredicate(format: "id == %@", idLooked as CVarArg)
         optionRequest.predicate = optionRequestFilter

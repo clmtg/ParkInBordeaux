@@ -37,7 +37,7 @@ open class CoreDataStack {
     // MARK: - Functions
     /// Save current context for the CoreDataStack
     func saveContext() -> CarParksServiceError? {
-        guard mainContext.hasChanges else { return .localDataCorrupt }
+        guard mainContext.hasChanges else { return nil }
         do {
             try mainContext.save()
         } catch let error as NSError {
