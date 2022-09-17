@@ -14,8 +14,8 @@ jobs:
     - name: Select Xcode 14
       run: sudo xcode-select -switch /Applications/Xcode_14.0.app && /usr/bin/xcodebuild -version
     - name: Run tests iOS16
-      run: xcodebuild test -scheme ParkInBordeaux -project ParkInBordeaux.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 13,OS=16.0
+      run: xcodebuild test -scheme ParkInBordeaux -project ParkInBordeaux.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 13,OS=16.0'
     - name: Select Xcode 13
       run: sudo xcode-select -switch /Applications/Xcode_13.4.app && /usr/bin/xcodebuild -version
     - name: Run tests iOS15
-      run: xcodebuild test -scheme ParkInBordeaux -project ParkInBordeaux.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 13,OS=15.5
+      run: xcodebuild test -scheme ParkInBordeaux -project ParkInBordeaux.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 13,OS=15.5'
