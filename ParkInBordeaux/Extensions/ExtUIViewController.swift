@@ -25,7 +25,6 @@ extension UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style:.default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
-    
     /// Hide the iOS keyboard. When called the UITextField provided is no longer first responder
     /// - Parameter firstResponder:UITextField to make resign
     func dismissKeyboard(firstResponder: UITextField) {
