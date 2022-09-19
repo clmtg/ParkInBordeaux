@@ -10,4 +10,9 @@ We heard you and developed ParkInBordeaux.
 With ParkInBordeaux you can check the car parks around you, their occupancy, if there are spots to charge your electric vehicle and many other information related to the car parks in Bordeaux. All of that right in your pocket. 
 From no on, no more wasted time driving around hopeless. You need a car park park, open ParkInBordeaux, look for a car park which suits your needs, click on the direction button to get the direction from your current position and that’s it ! All of this at a glance.
 
-Enjoy ParkInBordeaux and drive safely 
+Enjoy ParkInBordeaux and drive safely
+
+
+## Additional information
+* Support several iOS device screen sizes (from iPod touch 7th Gen to iPhone 14 Pro models)
+* Dark mode support

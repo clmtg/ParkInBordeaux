@@ -151,7 +151,6 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                 <color key="backgroundColor" name="ratioRed"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="T7k-TC-CGB"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="tTJ-tx-TLR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -161,7 +160,7 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                     <action selector="didTappedTutorialButtonComplet:" destination="Kx3-Zs-pZa" eventType="touchUpInside" id="HEO-6C-iYf"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="emH-ci-fII">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="emH-ci-fII" userLabel="listOfStack">
                                 <rect key="frame" x="20" y="269.66666666666674" width="350" height="445.33333333333326"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hXP-x5-yLy">
@@ -174,7 +173,7 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                                     <constraint firstAttribute="height" constant="40" id="X6M-oo-JbS"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking sélectionné est doté de places dédiées aux vélos." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCg-el-5Af">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking sélectionné est doté de places dédiées aux vélos." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lCg-el-5Af">
                                                 <rect key="frame" x="60" y="0.0" width="290" height="40.666666666666664"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -192,7 +191,7 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                                     <constraint firstAttribute="height" constant="40" id="czq-lr-rUB"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking sélectionné est doté de places et d'un accès PMR." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIB-re-JP6">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking sélectionné est doté de places et d'un accès PMR." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="PIB-re-JP6">
                                                 <rect key="frame" x="60" y="0.0" width="290" height="40.666666666666664"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -210,7 +209,7 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                                     <constraint firstAttribute="height" constant="40" id="fnW-Ld-bDv"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking sélectionné est doté de places dédiées aux vélos." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acF-BD-Ppm">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking sélectionné est doté de places dédiées aux vélos." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="acF-BD-Ppm">
                                                 <rect key="frame" x="60" y="0.0" width="290" height="40.666666666666664"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -228,7 +227,7 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                                     <constraint firstAttribute="width" constant="40" id="Oll-Ss-r79"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking sélectionné est doté de places dédiées aux deux roues motorisés." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOC-8T-s4d">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking sélectionné est doté de places dédiées aux deux roues motorisés." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XOC-8T-s4d">
                                                 <rect key="frame" x="60" y="0.0" width="290" height="61"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -246,7 +245,7 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                                     <constraint firstAttribute="width" constant="40" id="YcI-iy-6z4"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking sélectionné est doté d'un espace dédié au covoiturage." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nv9-Zj-Erb">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking sélectionné est doté d'un espace dédié au covoiturage." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nv9-Zj-Erb">
                                                 <rect key="frame" x="60" y="0.0" width="290" height="40.666666666666664"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -264,7 +263,7 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                                     <constraint firstAttribute="width" constant="40" id="RxP-EI-kaD"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking sélectionné est doté d'un service de lavage." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xn-ES-k7b">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking sélectionné est doté d'un service de lavage." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9Xn-ES-k7b">
                                                 <rect key="frame" x="60" y="0.0" width="290" height="40.666666666666664"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -282,7 +281,7 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                                     <constraint firstAttribute="width" constant="40" id="Vmz-ZQ-Dkx"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking est doté d'emplacements dédiés à la recharge de vehicule electrique." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hyx-p2-qHj">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Le parking est doté d'emplacements dédiés à la recharge de vehicule electrique." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hyx-p2-qHj">
                                                 <rect key="frame" x="60" y="0.0" width="290" height="61"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -292,14 +291,26 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="logoParkInBdx" translatesAutoresizingMaskIntoConstraints="NO" id="8yK-dk-Pr1">
+                                <rect key="frame" x="30" y="56.999999999999986" width="330" height="178.66666666666663"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8yK-dk-Pr1" secondAttribute="height" multiplier="24:13" id="5YH-ve-5uP"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UjF-uD-pCX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="UjF-uD-pCX" firstAttribute="bottom" secondItem="8pP-7a-89V" secondAttribute="bottom" constant="30" id="2Yb-qE-lbN"/>
+                            <constraint firstItem="emH-ci-fII" firstAttribute="top" relation="lessThanOrEqual" secondItem="8yK-dk-Pr1" secondAttribute="bottom" constant="50" id="4if-4o-HRc"/>
+                            <constraint firstItem="8yK-dk-Pr1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UjF-uD-pCX" secondAttribute="leading" constant="30" id="6n2-Hl-wdW"/>
                             <constraint firstItem="UjF-uD-pCX" firstAttribute="trailing" secondItem="emH-ci-fII" secondAttribute="trailing" constant="20" id="8K6-lw-ts7"/>
+                            <constraint firstItem="8yK-dk-Pr1" firstAttribute="centerX" secondItem="Fud-Gn-3CA" secondAttribute="centerX" id="B3F-IN-bNw"/>
+                            <constraint firstItem="8yK-dk-Pr1" firstAttribute="top" secondItem="UjF-uD-pCX" secondAttribute="top" constant="10" id="G3a-id-PXp"/>
                             <constraint firstItem="8pP-7a-89V" firstAttribute="leading" secondItem="UjF-uD-pCX" secondAttribute="leading" constant="20" id="QGI-Q3-Lc5"/>
                             <constraint firstItem="8pP-7a-89V" firstAttribute="top" secondItem="emH-ci-fII" secondAttribute="bottom" constant="20" id="a9d-Ub-ND2"/>
+                            <constraint firstItem="emH-ci-fII" firstAttribute="top" relation="greaterThanOrEqual" secondItem="8yK-dk-Pr1" secondAttribute="bottom" constant="10" id="kur-PT-22s"/>
+                            <constraint firstItem="UjF-uD-pCX" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8yK-dk-Pr1" secondAttribute="trailing" constant="30" id="nOq-7l-Ci2"/>
                             <constraint firstItem="UjF-uD-pCX" firstAttribute="trailing" secondItem="8pP-7a-89V" secondAttribute="trailing" constant="20" id="sx7-Wb-66J"/>
                             <constraint firstItem="emH-ci-fII" firstAttribute="leading" secondItem="UjF-uD-pCX" secondAttribute="leading" constant="20" id="wYG-Cs-zPw"/>
                         </constraints>
@@ -310,7 +321,7 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ji-SW-j72" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2849.2307692307691" y="-1376.3033175355449"/>
+            <point key="canvasLocation" x="2847.9069767441861" y="-1376.3948497854078"/>
         </scene>
         <!--Filtres-->
         <scene sceneID="sSD-Ty-5vm">
@@ -638,6 +649,7 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
         <image name="carpool" width="100" height="100"/>
         <image name="carwash" width="100" height="100"/>
         <image name="evCharger" width="100" height="100"/>
+        <image name="logoParkInBdx" width="480" height="260"/>
         <image name="map" catalog="system" width="128" height="112"/>
         <image name="motorbike" width="100" height="100"/>
         <image name="pmr" width="100" height="100"/>
