@@ -97,7 +97,6 @@ final class CarParksMapViewController: UIViewController {
     
     /// Retreive the information related to the car parks provided by the model and load them up into the MapViewController
     func loadCarParksDataSet() {
-        // add weak self
         self.carParkCore.getLatestUpdate() { [weak self] resultCarParkData in
             DispatchQueue.main.async { [self] in
                 self?.displayLoadingView(true)
