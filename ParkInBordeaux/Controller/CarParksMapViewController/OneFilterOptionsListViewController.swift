@@ -58,7 +58,7 @@ class OneFilterOptionsListViewController: UIViewController {
     }
 }
 
-// MARK: - Extension - TableView - DataSource
+// MARK: - Extension - TableView - UITableViewDataSource
 extension OneFilterOptionsListViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -77,11 +77,9 @@ extension OneFilterOptionsListViewController: UITableViewDataSource {
         let index = indexPath.row
         let cell = UITableViewCell(style: .default, reuseIdentifier: "oneOptionReuseID")
         cell.textLabel?.text = optionAvailable[index].humanName
-        
         guard let affectedFiltre = affectedFiltre,
               let affectedFiltreOptionId = affectedFiltre.currentOption?.id,
               let cellOptionId = optionAvailable[index].id else { return  cell}
-        
         if affectedFiltreOptionId == cellOptionId {
             cell.accessoryType = .checkmark
         }
@@ -89,7 +87,7 @@ extension OneFilterOptionsListViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - Extension - TableView - Delegate
+// MARK: - Extension - TableView - UITableViewDelegate
 extension OneFilterOptionsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let affectedRow = tableView.cellForRow(at: indexPath) else { return }
@@ -99,10 +97,10 @@ extension OneFilterOptionsListViewController: UITableViewDelegate {
         guard let coreDataManager = coreDataManager,
               let affectedFiltre = affectedFiltre else { return }
         if affectedFiltre.currentOption?.id == selectedOptionCD.id {
-            coreDataManager.editFilterCurrentOption(for: affectedFiltre, with: nil)
+            _ = coreDataManager.editFilterCurrentOption(for: affectedFiltre, with: nil)
         }
         else {
-            coreDataManager.editFilterCurrentOption(for: affectedFiltre, with: selectedOptionCD)
+            _ = coreDataManager.editFilterCurrentOption(for: affectedFiltre, with: selectedOptionCD)
         }
         tableView.reloadData()
     }

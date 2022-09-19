@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-/// View controller for the view displaying the MapsView with annotations for
+/// View controller for the view displaying the MapsView with annotations related to car parks
 final class CarParksMapViewController: UIViewController {
     
     // MARK: - LifeCyle
@@ -25,26 +25,27 @@ final class CarParksMapViewController: UIViewController {
     }
     
     // MARK: - Vars
-    /// Model instance
+    /// Core service instance
     let carParkCore = CarParksCoreService()
     /// CoreData instance
     private var coreDataManager: CoreDataRepo?
-    
+    /// The amount of car park currently being displayed by the MKMapView
     var amountOfCarPark = 0
     
     // MARK: - IBOutlet
     /// MKMapView controller used to display car maps on Maps
     @IBOutlet weak var carParksMapViewController: MKMapView!
+    /// Activity indicator view displayed while data are being resfreshed
     @IBOutlet weak var activityIndicatorViewController: UIView! {
         didSet {
             activityIndicatorViewController.layer.cornerRadius = 6
         }
     }
+    /// Activity indicator  displayed while data are being resfreshed
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    /// Buttom at the top of the view to open the filter menu
     @IBOutlet weak var filterMenuUIButton: UIButton!
-    
-    // MARK: - IBAction
-    
+        
     // MARK: - Functions
     
     /// Set the MKMapView which will be used within the view. (Region limit, zoom limit, initial location, etc ...)
@@ -87,6 +88,8 @@ final class CarParksMapViewController: UIViewController {
         filterMenuUIButton.setTitle(titleFilterButton, for: .normal)
     }
     
+    /// Display or hide the "loadving view" (activity indicator)
+    /// - Parameter status: true the activity indicator will be displayed. Otherwise used false to hide it
     func displayLoadingView(_ status: Bool) {
         self.activityIndicatorViewController.isHidden = !status
         self.carParksMapViewController.isUserInteractionEnabled = !status
@@ -129,9 +132,8 @@ final class CarParksMapViewController: UIViewController {
     }
 }
 
-// MARK: - Extensions - Maps - Delegate
+// MARK: - Extensions - Maps - MKMapViewDelegate
 extension CarParksMapViewController: MKMapViewDelegate {
-    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !annotation.isKind(of: MKUserLocation.self) else {
             return nil
@@ -146,7 +148,6 @@ extension CarParksMapViewController: MKMapViewDelegate {
         return view
     }
     
-    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let annotationView = view as? CarParkMapAnnotationView,
               let carParkAnnotation = annotationView.annotation as? CarParkMapAnnotation else {
@@ -155,7 +156,6 @@ extension CarParksMapViewController: MKMapViewDelegate {
         performSegue(withIdentifier: "segueFromMapToDetails", sender: carParkAnnotation)
     }
 }
-
 
 // MARK: - Extensions - Segue
 extension CarParksMapViewController {

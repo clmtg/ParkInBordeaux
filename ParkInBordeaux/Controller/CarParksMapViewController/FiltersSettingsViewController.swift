@@ -24,7 +24,6 @@ class FiltersSettingsViewController: UIViewController {
         filtersOptionsUITableView.reloadData()
     }
     
-    
     // MARK: - Vars
     /// CoreData instance
     private var coreDataManager: CoreDataRepo?
@@ -41,7 +40,6 @@ class FiltersSettingsViewController: UIViewController {
     @IBOutlet weak var filtersOptionsUITableView: UITableView!
     
     // MARK: - Functions
-    
     /// Performed when Reset button (within navagication view controller) is tapped. Remove all filter applied to the map
     @objc private func resetFilterSelection(){
         coreDataManager?.resetFilter()
@@ -49,12 +47,11 @@ class FiltersSettingsViewController: UIViewController {
     }
     
     @objc private func didTapSaveFiltersSettings() {
-        //self.dismiss(animated: true)
         performSegue(withIdentifier: "segueFromFiltersListToMap", sender: self)
     }
 }
 
-// MARK: - Extensions - UITableView
+// MARK: - Extensions - UITableViewDataSource
 
 extension FiltersSettingsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -76,7 +73,6 @@ extension FiltersSettingsViewController: UITableViewDataSource {
         return cell
     }
 }
-
 
 // MARK: - Extensions - Segue
 extension FiltersSettingsViewController {

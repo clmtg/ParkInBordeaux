@@ -9,8 +9,8 @@ import Foundation
 import MapKit
 
 extension MKMapView {
-
-    /// When we call this function, we have already added the annotations to the map, and just want all of them to be displayed.
+    
+    /// When we call this function, the annotations have already been added to the map, and just want all of them to be displayed.
     func fitAll() {
         var zoomRect            = MKMapRect.null;
         for annotation in annotations {

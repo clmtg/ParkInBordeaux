@@ -18,7 +18,7 @@ class SetupPageViewController: UIPageViewController {
     }
     
     // MARK: - Vars
-    /// Book of array listing the UIViewControllers part of the one time setup views
+    /// Array listing the UIViewControllers part of the one time setup views
     var pages = [UIViewController]()
     /// Line of dots to manage Page View controller
     let pageControl = UIPageControl()
@@ -30,7 +30,7 @@ class SetupPageViewController: UIPageViewController {
         dataSource = self
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         pages.append(storyboard.instantiateViewController(withIdentifier: "SetupPartOneViewController"))
-        pages.append(storyboard.instantiateViewController(withIdentifier: "SetupPartThreeViewController"))
+        pages.append(storyboard.instantiateViewController(withIdentifier: "SetupPartTwoViewController"))
         setViewControllers([pages[0]], direction: .forward, animated: true, completion: nil)
     }
     
@@ -42,9 +42,7 @@ class SetupPageViewController: UIPageViewController {
         pageControl.pageIndicatorTintColor = UIColor(named: "lightPink")
         pageControl.numberOfPages = pages.count
         pageControl.currentPage = 0
-        
         view.addSubview(pageControl)
-        
         let margins = view.layoutMarginsGuide
         let guide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
@@ -54,13 +52,14 @@ class SetupPageViewController: UIPageViewController {
         ])
     }
     
+    /// Used when the user taps on one dot  (small dot at the bottom of the display) to target a specific page
+    /// - Parameter sender: the affected UIPageControl used by the user
     @objc func pageControlTapped(_ sender: UIPageControl) {
         setViewControllers([pages[sender.currentPage]], direction: .forward, animated: true, completion: nil)
     }
 }
 
-// MARK: - Extension - Delegate
-
+// MARK: - Extension - UIPageViewControllerDelegate
 extension SetupPageViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         guard let viewControllers = pageViewController.viewControllers else { return }
@@ -69,10 +68,8 @@ extension SetupPageViewController: UIPageViewControllerDelegate {
     }
 }
 
-// MARK: - Extension - Datasource
-
+// MARK: - Extension - UIPageViewControllerDataSource
 extension SetupPageViewController: UIPageViewControllerDataSource {
-    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let currentIndex = pages.firstIndex(of: viewController) else { return nil }
         if currentIndex == 0 {
@@ -87,7 +84,6 @@ extension SetupPageViewController: UIPageViewControllerDataSource {
         if currentIndex < pages.count - 1 {
             return pages[currentIndex + 1]  // go next
         } else {
-            //return pages.first
             return nil
         }
     }

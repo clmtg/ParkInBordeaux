@@ -42,9 +42,8 @@ class CarParkDetailsViewController: UIViewController {
     /// Amount of free car spot available within the affected car park
     @IBOutlet weak var carParkFreeSpotLabel: UILabel!
     
-    
+    /// Arrary of UIImageView used to manage the asset available with the affected car park
     @IBOutlet var serviceAssets: [UIImageView]!
-    
     
     /// Additional information provided from service related to the affected car park
     @IBOutlet weak var carParkInfoLabel: UILabel!
@@ -61,6 +60,8 @@ class CarParkDetailsViewController: UIViewController {
     
     // MARK: - Functions - View Setup
     
+    /// Used to setup the MKMapView (at the the top of the view) to display the affected car park on a map
+    /// - Parameter carParkAnnotation: Affected annotation to display
     private func setUpMapView(_ carParkAnnotation: CarParkMapAnnotation?){
         guard let carParkAnnotation = carParkAnnotation else { return }
         mapView.layer.cornerRadius = 10.0;
@@ -70,7 +71,6 @@ class CarParkDetailsViewController: UIViewController {
     }
     
     // MARK: - Functions - Label setup
-    
     /// Set the label related to the car park name using the affected car park details
     /// - Parameter carPark: Details of the affected car park
     private func setCarParkName(_ carPark: OneCarParkStruct) {
@@ -106,14 +106,11 @@ class CarParkDetailsViewController: UIViewController {
     }
     
     
-    //==================================================================================================================
-    
-    /// Set the label related to the car park capacity using the affected car park details
+        /// Set the label related to the car park capacity using the affected car park details
     /// - Parameter carPark: Details of the affected car park
     private func setCarParkCapacity(_ carPark: OneCarParkStruct) {
         carParkCapacityLabel.text = "Capacité : \(carPark.capacity) places"
     }
-    
     
     /// Set the label related to the car park free spot using the affected car park details.
     /// Based on the amount of spot available or car park status the label may be displayed using other different style
@@ -137,6 +134,7 @@ class CarParkDetailsViewController: UIViewController {
     
     // MARK: - Functions - Others
     
+    /// Load each part of the details view for the related car park
     private func loadDetails() {
         guard let carParkData = affectedCarpark?.carParkInfo else { return }
         setCarParkName(carParkData)
@@ -145,7 +143,6 @@ class CarParkDetailsViewController: UIViewController {
         setCarParkCapacity(carParkData)
         setCarParkFreeSpotAmount(carParkData)
         setCarParkInfor(carParkData)
-        
     }
     
     /// Used when user tap on "Go" button. This would open the built-in Maps app and attempt to display an itinerary using thr driving mode

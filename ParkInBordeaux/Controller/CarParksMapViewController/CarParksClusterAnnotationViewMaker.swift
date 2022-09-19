@@ -24,7 +24,7 @@ class CarParksClusterAnnotationViewMaker: MKMarkerAnnotationView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Functions
+    // MARK: - Life cycle
     override func prepareForDisplay() {
         super.prepareForDisplay()
         markerTintColor = UIColor(named: "balloonAnnotation")

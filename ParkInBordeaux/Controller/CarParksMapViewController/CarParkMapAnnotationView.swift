@@ -59,7 +59,7 @@ class CarParkMapAnnotationView: MKAnnotationView {
             wholeColor?.setFill()
             UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 40, height: 40)).fill()
 
-            // Fill pie with fractionColor
+            // Fill graph with fractionColor
             fractionColor?.setFill()
             let piePath = UIBezierPath()
             piePath.addArc(withCenter: CGPoint(x: 20, y: 20), radius: 20,
@@ -89,8 +89,8 @@ class CarParkMapAnnotationView: MKAnnotationView {
         }
     }
     
-    /// Used to get the amount of car spot available for the affected car park through the related annotation
-    /// - Returns: Amount of car spot available for the affected car park
+    /// Used for getting the amount of car spot available for the affected car park through the related annotation
+    /// - Returns: Amount of car spots available for the affected car park
     private func getCarSpotsFree() -> Int {
         guard let annotation = annotation as? CarParkMapAnnotation,
               let carPark = annotation.carParkInfo,
@@ -103,10 +103,10 @@ class CarParkMapAnnotationView: MKAnnotationView {
     /// - Returns: Amount of car spot  for the affected car park
     private func getCarSpotsAvailable() -> Int {
         guard let annotation = annotation as? CarParkMapAnnotation,
-              let spotAmount = annotation.carParkInfo?.capacity else {
+              let carPark = annotation.carParkInfo else {
             return 0
         }
-        return spotAmount
+        return carPark.capacity
     }
          
 }

@@ -74,7 +74,6 @@ final class CoreDataRepo {
             completionHandler(.success(filter))
             return
         }
-        
         if linkOptionsToFilter(options: optionsFilter, affectedFilter: filter) {
             completionHandler(.success(filter))
         } else {
@@ -112,11 +111,11 @@ final class CoreDataRepo {
         guard let selectedOptionId = selectedOption?.id,
               let affectedOption = getOptionDetailWithID(selectedOptionId) else {
             affectedFilter.currentOption = nil
-            coreDataStack.saveContext()
+            _ = coreDataStack.saveContext()
             return true
         }
         affectedFilter.currentOption = affectedOption
-        coreDataStack.saveContext()
+        _ = coreDataStack.saveContext()
         return true
     }
     
@@ -127,7 +126,7 @@ final class CoreDataRepo {
         dataFilter.forEach { oneFilter in
             oneFilter.currentOption = nil
         }
-        coreDataStack.saveContext()
+        _ = coreDataStack.saveContext()
     }
     
     /// Retreive a specific filter using the related id
