@@ -1,3 +1,4 @@
+[![UnitTests](https://github.com/clmtg/ParkInBordeaux/actions/workflows/GitHubAction_OCP12.yml/badge.svg)](https://github.com/clmtg/ParkInBordeaux/actions/workflows/GitHubAction_OCP12.yml)
 # ParkInBordeaux project
 ## ParkInBordeaux :  the fastest way to park your vehicle in Bordeaux
 
