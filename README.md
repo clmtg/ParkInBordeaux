@@ -12,6 +12,8 @@ From no on, no more wasted time driving around hopeless. You need a car park par
 
 Enjoy ParkInBordeaux and drive safely
 
+![](./mockup.jpg)
+
 
 ## Additional information
 * Support several iOS device screen sizes (from iPod touch 7th Gen to iPhone 14 Pro models)
