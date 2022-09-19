@@ -45,6 +45,6 @@ final class CarParkMapAnnotation: NSObject, MKAnnotation {
             self.subtitle = dataCarPark.status
             return
         }
-        self.subtitle = "\(carParkInfo!.freeSpot) places disponible"
+        self.subtitle = "\(carParkInfo!.freeSpot) places disponibles"
     }
 }

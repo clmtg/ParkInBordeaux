@@ -124,16 +124,16 @@ struct OneCarParkStruct {
         var description = String()
         switch status {
         case "Ferme":
-            description = status
+            description = "Fermé"
         case "Complet":
             description = status
         case "Ouvert":
             guard let properties = properties else { return "indisponible" }
             if status == "Ouvert", properties.libres == nil {
-                description = "Nombre de places libre indisponible"
+                description = "Nombre de places libres indisponibles"
             }
         default:
-            description = "\(freeSpot) places disponible"
+            description = "\(freeSpot) places disponibles"
         }
         return description
     }

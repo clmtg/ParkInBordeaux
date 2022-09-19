@@ -103,10 +103,6 @@ class CarParkDetailsViewController: UIViewController {
         if filtered.isEmpty {
             carParkServicesSatck.isHidden = true
         }
-        carParkServicesSatck.isHidden = false
-        serviceAssets.forEach { oneService in
-            oneService.isHidden = false
-        }
     }
     
     
