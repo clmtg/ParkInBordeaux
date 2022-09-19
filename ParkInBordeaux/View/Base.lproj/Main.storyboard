@@ -256,7 +256,7 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xfs-IP-cw3">
                                         <rect key="frame" x="0.0" y="323.66666666666669" width="350" height="40.666666666666686"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="carwash" translatesAutoresizingMaskIntoConstraints="NO" id="1A5-r8-Has">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="carwash2" translatesAutoresizingMaskIntoConstraints="NO" id="1A5-r8-Has">
                                                 <rect key="frame" x="0.0" y="0.33333333333325754" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="RUr-NH-f1O"/>
@@ -399,7 +399,7 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
                                             <constraint firstAttribute="width" constant="40" id="oPc-o0-Sny"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFit" image="carwash" translatesAutoresizingMaskIntoConstraints="NO" id="Np1-g7-Vw7" userLabel="valletAsset">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFit" image="carwash2" translatesAutoresizingMaskIntoConstraints="NO" id="Np1-g7-Vw7" userLabel="valletAsset">
                                         <rect key="frame" x="200" y="0.0" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="6ah-Yl-sCU"/>
@@ -647,7 +647,7 @@ En quelques clics, selectionnez l'emplacement parfait pour votre véhicule. Nous
         <image name="bike" width="100" height="100"/>
         <image name="camera.filters" catalog="system" width="128" height="119"/>
         <image name="carpool" width="100" height="100"/>
-        <image name="carwash" width="100" height="100"/>
+        <image name="carwash2" width="100" height="100"/>
         <image name="evCharger" width="100" height="100"/>
         <image name="logoParkInBdx" width="480" height="260"/>
         <image name="map" catalog="system" width="128" height="112"/>
