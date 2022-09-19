@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import Mixpanel
 
 /// View controller for the view displaying the MapsView with annotations related to car parks
 final class CarParksMapViewController: UIViewController {
@@ -97,6 +98,7 @@ final class CarParksMapViewController: UIViewController {
     
     /// Retreive the information related to the car parks provided by the model and load them up into the MapViewController
     func loadCarParksDataSet() {
+        Mixpanel.mainInstance().track(event: "carParkDataRetrieved", properties: [:])
         self.carParkCore.getLatestUpdate() { [weak self] resultCarParkData in
             DispatchQueue.main.async { [self] in
                 self?.displayLoadingView(true)

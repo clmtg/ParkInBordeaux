@@ -5,6 +5,12 @@
 //  Created by Clément Garcia on 17/08/2022.
 //
 
+import UIKit
+import CoreData
+import Foundation
+
+import Mixpanel
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -12,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        Mixpanel.initialize(token: "2dffb84fe2eacb35f8a9510aab4a5a26", trackAutomaticEvents: true)
+        
         return true
     }
     

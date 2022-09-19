@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import Mixpanel
 
 /// View controller for the view displaying detailed information relqted to a  specific car park
 class CarParkDetailsViewController: UIViewController {
@@ -16,6 +17,7 @@ class CarParkDetailsViewController: UIViewController {
         super.viewDidLoad()
         setUpMapView(affectedCarpark)
         loadDetails()
+        sendEvent()
     }
     
     // MARK: - Vars
@@ -152,5 +154,12 @@ class CarParkDetailsViewController: UIViewController {
         mapItem.pointOfInterestCategory = .parking
         let launchOption = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving, MKLaunchOptionsShowsTrafficKey: true] as [String : Any]
         mapItem.openInMaps(launchOptions: launchOption)
+    }
+    
+    func sendEvent() {
+        guard let carParkData = affectedCarpark?.carParkInfo else { return }
+        Mixpanel.mainInstance().track(event: "carParkDetailsDisplayed", properties: [
+            "affectedCarPark": carParkData.name,
+        ])
     }
 }

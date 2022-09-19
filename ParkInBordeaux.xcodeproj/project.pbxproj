@@ -48,6 +48,7 @@
 		EBA43E3E28D0BF7B009B6013 /* ExtMKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA43E3D28D0BF7B009B6013 /* ExtMKMapView.swift */; };
 		EBB40A9628D1B09800974384 /* ExtUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB40A9528D1B09800974384 /* ExtUIImage.swift */; };
 		EBBD8AE728D8A22F00C9A840 /* mockup.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBBD8AE628D8A22F00C9A840 /* mockup.jpg */; };
+		EBE4B1C728D8B9CE00E9FC04 /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = EBE4B1C628D8B9CE00E9FC04 /* Mixpanel */; };
 		EBEDB2CA28D8873F003B0554 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EBEDB2C928D8873F003B0554 /* README.md */; };
 		EBF8010B28B9196800A9DE1D /* SetupPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF8010A28B9196800A9DE1D /* SetupPageViewController.swift */; };
 		EBF8010F28B91AC000A9DE1D /* SetupPartOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF8010E28B91AC000A9DE1D /* SetupPartOneViewController.swift */; };
@@ -122,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBE4B1C728D8B9CE00E9FC04 /* Mixpanel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +361,7 @@
 			);
 			name = ParkInBordeaux;
 			packageProductDependencies = (
+				EBE4B1C628D8B9CE00E9FC04 /* Mixpanel */,
 			);
 			productName = ParkInBordeaux;
 			productReference = EB5592A728AD75DA00FEF6B9 /* ParkInBordeaux.app */;
@@ -411,6 +414,7 @@
 			);
 			mainGroup = EB55929E28AD75DA00FEF6B9;
 			packageReferences = (
+				EBE4B1C528D8B9CE00E9FC04 /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
 			);
 			productRefGroup = EB5592A828AD75DA00FEF6B9 /* Products */;
 			projectDirPath = "";
@@ -773,6 +777,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EBE4B1C528D8B9CE00E9FC04 /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EBE4B1C628D8B9CE00E9FC04 /* Mixpanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EBE4B1C528D8B9CE00E9FC04 /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
+			productName = Mixpanel;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		EB38D6B828CF30B000AD5629 /* ParkInBordeauxDataModel.xcdatamodeld */ = {
