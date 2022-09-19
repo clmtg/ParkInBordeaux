@@ -30,7 +30,6 @@ struct FakeDataCoreData {
          return data
      }
      
-     
      static var correctOptionFilterCDSecond: OptionsFilterCD {
          let data = OptionsFilterCD()
          data.id = UUID()
@@ -66,5 +65,4 @@ struct FakeDataCoreData {
          data.currentOption = nil
          return data
      }
-    
 }
