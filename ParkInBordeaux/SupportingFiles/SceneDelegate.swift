@@ -21,7 +21,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window = UIWindow(windowScene: scene)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "SetupPageViewController")
-            //let navController = UINavigationController(rootViewController: controller)
             
             let navController = UINavigationController(rootViewController: controller)
             navController.isNavigationBarHidden = true

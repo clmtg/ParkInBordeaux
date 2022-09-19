@@ -97,36 +97,36 @@ final class CarParksMapViewController: UIViewController {
     
     /// Retreive the information related to the car parks provided by the model and load them up into the MapViewController
     func loadCarParksDataSet() {
-        self.carParkCore.getLatestUpdate() { resultCarParkData in
+        // add weak self
+        self.carParkCore.getLatestUpdate() { [weak self] resultCarParkData in
             DispatchQueue.main.async { [self] in
-                displayLoadingView(true)
+                self?.displayLoadingView(true)
                 guard case .success(let carParksData) = resultCarParkData else {
                     if case .failure(let errorInfo) = resultCarParkData {
-                        let resetAction = UIAlertAction(title: "Afficher tous les parking", style: .default) { alertAction in
-                            guard let coreDataManager = self.coreDataManager else { return }
+                        let resetAction = UIAlertAction(title: "Afficher tous les parking", style: .default) { [weak self] alertAction in
+                            guard let coreDataManager = self?.coreDataManager else { return }
                             coreDataManager.resetFilter()
-                            self.loadCarParksDataSet()
+                            self?.loadCarParksDataSet()
                         }
-                        self.displayAnAlert(title: "Oups", message: errorInfo.description, actions: [resetAction])
-                        self.displayLoadingView(false)
+                        self?.displayAnAlert(title: "Oups", message: errorInfo.description, actions: [resetAction])
+                        self?.displayLoadingView(false)
                     }
                     return
                 }
-                self.carParksMapViewController.removeAnnotations(carParksMapViewController.annotations)
-                self.amountOfCarPark = carParksData.count
+                self?.carParksMapViewController.removeAnnotations((self?.carParksMapViewController.annotations)!)
+                self?.amountOfCarPark = carParksData.count
                 carParksData.forEach { oneCarPark in
                     if let location = oneCarPark.location, let properties = oneCarPark.properties {
                         let affectedAnnotation = CarParkMapAnnotation(for: location ,
                                                                       title: properties.nom ?? "No name",
                                                                       subtitle: properties.etat ?? "Inconnu",
                                                                       carParkInfo: oneCarPark)
-                        self.carParksMapViewController.addAnnotation(affectedAnnotation)
+                        self?.carParksMapViewController.addAnnotation(affectedAnnotation)
                     }
                 }
-                carParksMapViewController.fitAll()
-                setFilterButtonTitle()
-                displayLoadingView(false)
-                
+                self?.carParksMapViewController.fitAll()
+                self?.setFilterButtonTitle()
+                self?.displayLoadingView(false)
             }
         }
     }

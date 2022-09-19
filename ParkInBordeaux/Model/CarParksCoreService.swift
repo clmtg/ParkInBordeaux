@@ -14,7 +14,6 @@ final class CarParksCoreService {
     // MARK: - Vars
     /// URLSession handling the call to the REST apis
     private let session: URLSession
-    
     /// Array of  OneCarParkStruct
     var carParksData = CarParks()
 
@@ -31,14 +30,18 @@ final class CarParksCoreService {
     private func getCarParksAvailabilityFromGeojson(with endpoint: URL, completionHandler: @escaping (Result<[MKGeoJSONFeature],CarParksServiceError>) -> Void) {
         session.dataTask(with: endpoint) { dataReceived, responseReceived, errorReceived in
             guard let data = dataReceived, errorReceived == nil else {
+                print("tititititititititi")
                 completionHandler(.failure(.corruptData))
                 return
             }
             guard let response = responseReceived as? HTTPURLResponse, response.statusCode == 200 else {
+                print("tatatatatatatatatat")
+                print(responseReceived)
                 completionHandler(.failure(.unexpectedResponse))
                 return
             }
             guard let geojsonfeatures = try? MKGeoJSONDecoder().decode(data) as? [MKGeoJSONFeature] else {
+                print("tutututututututut")
                 completionHandler(.failure(.undecodableGeojson))
                 return
             }
@@ -56,6 +59,7 @@ final class CarParksCoreService {
         }
         getCarParksAvailabilityFromGeojson(with: endpoindToUse) { resultGeojsonFeatures in
             guard case .success(let geojsonFeaturesData) = resultGeojsonFeatures else {
+                print("totototosdkjfskdfhkalsdhjfkhjsadlkfhaslkdhflkasdhflkhasdlkfhjkasj")
                 completionHandler(.failure(.networkCallFailed))
                 return
             }

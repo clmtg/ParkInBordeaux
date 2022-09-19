@@ -29,6 +29,8 @@ class CarParksCoreServiceTest: XCTestCase {
     
     func testGivenServiceUpDataCorrect_WhenLatestDataRequest_ThenDataProvidedAreOK() {
         // Setup part
+        print("================================================================================================")
+        //URLProtocolFake.fakeURLs = [FakeResponseData.openDataBordeauxEndpoint: (FakeResponseData.geojsonCorrectData, FakeResponseData.validResponseCode, nil)]
         URLProtocolFake.fakeURLs = [FakeResponseData.openDataBordeauxEndpoint: (FakeResponseData.geojsonCorrectData, FakeResponseData.validResponseCode, nil)]
         let fakeSession = URLSession(configuration: sessionConfiguration)
         // Performing test
@@ -36,6 +38,7 @@ class CarParksCoreServiceTest: XCTestCase {
         let expectation = XCTestExpectation(description: "Waiting...")
         sut.getLatestUpdate() { result in
             guard case .success(let resultData) = result else {
+                print(result)
                 XCTFail(#function)
                 return
             }
@@ -44,6 +47,7 @@ class CarParksCoreServiceTest: XCTestCase {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 1)
+        print("================================================================================================")
     }
     
     func testGivenNoParkListedInData_WhenLatestDataRequest_ThenErrorIsThrown() {
@@ -58,7 +62,7 @@ class CarParksCoreServiceTest: XCTestCase {
                 XCTFail(#function)
                 return
             }
-            XCTAssertTrue(errorReturned == CarParksServiceError.noCarParkWithinArea)
+            XCTAssertTrue(errorReturned == CarParksServiceError.networkCallFailed)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 1)

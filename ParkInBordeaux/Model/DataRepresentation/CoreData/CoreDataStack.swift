@@ -36,6 +36,7 @@ open class CoreDataStack {
     
     // MARK: - Functions
     /// Save current context for the CoreDataStack
+    @discardableResult
     func saveContext() -> CarParksServiceError? {
         guard mainContext.hasChanges else { return nil }
         do {

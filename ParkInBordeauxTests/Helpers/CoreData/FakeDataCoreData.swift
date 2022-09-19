@@ -20,88 +20,8 @@ struct FakeDataCoreData {
     static let filterStructB = Filter(sysmName: "filterStructB", humanName: "Filter B", options: [])
     
     let filtersListStruct = FiltersList(filters: [filterStructA, filterStructB])
-  
     
-    
-    /**
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     // MARK: - FiltersList
-     struct FiltersList: Decodable {
-         let filters: [Filter]
-     }
-
-     // MARK: - Fitre
-     struct Filter: Decodable {
-         let sysmName, humanName: String
-         let options: [OptionsForOneFilter]
-     }
-
-     // MARK: - Option
-     struct OptionsForOneFilter: Decodable {
-         let optionSystemName, optionHumanName: String
-     }
-
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     static var correctOptionFilterCDFirst: OptionsFilterCD {
+    static var correctOptionFilterCDFirst: OptionsFilterCD {
          let data = OptionsFilterCD()
          data.id = UUID()
          data.systemName = "correctOptionFilterCDFirst"
@@ -146,27 +66,5 @@ struct FakeDataCoreData {
          data.currentOption = nil
          return data
      }
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     */
-
     
 }
-
-
-

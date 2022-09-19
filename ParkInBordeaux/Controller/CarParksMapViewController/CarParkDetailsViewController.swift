@@ -41,10 +41,8 @@ class CarParkDetailsViewController: UIViewController {
     @IBOutlet weak var carParkCapacityLabel: UILabel!
     /// Amount of free car spot available within the affected car park
     @IBOutlet weak var carParkFreeSpotLabel: UILabel!
-    
     /// Arrary of UIImageView used to manage the asset available with the affected car park
     @IBOutlet var serviceAssets: [UIImageView]!
-    
     /// Additional information provided from service related to the affected car park
     @IBOutlet weak var carParkInfoLabel: UILabel!
     

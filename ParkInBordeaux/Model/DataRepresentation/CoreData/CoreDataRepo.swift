@@ -104,6 +104,7 @@ final class CoreDataRepo {
     /// - Parameters:
     ///   - filterFromMenu: Affected filter
     ///   - selectedOption: New option used by the affected filter
+    @discardableResult
     func editFilterCurrentOption(for filterFromMenu: FiltersCD, with selectedOption: OptionsFilterCD?) -> Bool {
         guard let idProvided = filterFromMenu.id,
               let affectedFilter = getFilterDetailWithID(idProvided) else { return false }
@@ -111,11 +112,11 @@ final class CoreDataRepo {
         guard let selectedOptionId = selectedOption?.id,
               let affectedOption = getOptionDetailWithID(selectedOptionId) else {
             affectedFilter.currentOption = nil
-            _ = coreDataStack.saveContext()
+            coreDataStack.saveContext()
             return true
         }
         affectedFilter.currentOption = affectedOption
-        _ = coreDataStack.saveContext()
+        coreDataStack.saveContext()
         return true
     }
     
@@ -126,7 +127,7 @@ final class CoreDataRepo {
         dataFilter.forEach { oneFilter in
             oneFilter.currentOption = nil
         }
-        _ = coreDataStack.saveContext()
+        coreDataStack.saveContext()
     }
     
     /// Retreive a specific filter using the related id
